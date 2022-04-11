@@ -1,0 +1,25 @@
+kubectl apply -f - <<EOF
+apiVersion: waas.radware.com/v1beta1
+kind: Profile
+metadata:
+  name:  hackazon
+  namespace: kwaf
+  labels:
+    release: waas
+spec:
+  policies:
+  - name: apiPolicy
+    operatorEmail: support@radware.com
+    classifiers:
+    - id: sample-hackazon
+      hostname: hackazon.kwaf-demo.tes*
+      protectionId: sample-hackazon-protection
+      path:
+        operand: Prefix
+        value: /
+    protections:
+    - id: sample-hackazon-protection
+      signatures:
+        opMode: Active
+      expressions:
+        opMode: Active
