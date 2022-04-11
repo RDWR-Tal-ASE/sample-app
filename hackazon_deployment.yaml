@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-hackazon-deployment
+  namespace: test
+spec:
+  selector:
+    matchLabels:
+      app: hackazon
+  template:
+    metadata:
+      labels:
+        app: hackazon
+    spec:
+      containers:
+        - name: sample-hackazon
+          image: sambercovici/hackazon
+          imagePullPolicy: IfNotPresent
+          readinessProbe:
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
+          livenessProbe:
+            timeoutSeconds: 5
+            failureThreshold: 3
+            successThreshold: 1
+            httpGet:
+              path: /
+              port: 80
+              scheme: HTTP
