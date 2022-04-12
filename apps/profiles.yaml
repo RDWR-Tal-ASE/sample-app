@@ -22,6 +22,17 @@ spec:
       path:
         operand: Prefix
         value: /
+    - protectionId: bwapp
+      hostname: 'bwapp.kwaf-demo.tes*'
+      id: bwapp-sample
+      path:
+        operand: Prefix
+        value: /
+    - protectionId: httpbin
+      hostname: 'httpbin.kwaf-demo.tes*'
+      id: httpbin-sample
+      path:
+        operand: Prefix
     protections:
     - id: sample-hackazon-protection
       signatures:
@@ -29,6 +40,16 @@ spec:
       expressions:
         opMode: Active
     - id: staging-sample-hackazon-protection
+      signatures:
+        opMode: Active
+      expressions:
+        opMode: Active
+    - id: httpbin
+      signatures:
+        opMode: Active
+      expressions:
+        opMode: Active
+    - id: bwapp
       signatures:
         opMode: Active
       expressions:

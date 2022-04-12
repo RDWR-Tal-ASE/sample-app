@@ -26,6 +26,42 @@ spec:
       name: http
       protocol: TCP
 ---
+# Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-bwapp-service
+  namespace: test
+  labels:
+    waas.radware.com/sample: bwapp
+spec:
+  selector:
+    app: sample-bwapp-container
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+      name: http
+      protocol: TCP
+---
+# Source: sample-istio-integration/templates/sample-apps/httpbin/httpbin-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: sample-httpbin-service
+  namespace: test
+  labels:
+    waas.radware.com/sample: httpbin
+spec:
+  selector:
+    app: sample-httpbin-container
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+      protocol: TCP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -97,7 +133,70 @@ spec:
               port: 80
               scheme: HTTP
 ---
-
+# Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-bwapp-deployment
+  namespace: test
+  labels:
+    waas.radware.com/sample: bwapp
+spec:
+  selector:
+    matchLabels:
+      app: sample-bwapp-container
+  template:
+    metadata:
+      labels:
+        app: sample-bwapp-container
+        waas.radware.com/protection: enabled
+    spec:
+      containers:
+        - image: raesene/bwapp
+          imagePullPolicy: IfNotPresent
+          name: sample-bwapp
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /install.php?install=yes
+              port: 80
+              scheme: HTTP
+---
+# Source: sample-istio-integration/templates/sample-apps/httpbin/httpbin-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-httpbin-deployment
+  namespace: test
+  labels:
+    waas.radware.com/sample: httpbin
+spec:
+  selector:
+    matchLabels:
+      app: sample-httpbin-container
+  template:
+    metadata:
+      labels:
+        app: sample-httpbin-container
+        waas.radware.com/protection: enabled
+    spec:
+      containers:
+        - image: kennethreitz/httpbin:latest
+          imagePullPolicy: IfNotPresent
+          name: sample-httpbin
+          command:
+            - gunicorn
+            - "-b=[::]:8080"
+            - httpbin:app
+            - -k
+            - gevent
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -129,6 +228,40 @@ spec:
       protocol: HTTP
     hosts:
     - "staging-hackazon.kwaf-demo.test"
+---
+# Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-istio-ingress.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: bwapp-gateway
+  namespace: test
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "bwapp.kwaf-demo.test"
+---
+# Source: sample-istio-integration/templates/sample-apps/httpbin/httpbin-istio-ingress.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: httpbin-gateway
+  namespace: test
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "httpbin.kwaf-demo.test"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -169,3 +302,45 @@ spec:
         port:
           number: 80
         host: staging-sample-hackazon-service.test.svc.cluster.local
+---
+# Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-istio-ingress.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: bwapp
+  namespace: test
+spec:
+  hosts:
+  - "bwapp.kwaf-demo.test"
+  gateways:
+  - bwapp-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: sample-bwapp-service.radware.svc.cluster.local
+---
+# Source: sample-istio-integration/templates/sample-apps/httpbin/httpbin-istio-ingress.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: httpbin
+  namespace: test
+spec:
+  hosts:
+  - "httpbin.kwaf-demo.test"
+  gateways:
+  - httpbin-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: sample-httpbin-service.test.svc.cluster.local
