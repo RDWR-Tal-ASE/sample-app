@@ -7,40 +7,47 @@ metadata:
     release: waas
 spec:
   policies:
-  - name: apiPolicy
-    operatorEmail: support@radware.com
-    classifiers:
-    - protectionId: sample-hackazon-protection
-      hostname: 'staging-hackazon.kwaf-demo.tes*'
-      id: sample-hackazon      
+  - classifiers:
+    - hostname: staging-hackazon.kwaf-demo.tes*
+      id: sample-hackazon
       path:
         operand: Prefix
         value: /
-    - protectionId: bwapp
-      hostname: 'staging-bwapp.kwaf-demo.tes*'
+      protectionId: sample-hackazon-protection
+    - hostname: staging-bwapp.kwaf-demo.tes*
       id: bwapp-sample
       path:
         operand: Prefix
         value: /
-    - protectionId: httpbin
-      hostname: 'staging-httpbin.kwaf-demo.tes*'
+      protectionId: bwapp
+    - hostname: staging-httpbin.kwaf-demo.tes*
       id: httpbin-sample
       path:
         operand: Prefix
         value: /
+      protectionId: httpbin
+    name: apiPolicy
+    operatorEmail: support@radware.com
     protections:
-    - id: sample-hackazon-protection
+    - expressions:
+        opMode: Active
+      id: sample-hackazon-protection
+      signatures:
+        advExcludes:
+        - ruleIDs:
+          - 7597
+          zone: uri
+        - ruleIDs:
+          - 7592
+          zone: uri
+        opMode: Active
+    - expressions:
+        opMode: Active
+      id: httpbin
       signatures:
         opMode: Active
-      expressions:
+    - expressions:
         opMode: Active
-    - id: httpbin
+      id: bwapp
       signatures:
-        opMode: Active
-      expressions:
-        opMode: Active
-    - id: bwapp
-      signatures:
-        opMode: Active
-      expressions:
         opMode: Active
