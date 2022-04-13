@@ -8,8 +8,9 @@ metadata:
 spec:
   policies:
   - classifiers:
-    - hostname: attacker.kwaf-demo.tes*
-      id: sample-attacker
+    - protectionId: nginx
+      hostname: staging-nginx.kwaf-demo.tes*
+      id: nginx-sample
       path:
         operand: Prefix
         value: /
@@ -50,7 +51,9 @@ spec:
         opMode: Active
       whitelist:
         opMode: Bypass
-    - action: Inspect
+    - id: nginx
       expressions:
-        opMode: Bypass
+        opMode: Active
+      signatures:
+        opMode: Active
 
