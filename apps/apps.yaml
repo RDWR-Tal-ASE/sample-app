@@ -1,6 +1,23 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: sample-nginx-service
+  namespace: test
+  labels:
+    waas.radware.com/sample: nginx
+spec:
+  selector:
+    app: sample-nginx-container
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 8080
+      name: http
+      protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
   name: sample-hackazon-service
   namespace: test
 spec:
@@ -29,6 +46,33 @@ spec:
       targetPort: 80
       name: http
       protocol: TCP
+---
+# Source: sample-istio-integration/templates/sample-apps/nginx/nginx-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-nginx-deployment
+  namespace: test
+  labels:
+    waas.radware.com/sample: nginx
+spec:
+  selector:
+    matchLabels:
+      app: sample-nginx-container
+  template:
+    metadata:
+      labels:
+        app: sample-nginx-container
+        waas.radware.com/protection: enabled
+    spec:
+      containers:
+        - args:
+          - "-c"
+          - "sed -i 's@listen       8080;@listen       8080; listen       [::]:8080;@' /etc/nginx/conf.d/default.conf && /docker-entrypoint.sh nginx -g 'daemon off;'"
+          command: ["/bin/sh"]
+          image: nginxinc/nginx-unprivileged:stable-alpine
+          imagePullPolicy: IfNotPresent
+          name: sample-nginx
 ---
 # Source: sample-istio-integration/templates/sample-apps/httpbin/httpbin-service.yaml
 apiVersion: v1
@@ -147,7 +191,23 @@ spec:
               port: 8080
               scheme: HTTP
 ---
-
+# Source: sample-istio-integration/templates/sample-apps/nginx/nginx-istio-ingress.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: nginx-gateway
+  namespace: test
+spec:
+  selector:
+    istio: ingressgateway # use Istio default gateway implementation
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "nginx.kwaf-demo.test"
+---
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -197,6 +257,30 @@ spec:
       protocol: HTTP
     hosts:
     - "httpbin.kwaf-demo.test"
+---
+# Source: sample-istio-integration/templates/sample-apps/nginx/nginx-istio-ingress.yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: nginx
+spec:
+  hosts:
+  - "nginx.kwaf-demo.test"
+  gateways:
+  - nginx-gateway
+  http:
+  - match:
+    - uri:
+        prefix: /
+    route:
+    - destination:
+        port:
+          number: 80
+        host: sample-nginx-service.test.svc.cluster.local
+      headers:
+        response:
+          add:
+            X-Enforcer-Classifier: "%REQ(X-Enforcer-Classifier)%"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService

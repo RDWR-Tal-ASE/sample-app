@@ -10,6 +10,12 @@ spec:
   - name: apiPolicy
     operatorEmail: support@radware.com
     classifiers:
+    - protectionId: nginx
+      hostname: nginx.kwaf-demo.tes*
+      id: nginx-sample
+      path:
+        operand: Prefix
+        value: /
     - protectionId: sample-hackazon-protection
       hostname: 'hackazon.kwaf-demo.tes*'
       id: sample-hackazon      
@@ -29,6 +35,11 @@ spec:
         operand: Prefix
         value: /
     protections:
+    - id: nginx
+      expressions:
+        opMode: Active
+      signatures:
+        opMode: Active
     - id: sample-hackazon-protection
       signatures:
         opMode: Active
