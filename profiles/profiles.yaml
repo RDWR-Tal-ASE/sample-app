@@ -35,23 +35,36 @@ spec:
         operand: Prefix
         value: /
     protections:
-    - id: nginx
-      expressions:
+    - expressions:
         opMode: Active
+      id: hackazon
+      signatures:
+        advExcludes:
+        - ruleIDs:
+          - 7592
+          zone: uri
+        - ruleIDs:
+          - 7597
+          zone: uri
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: httpbin
       signatures:
         opMode: Active
-    - id: hackazon
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: bwapp
       signatures:
         opMode: Active
-      expressions:
+      whitelist:
+        opMode: Bypass
+    - expressions:
         opMode: Active
-    - id: httpbin
+      id: nginx
       signatures:
-        opMode: Active
-      expressions:
-        opMode: Active
-    - id: bwapp
-      signatures:
-        opMode: Active
-      expressions:
         opMode: Active
