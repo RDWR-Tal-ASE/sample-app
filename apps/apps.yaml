@@ -12,20 +12,6 @@ spec:
       name: http
       protocol: TCP
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: staging-sample-hackazon-service
-  namespace: test
-spec:
-  selector:
-    app: staging-hackazon
-  ports:
-    - port: 80
-      targetPort: 80
-      name: http
-      protocol: TCP
----
 # Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-service.yaml
 apiVersion: v1
 kind: Service
@@ -165,7 +151,7 @@ spec:
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
-  name: staging-hackazon-gateway
+  name: hackazon-gateway
   namespace: test
 spec:
   selector:
@@ -176,7 +162,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "staging-hackazon.kwaf-demo.test"
+    - "hackazon.kwaf-demo.test"
 ---
 # Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-istio-ingress.yaml
 apiVersion: networking.istio.io/v1alpha3
