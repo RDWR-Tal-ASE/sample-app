@@ -7,33 +7,39 @@ metadata:
     release: waas
 spec:
   policies:
-  - name: apiPolicy
-    operatorEmail: support@radware.com
-    classifiers:
-    - protectionId: nginx
-      hostname: nginx.kwaf-demo.tes*
+  - classifiers:
+    - hostname: attacker.kwaf-demo.tes*
+      id: attacker
+      path:
+        operand: Prefix
+        value: /
+      protectionId: attacker
+    - hostname: nginx.kwaf-demo.tes*
       id: nginx-sample
       path:
         operand: Prefix
         value: /
-    - protectionId: hackazon
-      hostname: 'hackazon.kwaf-demo.tes*'
-      id: sample-hackazon      
+      protectionId: nginx
+    - hostname: hackazon.kwaf-demo.tes*
+      id: sample-hackazon
       path:
         operand: Prefix
         value: /
-    - protectionId: bwapp
-      hostname: 'bwapp.kwaf-demo.tes*'
+      protectionId: hackazon
+    - hostname: bwapp.kwaf-demo.tes*
       id: bwapp-sample
       path:
         operand: Prefix
         value: /
-    - protectionId: httpbin
-      hostname: 'httpbin.kwaf-demo.tes*'
+      protectionId: bwapp
+    - hostname: httpbin.kwaf-demo.tes*
       id: httpbin-sample
       path:
         operand: Prefix
         value: /
+      protectionId: httpbin
+    name: apiPolicy
+    operatorEmail: support@radware.com
     protections:
     - expressions:
         opMode: Active
@@ -68,5 +74,16 @@ spec:
       id: nginx
       signatures:
         opMode: Active
-
-
+      whitelist:
+        opMode: Bypass
+    - action: Bypass
+      expressions:
+        opMode: Bypass
+      id: attacker
+      rfcValidation:
+        action: Block
+        report: Always
+      signatures:
+        opMode: Bypass
+      whitelist:
+        opMode: Bypass
