@@ -97,42 +97,6 @@ spec:
               port: 80
               scheme: HTTP
 ---
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: staging-sample-hackazon-deployment
-  namespace: test
-spec:
-  selector:
-    matchLabels:
-      app: staging-hackazon
-  template:
-    metadata:
-      labels:
-        app: staging-hackazon
-    spec:
-      containers:
-        - name: sample-hackazon
-          image: sambercovici/hackazon
-          imagePullPolicy: IfNotPresent
-          readinessProbe:
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
-            httpGet:
-              path: /
-              port: 80
-              scheme: HTTP
-          livenessProbe:
-            timeoutSeconds: 5
-            failureThreshold: 3
-            successThreshold: 1
-            httpGet:
-              path: /
-              port: 80
-              scheme: HTTP
----
 # Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -197,22 +161,7 @@ spec:
               port: 8080
               scheme: HTTP
 ---
-apiVersion: networking.istio.io/v1alpha3
-kind: Gateway
-metadata:
-  name: hackazon-gateway
-  namespace: test
-spec:
-  selector:
-    istio: ingressgateway # use Istio default gateway implementation
-  servers:
-  - port:
-      number: 80
-      name: http
-      protocol: HTTP
-    hosts:
-    - "hackazon.kwaf-demo.test"
----
+
 apiVersion: networking.istio.io/v1alpha3
 kind: Gateway
 metadata:
@@ -282,26 +231,6 @@ spec:
         port:
           number: 80
         host: sample-hackazon-service.test.svc.cluster.local
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: staging-hackazon
-  namespace: test
-spec:
-  hosts:
-  - "staging-hackazon.kwaf-demo.test"
-  gateways:
-  - staging-hackazon-gateway
-  http:
-  - match:
-    - uri:
-        prefix: /
-    route:
-    - destination:
-        port:
-          number: 80
-        host: staging-sample-hackazon-service.test.svc.cluster.local
 ---
 # Source: sample-istio-integration/templates/sample-apps/bwapp/bwapp-istio-ingress.yaml
 apiVersion: networking.istio.io/v1alpha3
