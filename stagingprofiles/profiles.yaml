@@ -8,6 +8,12 @@ metadata:
 spec:
   policies:
   - classifiers:
+    - hostname: staging-hackazon.kwaf-demo.tes*
+      id: hackazon-sample
+      path:
+        operand: Prefix
+        value: /
+      protectionId: hackazon
     - protectionId: nginx
       hostname: staging-nginx.kwaf-demo.tes*
       id: nginx-sample
@@ -32,7 +38,7 @@ spec:
     protections:
     - expressions:
         opMode: Active
-      id: sample-hackazon-protection
+      id: hackazon
       signatures:
         opMode: Active
       whitelist:
