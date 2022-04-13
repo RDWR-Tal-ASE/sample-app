@@ -8,6 +8,12 @@ metadata:
 spec:
   policies:
   - classifiers:
+    - hostname: attacker.kwaf-demo.tes*
+      id: sample-attacker
+      path:
+        operand: Prefix
+        value: /
+      protectionId: sample-attacker
     - hostname: staging-hackazon.kwaf-demo.tes*
       id: sample-hackazon
       path:
@@ -34,13 +40,31 @@ spec:
       id: sample-hackazon-protection
       signatures:
         opMode: Active
+      whitelist:
+        opMode: Bypass
     - expressions:
         opMode: Active
       id: httpbin
       signatures:
         opMode: Active
+      whitelist:
+        opMode: Bypass
     - expressions:
         opMode: Active
       id: bwapp
       signatures:
         opMode: Active
+      whitelist:
+        opMode: Bypass
+    - action: Inspect
+      expressions:
+        opMode: Bypass
+      id: sample-attacker
+      rfcValidation:
+        action: Block
+        report: Always
+      signatures:
+        opMode: Bypass
+      whitelist:
+        opMode: Bypass
+
