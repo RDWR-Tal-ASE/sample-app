@@ -8,12 +8,6 @@ metadata:
 spec:
   policies:
   - classifiers:
-    - hostname: attacker.kwaf-demo.tes*
-      id: attacker
-      path:
-        operand: Prefix
-        value: /
-      protectionId: attacker
     - hostname: nginx.kwaf-demo.tes*
       id: nginx-sample
       path:
@@ -72,12 +66,4 @@ spec:
         opMode: Bypass
     - action: Bypass
       expressions:
-        opMode: Bypass
-      id: attacker
-      rfcValidation:
-        action: Block
-        report: Always
-      signatures:
-        opMode: Bypass
-      whitelist:
         opMode: Bypass
