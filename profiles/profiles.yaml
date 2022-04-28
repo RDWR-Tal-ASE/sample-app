@@ -8,7 +8,30 @@ metadata:
 spec:
   policies:
   - classifiers:
-    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
+    - protectionId: hackazon
+      hostname: hackazon.kwaf-demo.tes*
+      id: sample-hackazon
+      path:
+        operand: Prefix
+        value: /
+    - protectionId: nginx
+      hostname: nginx.kwaf-demo.tes*
+      id: nginx-sample
+      path:
+        operand: Prefix
+        value: /
+    - hostname: bwapp.kwaf-demo.tes*
+      id: bwapp-sample
+      path:
+        operand: Prefix
+        value: /
+      protectionId: bwapp
+    - hostname: httpbin.kwaf-demo.tes*
+      id: httpbin-sample
+      path:
+        operand: Prefix
+        value: /
+      protectionId: httpbin
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
