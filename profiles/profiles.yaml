@@ -8,9 +8,35 @@ metadata:
 spec:
   policies:
   - classifiers:
-    /bin/sh: 1: yq: not found
+    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    /bin/sh: 1: /bin/sh: 1: yq: not foundkubectl: not found
-    
+    - expressions:
+        opMode: Active
+      id: hackazon
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: httpbin
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: bwapp
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: nginx
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
