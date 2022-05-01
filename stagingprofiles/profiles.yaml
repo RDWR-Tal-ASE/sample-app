@@ -9,8 +9,8 @@ spec:
   policies:
   - classifiers:
     - protectionId: hackazon
-      hostname: 'staging-hackazon.kwaf-demo.tes*'
-      id: sample-hackazon      
+      hostname: staging-hackazon.kwaf-demo.tes*
+      id: sample-hackazon
       path:
         operand: Prefix
         value: /
@@ -36,6 +36,10 @@ spec:
     operatorEmail: support@radware.com
     protections:
     - expressions:
+        advExcludes:
+          - paramName: username
+            ruleIDs:
+              - LFISRT
         opMode: Active
       id: hackazon
       signatures:
@@ -56,9 +60,10 @@ spec:
         opMode: Active
       whitelist:
         opMode: Bypass
-    - id: nginx
-      expressions:
+    - expressions:
         opMode: Active
+      id: nginx
       signatures:
         opMode: Active
-
+      whitelist:
+        opMode: Bypass
