@@ -8,31 +8,35 @@ metadata:
 spec:
   policies:
   - classifiers:
-    - protectionId: hackazon
-      hostname: hackazon.kwaf-demo.tes*
-      id: sample-hackazon
-      path:
-        operand: Prefix
-        value: /
-    - protectionId: nginx
-      hostname: nginx.kwaf-demo.tes*
-      id: nginx-sample
-      path:
-        operand: Prefix
-        value: /
-    - hostname: bwapp.kwaf-demo.tes*
-      id: bwapp-sample
-      path:
-        operand: Prefix
-        value: /
-      protectionId: bwapp
-    - hostname: httpbin.kwaf-demo.tes*
-      id: httpbin-sample
-      path:
-        operand: Prefix
-        value: /
-      protectionId: httpbin
+    Error: bad file '-': yaml: line 38: mapping values are not allowed in this context
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    Error from server: etcdserver: request timed out
+    - expressions:
+        opMode: Active
+      id: hackazon
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: httpbin
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: bwapp
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: nginx
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
