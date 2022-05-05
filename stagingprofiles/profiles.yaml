@@ -19,13 +19,13 @@ spec:
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000088800)
+    runtime.newosproc(0xc000500800)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000088800)
+    runtime.newm1(0xc000500800)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000052800, 0x8)
+    runtime.newm(0x1bb7c48, 0xc000057800, 0x8)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0xc00009bf01)
+    runtime.startm(0x0, 0x43e401)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
@@ -33,32 +33,36 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.mstart1()
-    	/usr/local/go/src/runtime/proc.go:1179 +0x93
-    runtime.mstart()
-    	/usr/local/go/src/runtime/proc.go:1137 +0x6e
+    runtime.park_m(0xc000208000)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
     
     goroutine 1 [runnable, locked to thread]:
-    regexp.makeOnePass.func1(0xc000000101, 0xc00057a000, 0x103, 0x103, 0x1)
-    	/usr/local/go/src/regexp/onepass.go:361 +0x757
-    regexp.makeOnePass.func1(0xd8, 0xc00057a000, 0x103, 0x103, 0x1)
-    	/usr/local/go/src/regexp/onepass.go:323 +0x5b3
-    regexp.makeOnePass(0xc0004ce900, 0xc0004ce900)
-    	/usr/local/go/src/regexp/onepass.go:448 +0x362
-    regexp.compileOnePass(0xc0004ce8a0, 0xc0004ce8a0)
-    	/usr/local/go/src/regexp/onepass.go:500 +0x145
-    regexp.compile(0xc0000bb980, 0x13, 0xc0000000d4, 0xc0000bb992, 0xc0006bfe28, 0xc0006bfdf0)
-    	/usr/local/go/src/regexp/regexp.go:189 +0x10b
-    regexp.Compile(...)
-    	/usr/local/go/src/regexp/regexp.go:133
-    regexp.MustCompile(0xc0000bb980, 0x13, 0x1)
-    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.anchored(0xc0000ca8f8, 0x1, 0x1, 0xc00019b4a0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:142 +0xbb
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:41 +0x665
+    reflect.FuncOf(0xc0004af180, 0x2, 0x2, 0x2a9d9d0, 0x0, 0x0, 0x0, 0x0, 0x0)
+    	/usr/local/go/src/reflect/type.go:1947 +0xb15
+    reflect.(*rtype).Method(0x1a49700, 0x1, 0x179638b, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+    	/usr/local/go/src/reflect/type.go:824 +0x50b
+    reflect.(*rtype).MethodByName(0x1a49700, 0x1acde06, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
+    	/usr/local/go/src/reflect/type.go:846 +0x1d8
+    reflect.Value.MethodByName(0x1a49700, 0x2a6b480, 0x16, 0x1acde06, 0xc, 0x1bb6a28, 0x0, 0x0)
+    	/usr/local/go/src/reflect/value.go:1359 +0x7e
+    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*Scheme).AddKnownTypeWithName(0xc00015fb90, 0x1ac683f, 0x6, 0x1ac8533, 0x7, 0x179ce22, 0xa, 0x1cf6a80, 0x2a6b480)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme.go:212 +0x6b1
+    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*Scheme).AddKnownTypes(0xc00015fb90, 0x1ac683f, 0x6, 0x1ac8533, 0x7, 0x2a55d00, 0x7, 0x7)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme.go:176 +0x25a
+    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/v1.AddToGroupVersion(0xc00015fb90, 0x1ac683f, 0x6, 0x1ac8533, 0x7)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/apis/meta/v1/register.go:74 +0x2bc
+    k8s.io/kubernetes/vendor/k8s.io/api/policy/v1beta1.addKnownTypes(0xc00015fb90, 0x0, 0x0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/api/policy/v1beta1/register.go:54 +0x1ec
+    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*SchemeBuilder).AddToScheme(0x2a63cb0, 0xc00015fb90, 0x0, 0x0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme_builder.go:29 +0x6d
+    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*SchemeBuilder).AddToScheme(0x2a4b870, 0xc00015fb90, 0x17cd9d9, 0x19)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme_builder.go:29 +0x6d
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/scheme.init.0()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/scheme/install.go:64 +0x32c
     
-    goroutine 18 [chan receive]:
+    goroutine 6 [chan receive]:
     k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
     created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
