@@ -8,104 +8,198 @@ metadata:
 spec:
   policies:
   - classifiers:
+    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
+    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
+    name: apiPolicy
+    operatorEmail: support@radware.com
+    protections:
+    runtime: failed to create new OS thread (have 6 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000480000)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000480000)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc000046000, 0x5)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0xc000099f01)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc00008a300)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    
+    goroutine 1 [syscall, locked to thread]:
+    reflect.MakeSlice(0x1d4e220, 0x181c100, 0x0, 0x4, 0x181c100, 0x0, 0x0)
+    	/usr/local/go/src/reflect/value.go:2299 +0x85
+    encoding/json.(*decodeState).array(0xc000445600, 0x181c100, 0xc000453e48, 0x197, 0xc000445628, 0x5b)
+    	/usr/local/go/src/encoding/json/decode.go:547 +0x716
+    encoding/json.(*decodeState).value(0xc000445600, 0x181c100, 0xc000453e48, 0x197, 0x181c100, 0xc000453e48)
+    	/usr/local/go/src/encoding/json/decode.go:360 +0x105
+    encoding/json.(*decodeState).object(0xc000445600, 0x1815520, 0xc000453d40, 0x16, 0xc000445628, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc000445600, 0x1815520, 0xc000453d40, 0x16, 0xc0003cdbc8, 0x6fa34b)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc000445600, 0x1815520, 0xc000453d40, 0xc000445628, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc00036cbd6, 0xc9, 0xb22a, 0x1815520, 0xc000453d40, 0x26, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc00044d8c0, 0xc00036cbd6, 0xc9, 0xb22a, 0x7f5728ac4500, 0xc00044d8c0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
+    encoding/json.(*decodeState).object(0xc0004449a0, 0x19ce1a0, 0xc00044d8c0, 0x199, 0xc0004449c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
+    encoding/json.(*decodeState).value(0xc0004449a0, 0x19ce1a0, 0xc00044d8c0, 0x199, 0xc000453b00, 0x99)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc0004449a0, 0x18bc100, 0xc00044d160, 0x195, 0xc0004449c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc0004449a0, 0x18bc100, 0xc00044d160, 0x195, 0x18bc100, 0xc00044d160)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc0004449a0, 0x1815520, 0xc00044cfc0, 0x16, 0xc0004449c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc0004449a0, 0x1815520, 0xc00044cfc0, 0x16, 0xc0003ce888, 0x6fa8ab)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc0004449a0, 0x1815520, 0xc00044cfc0, 0xc0004449c8, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc00036c7b5, 0x9e1, 0xb64b, 0x1815520, 0xc00044cfc0, 0x26, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc00039d200, 0xc00036c7b5, 0x9e1, 0xb64b, 0x7f5728ac4500, 0xc00039d200)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
+    encoding/json.(*decodeState).object(0xc0000e4a50, 0x19ce1a0, 0xc00039d200, 0x199, 0xc0000e4a78, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
+    encoding/json.(*decodeState).value(0xc0000e4a50, 0x19ce1a0, 0xc00039d200, 0x199, 0xc00044cd80, 0x99)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc0000e4a50, 0x18e59a0, 0xc000333188, 0x195, 0xc0000e4a78, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc0000e4a50, 0x18e59a0, 0xc000333188, 0x195, 0x18e59a0, 0xc000333188)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc0000e4a50, 0x1815520, 0xc000332fc0, 0x16, 0xc0000e4a78, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc0000e4a50, 0x1815520, 0xc000332fc0, 0x16, 0xc000123548, 0x6fa8ab)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc0000e4a50, 0x1815520, 0xc000332fc0, 0xc0000e4a78, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc000368000, 0x9d38, 0xfe00, 0x1815520, 0xc000332fc0, 0x7f5728c86770, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc000332d80, 0xc000368000, 0x9d38, 0xfe00, 0x7f5728ac4500, 0xc000332d80)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
+    encoding/json.(*decodeState).object(0xc0000e49a0, 0x1a89300, 0xc000332d80, 0x16, 0xc0000e49c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
+    encoding/json.(*decodeState).value(0xc0000e49a0, 0x1a89300, 0xc000332d80, 0x16, 0xc000123c18, 0x6fa8ab)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc0000e49a0, 0x1a89300, 0xc000332d80, 0xc0000e49c8, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc000368000, 0x9d39, 0xfe00, 0x1a89300, 0xc000332d80, 0x0, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.Swagger20Schema(0xc00031db30, 0xc000123d68, 0x12e538a)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/spec.go:82 +0xb8
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.MustLoadSwagger20Schema(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/spec.go:66
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.initResolutionCache(0xc00031da70, 0xc00031da40)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/cache.go:57 +0x35
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.init.0()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/cache.go:51 +0x25
+    
+    goroutine 18 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
     runtime/cgo: pthread_create failed: Resource temporarily unavailable
     SIGABRT: abort
-    PC=0x7f3fe5eebf47 m=3 sigcode=18446744073709551610
+    PC=0x7f4c47da4f47 m=3 sigcode=18446744073709551610
     
     goroutine 0 [idle]:
-    runtime: unknown pc 0x7f3fe5eebf47
-    stack: frame={sp:0x7f3fe3499840, fp:0x0} stack=[0x7f3fe2c9a288,0x7f3fe3499e88)
-    00007f3fe3499740:  00007f3fe3499b20  00007f3fe64ccf13 
-    00007f3fe3499750:  0000000000000005  00005601020e6148 
-    00007f3fe3499760:  00007f3fe3499c50  00007f3fd4000c50 
-    00007f3fe3499770:  0000000000000000  00005601015c2d10 
-    00007f3fe3499780:  0000000000000000  00007f3fe64ccf13 
-    00007f3fe3499790:  0000000000000005  0000000000000000 
-    00007f3fe34997a0:  2525252525252525  2525252525252525 
-    00007f3fe34997b0:  00000000000000ff  0000000000000000 
-    00007f3fe34997c0:  00000000000000ff  0000000000000000 
-    00007f3fe34997d0:  00007f3fd4000010  00007f3fd4000010 
-    00007f3fe34997e0:  000000000000000e  000000000000000e 
-    00007f3fe34997f0:  0000000000000000  0000000000000000 
-    00007f3fe3499800:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499810:  0000000400000004  0000000400000004 
-    00007f3fe3499820:  20636f6c6c616d00  203a64656c696166 
-    00007f3fe3499830:  0000000000000000  0000000000000000 
-    00007f3fe3499840: <0000000000000000  0000000000000000 
-    00007f3fe3499850:  0000000000000000  0000000000000000 
-    00007f3fe3499860:  0000000000000000  0000000000000000 
-    00007f3fe3499870:  0000000000000000  0000000000000000 
-    00007f3fe3499880:  0000000000000000  0000000000000000 
-    00007f3fe3499890:  0000000000000000  0000000000000000 
-    00007f3fe34998a0:  0000000000000000  0000000000000000 
-    00007f3fe34998b0:  00007f3fe6299560  00007f3fe629cbc0 
-    00007f3fe34998c0:  fffffffe7fffffff  ffffffffffffffff 
-    00007f3fe34998d0:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe34998e0:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe34998f0:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499900:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499910:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499920:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499930:  ffffffffffffffff  ffffffffffffffff 
-    runtime: unknown pc 0x7f3fe5eebf47
-    stack: frame={sp:0x7f3fe3499840, fp:0x0} stack=[0x7f3fe2c9a288,0x7f3fe3499e88)
-    00007f3fe3499740:  00007f3fe3499b20  00007f3fe64ccf13 
-    00007f3fe3499750:  0000000000000005  00005601020e6148 
-    00007f3fe3499760:  00007f3fe3499c50  00007f3fd4000c50 
-    00007f3fe3499770:  0000000000000000  00005601015c2d10 
-    00007f3fe3499780:  0000000000000000  00007f3fe64ccf13 
-    00007f3fe3499790:  0000000000000005  0000000000000000 
-    00007f3fe34997a0:  2525252525252525  2525252525252525 
-    00007f3fe34997b0:  00000000000000ff  0000000000000000 
-    00007f3fe34997c0:  00000000000000ff  0000000000000000 
-    00007f3fe34997d0:  00007f3fd4000010  00007f3fd4000010 
-    00007f3fe34997e0:  000000000000000e  000000000000000e 
-    00007f3fe34997f0:  0000000000000000  0000000000000000 
-    00007f3fe3499800:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499810:  0000000400000004  0000000400000004 
-    00007f3fe3499820:  20636f6c6c616d00  203a64656c696166 
-    00007f3fe3499830:  0000000000000000  0000000000000000 
-    00007f3fe3499840: <0000000000000000  0000000000000000 
-    00007f3fe3499850:  0000000000000000  0000000000000000 
-    00007f3fe3499860:  0000000000000000  0000000000000000 
-    00007f3fe3499870:  0000000000000000  0000000000000000 
-    00007f3fe3499880:  0000000000000000  0000000000000000 
-    00007f3fe3499890:  0000000000000000  0000000000000000 
-    00007f3fe34998a0:  0000000000000000  0000000000000000 
-    00007f3fe34998b0:  00007f3fe6299560  00007f3fe629cbc0 
-    00007f3fe34998c0:  fffffffe7fffffff  ffffffffffffffff 
-    00007f3fe34998d0:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe34998e0:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe34998f0:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499900:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499910:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499920:  ffffffffffffffff  ffffffffffffffff 
-    00007f3fe3499930:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f4c47da4f47
+    stack: frame={sp:0x7f4c45352830, fp:0x0} stack=[0x7f4c44b53288,0x7f4c45352e88)
+    00007f4c45352730:  00007f4c45352af0  00007f4c4838d75a 
+    00007f4c45352740:  000000000000000b  0000000000000000 
+    00007f4c45352750:  00007f4c3e7fc700  0000557de04a0148 
+    00007f4c45352760:  00007f4c45352c40  00007f4c40000c50 
+    00007f4c45352770:  0000000000000000  0000557ddf97cd10 
+    00007f4c45352780:  0000000000000000  00007f4c48385f13 
+    00007f4c45352790:  0000000000000005  0000000000000000 
+    00007f4c453527a0:  2525252525252525  2525252525252525 
+    00007f4c453527b0:  00000000000000ff  0000000000000000 
+    00007f4c453527c0:  00000000000000ff  0000000000000000 
+    00007f4c453527d0:  0000000000000007  0000000000000009 
+    00007f4c453527e0:  000000000000000e  000000000000000e 
+    00007f4c453527f0:  0000000000000000  0000000000000000 
+    00007f4c45352800:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352810:  0000000400000004  0000000400000004 
+    00007f4c45352820:  20636f6c6c616d00  203a64656c696166 
+    00007f4c45352830: <0000000000000000  0000000000000000 
+    00007f4c45352840:  0000000000000000  0000000000000000 
+    00007f4c45352850:  0000000000000000  0000000000000000 
+    00007f4c45352860:  0000000000000000  0000000000000000 
+    00007f4c45352870:  0000000000000000  0000000000000000 
+    00007f4c45352880:  0000000000000000  0000000000000000 
+    00007f4c45352890:  0000000000000000  0000000000000000 
+    00007f4c453528a0:  0000000000000000  0000000000000000 
+    00007f4c453528b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007f4c453528c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c453528d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c453528e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c453528f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352900:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352910:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352920:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f4c47da4f47
+    stack: frame={sp:0x7f4c45352830, fp:0x0} stack=[0x7f4c44b53288,0x7f4c45352e88)
+    00007f4c45352730:  00007f4c45352af0  00007f4c4838d75a 
+    00007f4c45352740:  000000000000000b  0000000000000000 
+    00007f4c45352750:  00007f4c3e7fc700  0000557de04a0148 
+    00007f4c45352760:  00007f4c45352c40  00007f4c40000c50 
+    00007f4c45352770:  0000000000000000  0000557ddf97cd10 
+    00007f4c45352780:  0000000000000000  00007f4c48385f13 
+    00007f4c45352790:  0000000000000005  0000000000000000 
+    00007f4c453527a0:  2525252525252525  2525252525252525 
+    00007f4c453527b0:  00000000000000ff  0000000000000000 
+    00007f4c453527c0:  00000000000000ff  0000000000000000 
+    00007f4c453527d0:  0000000000000007  0000000000000009 
+    00007f4c453527e0:  000000000000000e  000000000000000e 
+    00007f4c453527f0:  0000000000000000  0000000000000000 
+    00007f4c45352800:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352810:  0000000400000004  0000000400000004 
+    00007f4c45352820:  20636f6c6c616d00  203a64656c696166 
+    00007f4c45352830: <0000000000000000  0000000000000000 
+    00007f4c45352840:  0000000000000000  0000000000000000 
+    00007f4c45352850:  0000000000000000  0000000000000000 
+    00007f4c45352860:  0000000000000000  0000000000000000 
+    00007f4c45352870:  0000000000000000  0000000000000000 
+    00007f4c45352880:  0000000000000000  0000000000000000 
+    00007f4c45352890:  0000000000000000  0000000000000000 
+    00007f4c453528a0:  0000000000000000  0000000000000000 
+    00007f4c453528b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007f4c453528c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c453528d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c453528e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c453528f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352900:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352910:  ffffffffffffffff  ffffffffffffffff 
+    00007f4c45352920:  ffffffffffffffff  ffffffffffffffff 
     
     goroutine 1 [chan receive, locked to thread]:
     text/template/parse.(*lexer).nextItem(...)
     	/usr/lib/go-1.13/src/text/template/parse/lex.go:195
-    text/template/parse.(*Tree).next(...)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:64
-    text/template/parse.(*Tree).peekNonSpace(0xc00012c500, 0x0, 0x0, 0x0, 0x0, 0x0)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:113 +0x156
-    text/template/parse.(*Tree).itemList(0xc00012c500, 0x5601014179eb, 0x4, 0xc000276060)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:326 +0xc0
-    text/template/parse.(*Tree).parseControl(0xc00012c500, 0xc000251700, 0x5601014179eb, 0x4, 0x0, 0x0, 0xc000276060, 0x0, 0x0)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:459 +0x102
-    text/template/parse.(*Tree).withControl(0xc00012c500, 0x1f, 0x34)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:509 +0x4e
-    text/template/parse.(*Tree).action(0xc00012c500, 0xa, 0x30)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:372 +0x55f
-    text/template/parse.(*Tree).textOrAction(0xc00012c500, 0x1f, 0x34)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:345 +0x295
+    text/template/parse.(*Tree).peek(...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:95
     text/template/parse.(*Tree).parse(0xc00012c500)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:291 +0x383
-    text/template/parse.(*Tree).Parse(0xc00012c500, 0x560101472440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc0001d66f0, 0xc000152340, 0x2, ...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:278 +0xa5b
+    text/template/parse.(*Tree).Parse(0xc00012c500, 0x557ddf82c440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc0001d66f0, 0xc000152340, 0x2, ...)
     	/usr/lib/go-1.13/src/text/template/parse/parse.go:230 +0x249
-    text/template/parse.Parse(0x5601014179b7, 0x4, 0x560101472440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc000152340, 0x2, ...)
+    text/template/parse.Parse(0x557ddf7d19b7, 0x4, 0x557ddf82c440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc000152340, 0x2, ...)
     	/usr/lib/go-1.13/src/text/template/parse/parse.go:55 +0x124
-    text/template.(*Template).Parse(0xc0000cd780, 0x560101472440, 0x16c, 0x4, 0xc000119828, 0x560102101760)
+    text/template.(*Template).Parse(0xc0000cd780, 0x557ddf82c440, 0x16c, 0x4, 0xc000119828, 0x557de04bb760)
     	/usr/lib/go-1.13/src/text/template/template.go:200 +0x113
     github.com/snapcore/snapd/systemd.init()
     	/build/snapd/parts/snapd-deb/build/systemd/systemd.go:1281 +0x3ad
@@ -121,124 +215,31 @@ spec:
     goroutine 20 [runnable]:
     text/template/parse.(*lexer).emit(...)
     	/usr/lib/go-1.13/src/text/template/parse/lex.go:157
-    text/template/parse.lexText(0xc00015a630, 0x560101b918b8)
-    	/usr/lib/go-1.13/src/text/template/parse/lex.go:257 +0x251
+    text/template/parse.lexRightDelim(0xc00015a630, 0x557ddff4b8a8)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:345 +0x17f
     text/template/parse.(*lexer).run(0xc00015a630)
     	/usr/lib/go-1.13/src/text/template/parse/lex.go:230 +0x39
     created by text/template/parse.lex
     	/usr/lib/go-1.13/src/text/template/parse/lex.go:223 +0x192
     
     rax    0x0
-    rbx    0x7f3fe6299840
-    rcx    0x7f3fe5eebf47
+    rbx    0x7f4c48152840
+    rcx    0x7f4c47da4f47
     rdx    0x0
     rdi    0x2
-    rsi    0x7f3fe3499840
-    rbp    0x5601015dce7c
-    rsp    0x7f3fe3499840
+    rsi    0x7f4c45352830
+    rbp    0x557ddf996e7c
+    rsp    0x7f4c45352830
     r8     0x0
-    r9     0x7f3fe3499840
+    r9     0x7f4c45352830
     r10    0x8
     r11    0x246
-    r12    0x7f3fd4000c50
+    r12    0x7f4c40000c50
     r13    0x0
-    r14    0x5601015c2d10
+    r14    0x557ddf97cd10
     r15    0x0
-    rip    0x7f3fe5eebf47
+    rip    0x7f4c47da4f47
     rflags 0x246
     cs     0x33
     fs     0x0
     gs     0x0
-    name: apiPolicy
-    operatorEmail: support@radware.com
-    protections:
-    runtime: failed to create new OS thread (have 6 already; errno=11)
-    runtime: may need to increase max user processes (ulimit -u)
-    fatal error: newosproc
-    
-    runtime stack:
-    runtime.throw(0x1acaa5a, 0x9)
-    	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000088400)
-    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000088400)
-    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc00004d800, 0x5)
-    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0xc000073f01)
-    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
-    runtime.wakep()
-    	/usr/local/go/src/runtime/proc.go:2061 +0x66
-    runtime.resetspinning()
-    	/usr/local/go/src/runtime/proc.go:2533 +0x59
-    runtime.schedule()
-    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc0003d4d80)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
-    runtime.mcall(0x0)
-    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
-    
-    goroutine 1 [runnable, locked to thread]:
-    encoding/json.Unmarshal(0xc000440e40, 0x3e, 0xafc0, 0x1811e60, 0xc00047c4d8, 0x0, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:100 +0x31
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc0005238c0, 0xc000440e40, 0x3e, 0xafc0, 0x7fbf6fdecb00, 0xc0005238c0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:565 +0x18b
-    encoding/json.(*decodeState).object(0xc00051a8f0, 0x19ce1a0, 0xc0005238c0, 0x199, 0xc00051a918, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
-    encoding/json.(*decodeState).value(0xc00051a8f0, 0x19ce1a0, 0xc0005238c0, 0x199, 0xc000530480, 0x99)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).object(0xc00051a8f0, 0x18bc100, 0xc000523160, 0x195, 0xc00051a918, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
-    encoding/json.(*decodeState).value(0xc00051a8f0, 0x18bc100, 0xc000523160, 0x195, 0x18bc100, 0xc000523160)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).object(0xc00051a8f0, 0x1815520, 0xc000522fc0, 0x16, 0xc00051a918, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
-    encoding/json.(*decodeState).value(0xc00051a8f0, 0x1815520, 0xc000522fc0, 0x16, 0xc0004a0888, 0x6fa8ab)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).unmarshal(0xc00051a8f0, 0x1815520, 0xc000522fc0, 0xc00051a918, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
-    encoding/json.Unmarshal(0xc0004407b5, 0x9e1, 0xb64b, 0x1815520, 0xc000522fc0, 0x26, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc000471200, 0xc0004407b5, 0x9e1, 0xb64b, 0x7fbf6fdecb00, 0xc000471200)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
-    encoding/json.(*decodeState).object(0xc0001369a0, 0x19ce1a0, 0xc000471200, 0x199, 0xc0001369c8, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
-    encoding/json.(*decodeState).value(0xc0001369a0, 0x19ce1a0, 0xc000471200, 0x199, 0xc000522d80, 0x99)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).object(0xc0001369a0, 0x18e59a0, 0xc000405188, 0x195, 0xc0001369c8, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
-    encoding/json.(*decodeState).value(0xc0001369a0, 0x18e59a0, 0xc000405188, 0x195, 0x18e59a0, 0xc000405188)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).object(0xc0001369a0, 0x1815520, 0xc000404fc0, 0x16, 0xc0001369c8, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
-    encoding/json.(*decodeState).value(0xc0001369a0, 0x1815520, 0xc000404fc0, 0x16, 0xc000173548, 0x6fa8ab)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).unmarshal(0xc0001369a0, 0x1815520, 0xc000404fc0, 0xc0001369c8, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
-    encoding/json.Unmarshal(0xc00043c000, 0x9d38, 0xfe00, 0x1815520, 0xc000404fc0, 0x7fbf6fde2d50, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc000404d80, 0xc00043c000, 0x9d38, 0xfe00, 0x7fbf6fdecb00, 0xc000404d80)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
-    encoding/json.(*decodeState).object(0xc0001368f0, 0x1a89300, 0xc000404d80, 0x16, 0xc000136918, 0x7b)
-    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
-    encoding/json.(*decodeState).value(0xc0001368f0, 0x1a89300, 0xc000404d80, 0x16, 0xc000173c18, 0x6fa8ab)
-    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
-    encoding/json.(*decodeState).unmarshal(0xc0001368f0, 0x1a89300, 0xc000404d80, 0xc000136918, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
-    encoding/json.Unmarshal(0xc00043c000, 0x9d39, 0xfe00, 0x1a89300, 0xc000404d80, 0x0, 0x0)
-    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.Swagger20Schema(0xc0003efb30, 0xc000173d68, 0x12e538a)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/spec.go:82 +0xb8
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.MustLoadSwagger20Schema(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/spec.go:66
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.initResolutionCache(0xc0003efa70, 0xc0003efa40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/cache.go:57 +0x35
-    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.init.0()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/cache.go:51 +0x25
-    
-    goroutine 6 [chan receive]:
-    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
-    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
-    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
