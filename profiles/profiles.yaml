@@ -12,20 +12,20 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 10 already; errno=11)
+    runtime: failed to create new OS thread (have 9 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000062c00)
+    runtime.newosproc(0xc000192400)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000062c00)
+    runtime.newm1(0xc000192400)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
+    runtime.newm(0x1bb7c48, 0xc000055000, 0x8)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
+    runtime.startm(0x0, 0x2a6c401)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
@@ -33,38 +33,15 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc000462000)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
-    runtime.mcall(0x0)
-    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    runtime.mstart1()
+    	/usr/local/go/src/runtime/proc.go:1179 +0x93
+    runtime.mstart()
+    	/usr/local/go/src/runtime/proc.go:1137 +0x6e
     
-    goroutine 1 [runnable]:
-    encoding/csv.(*Writer).Write(0xc0009b58e8, 0x0, 0x0, 0x0, 0x57b233, 0x18a4020)
-    	/usr/local/go/src/encoding/csv/writer.go:48 +0x53d
-    k8s.io/kubernetes/vendor/github.com/spf13/pflag.writeAsCSV(0x0, 0x0, 0x0, 0xc0004382d0, 0xc00099aaa0, 0x2a6cce0, 0xc000000180)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/string_slice.go:34 +0x125
-    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*stringSliceValue).String(0xc0004382d0, 0x40e298, 0x10)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/string_slice.go:61 +0x49
-    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).VarPF(0xc000992a00, 0x1d18ec0, 0xc0004382d0, 0x1ac92d5, 0x8, 0x1ac3384, 0x1, 0x1aed672, 0x20, 0xc000992a00)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/flag.go:829 +0x35
-    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).VarP(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/flag.go:837
-    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).StringSliceVarP(0xc000992a00, 0xc00099c080, 0x1ac92d5, 0x8, 0x1ac3384, 0x1, 0x0, 0x0, 0x0, 0x1aed672, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/string_slice.go:110 +0xe5
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/util.AddJsonFilenameFlag(0xc000992a00, 0xc00099c080, 0x1aed672, 0x20)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/util/helpers.go:410 +0xab
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/exec.NewCmdExec(0x1d441c0, 0xc00011f260, 0x1ced9e0, 0xc0000c4000, 0x1ceda00, 0xc0000c4008, 0x1ceda00, 0xc0000c4010, 0xc000998dc0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/exec/exec.go:98 +0x27a
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewKubectlCommand(0x1ced9e0, 0xc0000c4000, 0x1ceda00, 0xc0000c4008, 0x1ceda00, 0xc0000c4010, 0x46b3fb)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:552 +0xcde
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewDefaultKubectlCommandWithArgs(0x1cf8100, 0xc0002bcb00, 0xc0000c8000, 0x8, 0x8, 0x1ced9e0, 0xc0000c4000, 0x1ceda00, 0xc0000c4008, 0x1ceda00, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:307 +0x85
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewDefaultKubectlCommand(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:302
-    main.main()
-    	_output/dockerized/go/src/k8s.io/kubernetes/cmd/kubectl/kubectl.go:38 +0x1ae
+    goroutine 1 [running, locked to thread]:
+    	goroutine running on other thread; stack unavailable
     
-    goroutine 18 [chan receive]:
+    goroutine 5 [chan receive]:
     k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
     created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
