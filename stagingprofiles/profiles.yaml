@@ -12,20 +12,20 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 9 already; errno=11)
+    runtime: failed to create new OS thread (have 10 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000100400)
+    runtime.newosproc(0xc000600800)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000100400)
+    runtime.newm1(0xc000600800)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000055000, 0x8)
+    runtime.newm(0x1bb7c48, 0xc000055000, 0x9)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
+    runtime.startm(0x0, 0xc000095f01)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
@@ -33,241 +33,29 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc000208180)
+    runtime.park_m(0xc0004ba300)
     	/usr/local/go/src/runtime/proc.go:2845 +0x9d
     runtime.mcall(0x0)
     	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
     
-    goroutine 1 [runnable]:
-    sync.(*WaitGroup).Add(0xc000545930, 0x1)
-    	/usr/local/go/src/sync/waitgroup.go:53 +0x14d
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources(0x1d3fee0, 0xc00059ee40, 0xc00059ee80, 0x10, 0x11)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:356 +0x1d7
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.ServerGroupsAndResources(0x1d3fee0, 0xc00059ee40, 0x0, 0xc000785b80, 0xc000771720, 0x19, 0x0, 0x0, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:265 +0x185
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk.(*CachedDiscoveryClient).ServerGroupsAndResources(0xc00059ee40, 0x1d25740, 0xc0004470e0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk/cached_discovery.go:102 +0x3b
-    k8s.io/kubernetes/vendor/k8s.io/client-go/restmapper.discoveryCategoryExpander.Expand(0x1d3fee0, 0xc00059ee40, 0x7fff57991ef6, 0x8, 0x1cee880, 0xc000609f30, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/restmapper/category_expansion.go:61 +0x4c
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource.(*Builder).ReplaceAliases(0xc000364780, 0x7fff57991ef6, 0x8, 0xc000200a00, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource/builder.go:602 +0x295
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource.(*Builder).ResourceTypeOrNameArgs(0xc000364780, 0x1, 0xc000200ae0, 0x2, 0x6, 0x1ac337e)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource/builder.go:566 +0xc56
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get.(*GetOptions).Run(0xc0001bc690, 0x1d441c0, 0xc00068e240, 0xc0005a38c0, 0xc000200ae0, 0x2, 0x6, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get/get.go:474 +0x1fc
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get.NewCmdGet.func1(0xc0005a38c0, 0xc000200ae0, 0x2, 0x6)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get/get.go:167 +0x135
-    k8s.io/kubernetes/vendor/github.com/spf13/cobra.(*Command).execute(0xc0005a38c0, 0xc000200a80, 0x6, 0x6, 0xc0005a38c0, 0xc000200a80)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/cobra/command.go:854 +0x2c2
-    k8s.io/kubernetes/vendor/github.com/spf13/cobra.(*Command).ExecuteC(0xc000432840, 0xc0000ba180, 0xc0000c8000, 0x8)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/cobra/command.go:958 +0x375
-    k8s.io/kubernetes/vendor/github.com/spf13/cobra.(*Command).Execute(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/cobra/command.go:895
-    main.main()
-    	_output/dockerized/go/src/k8s.io/kubernetes/cmd/kubectl/kubectl.go:49 +0x21d
+    goroutine 1 [runnable, locked to thread]:
+    regexp/syntax.(*Regexp).Simplify(0xc0003028c0, 0xc0003027e0)
+    	/usr/local/go/src/regexp/syntax/simplify.go:98 +0xa7f
+    regexp/syntax.(*Regexp).Simplify(0xc0003029a0, 0xc000433550)
+    	/usr/local/go/src/regexp/syntax/simplify.go:23 +0xcb
+    regexp.compile(0xc00045dc00, 0x13, 0xc0000000d4, 0xc00045dc12, 0xc00075fe28, 0xc00075fdf0)
+    	/usr/local/go/src/regexp/regexp.go:177 +0xc9
+    regexp.Compile(...)
+    	/usr/local/go/src/regexp/regexp.go:133
+    regexp.MustCompile(0xc00045dc00, 0x13, 0x1)
+    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.anchored(0xc00051ca38, 0x1, 0x1, 0xc00019f540)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:142 +0xbb
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:41 +0x665
     
-    goroutine 18 [chan receive]:
+    goroutine 20 [chan receive]:
     k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
     created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
-    
-    goroutine 23 [select]:
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait.BackoffUntil(0x1bb7018, 0x1cec100, 0xc000024000, 0x1, 0xc00009cb40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait/wait.go:167 +0x149
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait.JitterUntil(0x1bb7018, 0x12a05f200, 0x0, 0x1, 0xc00009cb40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait/wait.go:133 +0x98
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait.Until(0x1bb7018, 0x12a05f200, 0xc00009cb40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait/wait.go:90 +0x4d
-    created by k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/logs.InitLogs
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/logs/logs.go:51 +0x96
-    
-    goroutine 24 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0x0, 0x0, 0xc0005455fc, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 25 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610220, 0x16, 0xc000545612, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 26 [runnable]:
-    syscall.Syscall(0x5, 0x6, 0xc000a00038, 0x0, 0x0, 0x0, 0x0)
-    	/usr/local/go/src/syscall/asm_linux_amd64.s:18 +0x5
-    syscall.Fstat(0x6, 0xc000a00038, 0x40e298, 0xd0)
-    	/usr/local/go/src/syscall/zsyscall_linux_amd64.go:1082 +0x55
-    internal/poll.(*FD).Fstat(0xc000356000, 0xc000a00038, 0x0, 0x0)
-    	/usr/local/go/src/internal/poll/fd_unix.go:455 +0xa5
-    os.(*File).Stat(0xc0003a8010, 0x69, 0x0, 0x0, 0xc0003a8010)
-    	/usr/local/go/src/os/stat_unix.go:20 +0x65
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk.(*CachedDiscoveryClient).getCachedFile(0xc00059ee40, 0xc0005c8000, 0x69, 0x0, 0x0, 0x0, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk/cached_discovery.go:152 +0x17d
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk.(*CachedDiscoveryClient).ServerResourcesForGroupVersion(0xc00059ee40, 0xc00058c080, 0x1e, 0x1ac3356, 0x1, 0xc000545614)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk/cached_discovery.go:66 +0xfd
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610220, 0x16, 0xc000545614, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:361 +0xeb
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 27 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000545620, 0x4, 0xc00054562c, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 28 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000545640, 0xd, 0xc00054563a, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 29 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000545640, 0xd, 0xc000545660, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 30 [runnable]:
-    path/filepath.Clean(0xc0005a4000, 0x63, 0x3, 0x1ac3356)
-    	/usr/local/go/src/path/filepath/path.go:148 +0x67c
-    path/filepath.join(0xc00005de78, 0x3, 0x3, 0xc0004e60a0, 0x0)
-    	/usr/local/go/src/path/filepath/path_unix.go:45 +0xcb
-    path/filepath.Join(...)
-    	/usr/local/go/src/path/filepath/path.go:212
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk.(*CachedDiscoveryClient).ServerResourcesForGroupVersion(0xc00059ee40, 0xc0004e60a0, 0x18, 0x1ac3356, 0x1, 0xc00054566a)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk/cached_discovery.go:65 +0xcb
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0006102c0, 0x15, 0xc00054566a, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:361 +0xeb
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 31 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0006102c0, 0x15, 0xc000545680, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 32 [runnable]:
-    encoding/json.stateBeginStringOrEmpty(0xc00069e028, 0x19eed22, 0x2)
-    	/usr/local/go/src/encoding/json/scanner.go:251 +0xcb
-    encoding/json.checkValid(0xc000554000, 0x24f, 0x600, 0xc00069e028, 0x1926840, 0x1)
-    	/usr/local/go/src/encoding/json/scanner.go:34 +0xa7
-    encoding/json.Unmarshal(0xc000554000, 0x24f, 0x600, 0x18151e0, 0xc00090e000, 0x7f08bec86fff, 0x400)
-    	/usr/local/go/src/encoding/json/decode.go:101 +0x66
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json.SimpleMetaFactory.Interpret(0xc000554000, 0x24f, 0x600, 0x203000, 0x400, 0x400)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json/meta.go:55 +0x77
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json.(*Serializer).Decode(0xc0000d6a50, 0xc000554000, 0x24f, 0x600, 0x0, 0x1cf6940, 0xc0003ce0a0, 0xc000904ae8, 0x40bf85, 0x2a9d908, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json/json.go:219 +0x96
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/recognizer.(*decoder).Decode(0xc000280320, 0xc000554000, 0x24f, 0x600, 0x0, 0x1cf6940, 0xc0003ce0a0, 0x0, 0x0, 0x1cebfc0, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/recognizer/recognizer.go:107 +0x4f7
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/versioning.(*codec).Decode(0xc000908000, 0xc000554000, 0x24f, 0x600, 0x0, 0x1cf6940, 0xc0003ce0a0, 0x1cf9880, 0x2a9d680, 0x1d25840, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/versioning/versioning.go:136 +0xa9
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.DecodeInto(0x7f08be5db280, 0xc000908000, 0xc000554000, 0x24f, 0x600, 0x1cf6940, 0xc0003ce0a0, 0xc0000d6a50, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/codec.go:64 +0x93
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk.(*CachedDiscoveryClient).ServerResourcesForGroupVersion(0xc00059ee40, 0xc0004f2000, 0x17, 0x1ac3356, 0x1, 0xc00054568a)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk/cached_discovery.go:70 +0x6cf
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610340, 0x14, 0xc00054568a, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:361 +0xeb
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 49 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610340, 0x14, 0xc000545690, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 50 [runnable]:
-    encoding/json.Unmarshal(0xc00022a000, 0x1f8, 0x600, 0x18151e0, 0xc000232000, 0x7f08bec86fff, 0x400)
-    	/usr/local/go/src/encoding/json/decode.go:96 +0x18e
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json.SimpleMetaFactory.Interpret(0xc00022a000, 0x1f8, 0x600, 0x203000, 0x400, 0x400)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json/meta.go:55 +0x77
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json.(*Serializer).Decode(0xc0000d6a50, 0xc00022a000, 0x1f8, 0x600, 0x0, 0x1cf6940, 0xc0000d6000, 0xc0008d0ae8, 0x40bf85, 0x2a9d908, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json/json.go:219 +0x96
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/recognizer.(*decoder).Decode(0xc000280320, 0xc00022a000, 0x1f8, 0x600, 0x0, 0x1cf6940, 0xc0000d6000, 0x0, 0x0, 0x1cebfc0, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/recognizer/recognizer.go:107 +0x4f7
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/versioning.(*codec).Decode(0xc00022c000, 0xc00022a000, 0x1f8, 0x600, 0x0, 0x1cf6940, 0xc0000d6000, 0x1cf9880, 0x2a9d680, 0x1d25840, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/versioning/versioning.go:136 +0xa9
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.DecodeInto(0x7f08be5db280, 0xc00022c000, 0xc00022a000, 0x1f8, 0x600, 0x1cf6940, 0xc0000d6000, 0xc0000d6a50, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/codec.go:64 +0x93
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk.(*CachedDiscoveryClient).ServerResourcesForGroupVersion(0xc00059ee40, 0xc000690000, 0xe, 0x1ac3356, 0x1, 0xc00054569a)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/cached/disk/cached_discovery.go:70 +0x6cf
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0005456a0, 0xb, 0xc00054569a, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:361 +0xeb
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 51 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0005456a0, 0xb, 0xc0005456c0, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 52 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0005456a0, 0xb, 0xc0005456c7, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 53 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0005456e0, 0x5, 0xc0005456f0, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 54 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0005456e0, 0x5, 0xc000545700, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 55 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610480, 0x13, 0xc000545712, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 56 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610480, 0x13, 0xc000545714, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 57 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610500, 0x11, 0xc00054571e, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 58 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000610500, 0x11, 0xc000545720, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 59 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000545730, 0xa, 0xc000545740, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 60 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000545750, 0x6, 0xc000545760, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 61 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc000545750, 0x6, 0xc000545770, 0x7, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
-    
-    goroutine 62 [runnable]:
-    k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources.func1(0xc000545930, 0x1d3fee0, 0xc00059ee40, 0xc0006105c0, 0x19, 0xc000545782, 0x2, 0xc000545928, 0xc0008e9170, 0xc0008e9140)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357
-    created by k8s.io/kubernetes/vendor/k8s.io/client-go/discovery.fetchGroupVersionResources
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/discovery/discovery_client.go:357 +0x26b
