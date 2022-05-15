@@ -12,50 +12,31 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 10 already; errno=11)
-    runtime: may need to increase max user processes (ulimit -u)
-    fatal error: newosproc
-    
-    runtime stack:
-    runtime.throw(0x1acaa5a, 0x9)
-    	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000182000)
-    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000182000)
-    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
-    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0xc000073f01)
-    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
-    runtime.wakep()
-    	/usr/local/go/src/runtime/proc.go:2061 +0x66
-    runtime.resetspinning()
-    	/usr/local/go/src/runtime/proc.go:2533 +0x59
-    runtime.schedule()
-    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc00008a600)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
-    runtime.mcall(0x0)
-    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
-    
-    goroutine 1 [runnable, locked to thread]:
-    regexp.onePassCopy(0xc000448b40, 0xc000448b40)
-    	/usr/local/go/src/regexp/onepass.go:222 +0x77
-    regexp.compileOnePass(0xc000448b40, 0xc000448b40)
-    	/usr/local/go/src/regexp/onepass.go:497 +0x132
-    regexp.compile(0xc000453f80, 0x13, 0xc0000000d4, 0xc000453f92, 0xc0007bbe28, 0xc0007bbdf0)
-    	/usr/local/go/src/regexp/regexp.go:189 +0x10b
-    regexp.Compile(...)
-    	/usr/local/go/src/regexp/regexp.go:133
-    regexp.MustCompile(0xc000453f80, 0x13, 0x1)
-    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.anchored(0xc0004189d0, 0x1, 0x1, 0xc0001954a0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:142 +0xbb
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:41 +0x665
-    
-    goroutine 18 [chan receive]:
-    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
-    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
+    - expressions:
+        opMode: Active
+      id: hackazon
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: httpbin
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: bwapp
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: nginx
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
