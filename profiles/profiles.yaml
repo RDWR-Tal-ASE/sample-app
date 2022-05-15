@@ -12,31 +12,50 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    - expressions:
-        opMode: Active
-      id: hackazon
-      signatures:
-        opMode: Active
-      whitelist:
-        opMode: Bypass
-    - expressions:
-        opMode: Active
-      id: httpbin
-      signatures:
-        opMode: Active
-      whitelist:
-        opMode: Bypass
-    - expressions:
-        opMode: Active
-      id: bwapp
-      signatures:
-        opMode: Active
-      whitelist:
-        opMode: Bypass
-    - expressions:
-        opMode: Active
-      id: nginx
-      signatures:
-        opMode: Active
-      whitelist:
-        opMode: Bypass
+    runtime: failed to create new OS thread (have 9 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000380800)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000380800)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc000055000, 0x8)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0x426301)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc000382c00)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    
+    goroutine 1 [runnable, locked to thread]:
+    regexp/syntax.simplify1(...)
+    	/usr/local/go/src/regexp/syntax/simplify.go:148
+    regexp/syntax.(*Regexp).Simplify(0xc00039fb90, 0xc00039fab0)
+    	/usr/local/go/src/regexp/syntax/simplify.go:100 +0xb6c
+    regexp/syntax.(*Regexp).Simplify(0xc00039fc00, 0xc00047f0b0)
+    	/usr/local/go/src/regexp/syntax/simplify.go:23 +0xcb
+    regexp.compile(0x1ad58a2, 0x11, 0xd4, 0xc0000be200, 0x7e, 0xc00048fe50)
+    	/usr/local/go/src/regexp/regexp.go:177 +0xc9
+    regexp.Compile(...)
+    	/usr/local/go/src/regexp/regexp.go:133
+    regexp.MustCompile(0x1ad58a2, 0x11, 0x3)
+    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:37 +0x602
+    
+    goroutine 18 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
