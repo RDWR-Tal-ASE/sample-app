@@ -12,30 +12,31 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 2 already; errno=11)
-    runtime: may need to increase max user processes (ulimit -u)
-    fatal error: newosproc
-    
-    runtime stack:
-    runtime.throw(0x7b2d88, 0x9)
-    	/usr/lib/go-1.13/src/runtime/panic.go:774 +0x72
-    runtime.newosproc(0xc000044000)
-    	/usr/lib/go-1.13/src/runtime/os_linux.go:153 +0x1ba
-    runtime.newm1(0xc000044000)
-    	/usr/lib/go-1.13/src/runtime/proc.go:1853 +0xdc
-    runtime.newm(0x7c72e0, 0x0)
-    	/usr/lib/go-1.13/src/runtime/proc.go:1832 +0x8f
-    runtime.main.func1()
-    	/usr/lib/go-1.13/src/runtime/proc.go:134 +0x36
-    runtime.systemstack(0x457724)
-    	/usr/lib/go-1.13/src/runtime/asm_amd64.s:370 +0x66
-    runtime.mstart()
-    	/usr/lib/go-1.13/src/runtime/proc.go:1146
-    
-    goroutine 1 [running]:
-    runtime.systemstack_switch()
-    	/usr/lib/go-1.13/src/runtime/asm_amd64.s:330 fp=0xc000040760 sp=0xc000040758 pc=0x457820
-    runtime.main()
-    	/usr/lib/go-1.13/src/runtime/proc.go:133 +0x63 fp=0xc0000407e0 sp=0xc000040760 pc=0x42f113
-    runtime.goexit()
-    	/usr/lib/go-1.13/src/runtime/asm_amd64.s:1357 +0x1 fp=0xc0000407e8 sp=0xc0000407e0 pc=0x459771
+    - expressions:
+        opMode: Active
+      id: hackazon
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: httpbin
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: bwapp
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
+    - expressions:
+        opMode: Active
+      id: nginx
+      signatures:
+        opMode: Active
+      whitelist:
+        opMode: Bypass
