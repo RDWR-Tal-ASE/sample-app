@@ -8,192 +8,35 @@ metadata:
 spec:
   policies:
   - classifiers:
-    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
-    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
+    /bin/sh: 0: Cannot fork
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 5 already; errno=11)
+    /bin/sh: 0: Cannot fork
+    runtime: failed to create new OS thread (have 2 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000088000)
+    runtime.newosproc(0xc000062000)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000088000)
+    runtime.newm1(0xc000062000)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc00004b000, 0x4)
+    runtime.newm(0x1bb7d48, 0x0, 0xffffffffffffffff)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0xc000073f01)
-    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
-    runtime.wakep()
-    	/usr/local/go/src/runtime/proc.go:2061 +0x66
-    runtime.resetspinning()
-    	/usr/local/go/src/runtime/proc.go:2533 +0x59
-    runtime.schedule()
-    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.mstart1()
-    	/usr/local/go/src/runtime/proc.go:1179 +0x93
+    runtime.main.func1()
+    	/usr/local/go/src/runtime/proc.go:135 +0x3f
+    runtime.systemstack(0x46c2f4)
+    	/usr/local/go/src/runtime/asm_amd64.s:370 +0x66
     runtime.mstart()
-    	/usr/local/go/src/runtime/proc.go:1137 +0x6e
+    	/usr/local/go/src/runtime/proc.go:1116
     
-    goroutine 1 [chan receive, locked to thread]:
-    runtime.gopark(0x1bb7a80, 0xc0000420c8, 0x170e, 0x2)
-    	/usr/local/go/src/runtime/proc.go:306 +0xe5
-    runtime.chanrecv(0xc000042070, 0x0, 0xc000000101, 0x41a55e)
-    	/usr/local/go/src/runtime/chan.go:577 +0x36f
-    runtime.chanrecv1(0xc000042070, 0x0)
-    	/usr/local/go/src/runtime/chan.go:439 +0x2b
-    runtime.gcenable()
-    	/usr/local/go/src/runtime/mgc.go:219 +0x95
+    goroutine 1 [running]:
+    runtime.systemstack_switch()
+    	/usr/local/go/src/runtime/asm_amd64.s:330 fp=0xc00005e788 sp=0xc00005e780 pc=0x46c420
     runtime.main()
-    	/usr/local/go/src/runtime/proc.go:167 +0x11e
+    	/usr/local/go/src/runtime/proc.go:134 +0x70 fp=0xc00005e7e0 sp=0xc00005e788 pc=0x439ab0
     runtime.goexit()
-    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1
-    runtime/cgo: pthread_create failed: Resource temporarily unavailable
-    SIGABRT: abort
-    PC=0x7fe8f56fff47 m=7 sigcode=18446744073709551610
-    
-    goroutine 0 [idle]:
-    runtime: unknown pc 0x7fe8f56fff47
-    stack: frame={sp:0x7fe8f0ca9830, fp:0x0} stack=[0x7fe8f04aa288,0x7fe8f0ca9e88)
-    00007fe8f0ca9730:  00007fe8f0ca9af0  00007fe8f5ce875a 
-    00007fe8f0ca9740:  000000000000000b  0000000000000000 
-    00007fe8f0ca9750:  00007fe8dbfff700  000056041cf3d148 
-    00007fe8f0ca9760:  00007fe8f0ca9c40  000056041d0f6540 
-    00007fe8f0ca9770:  0000000000000000  000056041c419d10 
-    00007fe8f0ca9780:  0000000000000000  00007fe8f5ce0f13 
-    00007fe8f0ca9790:  0000000000000005  0000000000000000 
-    00007fe8f0ca97a0:  2525252525252525  2525252525252525 
-    00007fe8f0ca97b0:  00000000000000ff  0000000000000000 
-    00007fe8f0ca97c0:  00000000000000ff  0000000000000000 
-    00007fe8f0ca97d0:  0000000000000002  0000000000000003 
-    00007fe8f0ca97e0:  000000000000000e  000000000000000e 
-    00007fe8f0ca97f0:  0000000000000000  0000000000000000 
-    00007fe8f0ca9800:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9810:  0000000400000004  0000000400000004 
-    00007fe8f0ca9820:  20636f6c6c616d00  203a64656c696166 
-    00007fe8f0ca9830: <0000000000000000  0000000000000000 
-    00007fe8f0ca9840:  0000000000000000  0000000000000000 
-    00007fe8f0ca9850:  0000000000000000  0000000000000000 
-    00007fe8f0ca9860:  0000000000000000  0000000000000000 
-    00007fe8f0ca9870:  0000000000000000  0000000000000000 
-    00007fe8f0ca9880:  0000000000000000  0000000000000000 
-    00007fe8f0ca9890:  0000000000000000  0000000000000000 
-    00007fe8f0ca98a0:  0000000000000000  0000000000000000 
-    00007fe8f0ca98b0:  fffffffe7fffffff  ffffffffffffffff 
-    00007fe8f0ca98c0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca98d0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca98e0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca98f0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9900:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9910:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9920:  ffffffffffffffff  ffffffffffffffff 
-    runtime: unknown pc 0x7fe8f56fff47
-    stack: frame={sp:0x7fe8f0ca9830, fp:0x0} stack=[0x7fe8f04aa288,0x7fe8f0ca9e88)
-    00007fe8f0ca9730:  00007fe8f0ca9af0  00007fe8f5ce875a 
-    00007fe8f0ca9740:  000000000000000b  0000000000000000 
-    00007fe8f0ca9750:  00007fe8dbfff700  000056041cf3d148 
-    00007fe8f0ca9760:  00007fe8f0ca9c40  000056041d0f6540 
-    00007fe8f0ca9770:  0000000000000000  000056041c419d10 
-    00007fe8f0ca9780:  0000000000000000  00007fe8f5ce0f13 
-    00007fe8f0ca9790:  0000000000000005  0000000000000000 
-    00007fe8f0ca97a0:  2525252525252525  2525252525252525 
-    00007fe8f0ca97b0:  00000000000000ff  0000000000000000 
-    00007fe8f0ca97c0:  00000000000000ff  0000000000000000 
-    00007fe8f0ca97d0:  0000000000000002  0000000000000003 
-    00007fe8f0ca97e0:  000000000000000e  000000000000000e 
-    00007fe8f0ca97f0:  0000000000000000  0000000000000000 
-    00007fe8f0ca9800:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9810:  0000000400000004  0000000400000004 
-    00007fe8f0ca9820:  20636f6c6c616d00  203a64656c696166 
-    00007fe8f0ca9830: <0000000000000000  0000000000000000 
-    00007fe8f0ca9840:  0000000000000000  0000000000000000 
-    00007fe8f0ca9850:  0000000000000000  0000000000000000 
-    00007fe8f0ca9860:  0000000000000000  0000000000000000 
-    00007fe8f0ca9870:  0000000000000000  0000000000000000 
-    00007fe8f0ca9880:  0000000000000000  0000000000000000 
-    00007fe8f0ca9890:  0000000000000000  0000000000000000 
-    00007fe8f0ca98a0:  0000000000000000  0000000000000000 
-    00007fe8f0ca98b0:  fffffffe7fffffff  ffffffffffffffff 
-    00007fe8f0ca98c0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca98d0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca98e0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca98f0:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9900:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9910:  ffffffffffffffff  ffffffffffffffff 
-    00007fe8f0ca9920:  ffffffffffffffff  ffffffffffffffff 
-    
-    goroutine 1 [chan receive, locked to thread]:
-    text/template/parse.(*lexer).nextItem(...)
-    	/usr/lib/go-1.13/src/text/template/parse/lex.go:195
-    text/template/parse.(*Tree).next(...)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:64
-    text/template/parse.(*Tree).nextNonSpace(0xc00010e500, 0x0, 0x0, 0x0, 0x0, 0x0)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:102 +0x14e
-    text/template/parse.(*Tree).action(0xc00010e500, 0xa, 0x54)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:358 +0x45
-    text/template/parse.(*Tree).textOrAction(0xc00010e500, 0xa, 0x54)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:345 +0x295
-    text/template/parse.(*Tree).itemList(0xc00010e500, 0x56041c26e9eb, 0x4, 0xc0001bc3c0)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:327 +0xfb
-    text/template/parse.(*Tree).parseControl(0xc00010e500, 0xc000231700, 0x56041c26e9eb, 0x4, 0x0, 0x0, 0xc0001bc3c0, 0x0, 0x0)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:459 +0x102
-    text/template/parse.(*Tree).withControl(0xc00010e500, 0x1f, 0x34)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:509 +0x4e
-    text/template/parse.(*Tree).action(0xc00010e500, 0xa, 0x30)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:372 +0x55f
-    text/template/parse.(*Tree).textOrAction(0xc00010e500, 0x1f, 0x34)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:345 +0x295
-    text/template/parse.(*Tree).parse(0xc00010e500)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:291 +0x383
-    text/template/parse.(*Tree).Parse(0xc00010e500, 0x56041c2c9440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc0001b6720, 0xc000134350, 0x2, ...)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:230 +0x249
-    text/template/parse.Parse(0x56041c26e9b7, 0x4, 0x56041c2c9440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc000134350, 0x2, ...)
-    	/usr/lib/go-1.13/src/text/template/parse/parse.go:55 +0x124
-    text/template.(*Template).Parse(0xc00003d840, 0x56041c2c9440, 0x16c, 0x4, 0xc0000fb708, 0x56041cf58760)
-    	/usr/lib/go-1.13/src/text/template/template.go:200 +0x113
-    github.com/snapcore/snapd/systemd.init()
-    	/build/snapd/parts/snapd-deb/build/systemd/systemd.go:1281 +0x3ad
-    
-    goroutine 6 [syscall]:
-    os/signal.signal_recv(0x0)
-    	/usr/lib/go-1.13/src/runtime/sigqueue.go:147 +0x9e
-    os/signal.loop()
-    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:23 +0x24
-    created by os/signal.init.0
-    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:29 +0x43
-    
-    goroutine 7 [runnable]:
-    text/template/parse.(*lexer).emit(...)
-    	/usr/lib/go-1.13/src/text/template/parse/lex.go:157
-    text/template/parse.lexLeftDelim(0xc00013c630, 0x56041c9e8888)
-    	/usr/lib/go-1.13/src/text/template/parse/lex.go:307 +0x1e0
-    text/template/parse.(*lexer).run(0xc00013c630)
-    	/usr/lib/go-1.13/src/text/template/parse/lex.go:230 +0x39
-    created by text/template/parse.lex
-    	/usr/lib/go-1.13/src/text/template/parse/lex.go:223 +0x192
-    
-    rax    0x0
-    rbx    0x7fe8f5aad840
-    rcx    0x7fe8f56fff47
-    rdx    0x0
-    rdi    0x2
-    rsi    0x7fe8f0ca9830
-    rbp    0x56041c433e7c
-    rsp    0x7fe8f0ca9830
-    r8     0x0
-    r9     0x7fe8f0ca9830
-    r10    0x8
-    r11    0x246
-    r12    0x56041d0f6540
-    r13    0x0
-    r14    0x56041c419d10
-    r15    0x0
-    rip    0x7fe8f56fff47
-    rflags 0x246
-    cs     0x33
-    fs     0x0
-    gs     0x0
+    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1 fp=0xc00005e7e8 sp=0xc00005e7e0 pc=0x46e061
