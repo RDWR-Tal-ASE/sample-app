@@ -12,5 +12,54 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
-    The connection to the server 10.100.0.139:6443 was refused - did you specify the right host or port?
+    runtime: failed to create new OS thread (have 10 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000063000)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000063000)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x0, 0xc000046000, 0x9)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0xc000046000, 0x2a6cc00)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.handoffp(0xc000046000)
+    	/usr/local/go/src/runtime/proc.go:2001 +0x52
+    runtime.stoplockedm()
+    	/usr/local/go/src/runtime/proc.go:2075 +0xf7
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2611 +0x48c
+    runtime.goschedImpl(0xc000000180)
+    	/usr/local/go/src/runtime/proc.go:2860 +0xda
+    runtime.gopreempt_m(0xc000000180)
+    	/usr/local/go/src/runtime/proc.go:2888 +0x34
+    runtime.newstack()
+    	/usr/local/go/src/runtime/stack.go:1047 +0x1bc
+    runtime.morestack()
+    	/usr/local/go/src/runtime/asm_amd64.s:449 +0x8f
+    
+    goroutine 1 [runnable, locked to thread]:
+    regexp/syntax.(*Regexp).Simplify(0xc0002528c0, 0xc0002527e0)
+    	/usr/local/go/src/regexp/syntax/simplify.go:99 +0xac5
+    regexp/syntax.(*Regexp).Simplify(0xc0002529a0, 0xc00047b290)
+    	/usr/local/go/src/regexp/syntax/simplify.go:23 +0xcb
+    regexp.compile(0xc000612200, 0x13, 0xc0000000d4, 0xc000612212, 0xc00075fe28, 0xc00075fdf0)
+    	/usr/local/go/src/regexp/regexp.go:177 +0xc9
+    regexp.Compile(...)
+    	/usr/local/go/src/regexp/regexp.go:133
+    regexp.MustCompile(0xc000612200, 0x13, 0x1)
+    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.anchored(0xc00000ea08, 0x1, 0x1, 0xc00021f680)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:142 +0xbb
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:41 +0x665
+    
+    goroutine 18 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
