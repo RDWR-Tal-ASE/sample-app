@@ -12,6 +12,7 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
+    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
     runtime: failed to create new OS thread (have 9 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
@@ -19,13 +20,13 @@ spec:
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000062c00)
+    runtime.newosproc(0xc0003ae400)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000062c00)
+    runtime.newm1(0xc0003ae400)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000052800, 0x8)
+    runtime.newm(0x1bb7c48, 0xc000055000, 0x8)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
+    runtime.startm(0x0, 0xc00006ff01)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
@@ -33,147 +34,49 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc000303b00)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
-    runtime.mcall(0x0)
-    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    runtime.mstart1()
+    	/usr/local/go/src/runtime/proc.go:1179 +0x93
+    runtime.mstart()
+    	/usr/local/go/src/runtime/proc.go:1137 +0x6e
     
-    goroutine 1 [runnable, locked to thread]:
-    regexp/syntax.(*parser).parseUnicodeClass(0xc00003d7a0, 0xc0000be38a, 0x75, 0xc0003bfb50, 0x4, 0x4, 0x4, 0x75, 0x0, 0x0, ...)
-    	/usr/local/go/src/regexp/syntax/parse.go:1453 +0x918
-    regexp/syntax.(*parser).parseClass(0xc00003d7a0, 0xc0000be383, 0x7c, 0xc0000be383, 0x7c, 0x0, 0x0)
-    	/usr/local/go/src/regexp/syntax/parse.go:1568 +0x265
-    regexp/syntax.Parse(0xc0000be380, 0x7f, 0xc0001e00d4, 0x1, 0xc0007dfc88, 0x40e298)
-    	/usr/local/go/src/regexp/syntax/parse.go:768 +0xceb
-    regexp.compile(0xc0000be380, 0x7f, 0xd4, 0x1, 0x2, 0xc0000be380)
-    	/usr/local/go/src/regexp/regexp.go:170 +0x5a
-    regexp.Compile(...)
-    	/usr/local/go/src/regexp/regexp.go:133
-    regexp.MustCompile(0xc0000be380, 0x7f, 0x0)
-    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.expression(0xc0007dfe40, 0x1, 0x1, 0x7f)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:115 +0x93
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.group(0xc0007dfe40, 0x1, 0x1, 0xc00032c000)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:132 +0x45
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.optional(0xc00043f8d0, 0x2, 0x2, 0xc0001abd60)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:121 +0x78
-    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:54 +0x791
+    goroutine 1 [runnable]:
+    compress/flate.(*decompressor).huffSym(0xc0008e2000, 0xc0008e2028, 0x62, 0x0, 0x0)
+    	/usr/local/go/src/compress/flate/inflate.go:729 +0x125
+    compress/flate.(*decompressor).huffmanBlock(0xc0008e2000)
+    	/usr/local/go/src/compress/flate/inflate.go:494 +0xd2
+    compress/flate.(*decompressor).Read(0xc0008e2000, 0xc000920000, 0xfe00, 0xfe00, 0x44d6f965, 0xc00091fe00, 0x200)
+    	/usr/local/go/src/compress/flate/inflate.go:347 +0x79
+    archive/zip.(*pooledFlateReader).Read(0xc00000ce20, 0xc000920000, 0xfe00, 0xfe00, 0x0, 0x0, 0x0)
+    	/usr/local/go/src/archive/zip/register.go:90 +0xb3
+    archive/zip.(*checksumReader).Read(0xc00007e460, 0xc000920000, 0xfe00, 0xfe00, 0x200, 0x0, 0x0)
+    	/usr/local/go/src/archive/zip/reader.go:194 +0x6c
+    bytes.(*Buffer).ReadFrom(0xc00075f608, 0x7f5dd9a53b00, 0xc00007e460, 0x7f5dd9a53b00, 0x1ceae00, 0x3e)
+    	/usr/local/go/src/bytes/buffer.go:204 +0xb1
+    io/ioutil.readAll(0x7f5dd9a53b00, 0xc00007e460, 0x200, 0x0, 0x0, 0x0, 0x0, 0x0)
+    	/usr/local/go/src/io/ioutil/ioutil.go:36 +0xe5
+    io/ioutil.ReadAll(...)
+    	/usr/local/go/src/io/ioutil/ioutil.go:45
+    k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext.(*fileSystem).LoadMessagesFile(0xc0000c7bc0, 0x1ac3af3, 0x3, 0xc00003e328, 0x5, 0x1ac3820, 0x3, 0xc0006872e0, 0xd, 0xc0008de000, ...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext/fs.go:97 +0x553
+    k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext.(*domainManager).bindDomainTranslators(0xc0004246c0, 0x1ac3af3, 0x3, 0xc0006872d0, 0xb, 0xc0008d2000, 0xc354, 0xf000)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext/domain_helper.go:19 +0x205
+    k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext.(*domainManager).Bind(0xc0004246c0, 0x1ac3af3, 0x3, 0xc0006872d0, 0xb, 0xc0008d2000, 0xc354, 0xf000, 0x0, 0x0, ...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext/domain.go:37 +0x365
+    k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext.BindTextdomain(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/chai2010/gettext-go/gettext/gettext.go:55
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/i18n.LoadTranslations(0x1ac7ce3, 0x7, 0x0, 0x14, 0x0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/i18n/i18n.go:125 +0x6c8
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewKubectlCommand(0x1ced9e0, 0xc0000c4000, 0x1ceda00, 0xc0000c4008, 0x1ceda00, 0xc0000c4010, 0x46b3fb)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:500 +0x517
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewDefaultKubectlCommandWithArgs(0x1cf8100, 0xc00000ca00, 0xc0000c8000, 0x8, 0x8, 0x1ced9e0, 0xc0000c4000, 0x1ceda00, 0xc0000c4008, 0x1ceda00, ...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:307 +0x85
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewDefaultKubectlCommand(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:302
+    main.main()
+    	_output/dockerized/go/src/k8s.io/kubernetes/cmd/kubectl/kubectl.go:38 +0x1ae
     
     goroutine 18 [chan receive]:
     k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
     created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
-    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: 
-    -----
-    runtime/cgo: pthread_create failed: Resource temporarily unavailable
-    SIGABRT: abort
-    PC=0x7f8d5f611f47 m=0 sigcode=18446744073709551610
-    
-    goroutine 0 [idle]:
-    runtime: unknown pc 0x7f8d5f611f47
-    stack: frame={sp:0x7ffd0398fcf0, fp:0x0} stack=[0x7ffd031911e0,0x7ffd03990220)
-    00007ffd0398fbf0:  0000000000000000  0000000000000000 
-    00007ffd0398fc00:  0000000000000000  0000000000000000 
-    00007ffd0398fc10:  0000000000000000  00000000008661c8 
-    00007ffd0398fc20:  00007ffd03990100  00000000025d6690 
-    00007ffd0398fc30:  0000000000000000  0000000000593e90 
-    00007ffd0398fc40:  0000000000000000  00007f8d5fbf2f13 
-    00007ffd0398fc50:  0000000000000005  0000000000000000 
-    00007ffd0398fc60:  2525252525252525  2525252525252525 
-    00007ffd0398fc70:  00000000ff00ff00  0000000000000000 
-    00007ffd0398fc80:  00000000ff000000  0000000000000000 
-    00007ffd0398fc90:  0000000000000000  0000000000000000 
-    00007ffd0398fca0:  2f7273752f3a6e69  73752f3a6e696273 
-    00007ffd0398fcb0:  752f3a6e69622f72  6c61636f6c2f7273 
-    00007ffd0398fcc0:  73752f3a6e69622f  732f6e6962732f72 
-    00007ffd0398fcd0:  2f3a656369767265  6e69622f70616e73 
-    00007ffd0398fce0:  6c6c616d00732520  656c69616620636f 
-    00007ffd0398fcf0: <0000000000000000  0000000000000000 
-    00007ffd0398fd00:  0000000000000000  0000000000000000 
-    00007ffd0398fd10:  0000000000000000  0000000000000000 
-    00007ffd0398fd20:  0000000000000000  0000000000000000 
-    00007ffd0398fd30:  0000000000000000  0000000000000000 
-    00007ffd0398fd40:  0000000000000000  0000000000000000 
-    00007ffd0398fd50:  0000000000000000  0000000000000000 
-    00007ffd0398fd60:  0000000000000000  0000000000000000 
-    00007ffd0398fd70:  fffffffe7fffffff  ffffffffffffffff 
-    00007ffd0398fd80:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fd90:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fda0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fdb0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fdc0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fdd0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fde0:  ffffffffffffffff  ffffffffffffffff 
-    runtime: unknown pc 0x7f8d5f611f47
-    stack: frame={sp:0x7ffd0398fcf0, fp:0x0} stack=[0x7ffd031911e0,0x7ffd03990220)
-    00007ffd0398fbf0:  0000000000000000  0000000000000000 
-    00007ffd0398fc00:  0000000000000000  0000000000000000 
-    00007ffd0398fc10:  0000000000000000  00000000008661c8 
-    00007ffd0398fc20:  00007ffd03990100  00000000025d6690 
-    00007ffd0398fc30:  0000000000000000  0000000000593e90 
-    00007ffd0398fc40:  0000000000000000  00007f8d5fbf2f13 
-    00007ffd0398fc50:  0000000000000005  0000000000000000 
-    00007ffd0398fc60:  2525252525252525  2525252525252525 
-    00007ffd0398fc70:  00000000ff00ff00  0000000000000000 
-    00007ffd0398fc80:  00000000ff000000  0000000000000000 
-    00007ffd0398fc90:  0000000000000000  0000000000000000 
-    00007ffd0398fca0:  2f7273752f3a6e69  73752f3a6e696273 
-    00007ffd0398fcb0:  752f3a6e69622f72  6c61636f6c2f7273 
-    00007ffd0398fcc0:  73752f3a6e69622f  732f6e6962732f72 
-    00007ffd0398fcd0:  2f3a656369767265  6e69622f70616e73 
-    00007ffd0398fce0:  6c6c616d00732520  656c69616620636f 
-    00007ffd0398fcf0: <0000000000000000  0000000000000000 
-    00007ffd0398fd00:  0000000000000000  0000000000000000 
-    00007ffd0398fd10:  0000000000000000  0000000000000000 
-    00007ffd0398fd20:  0000000000000000  0000000000000000 
-    00007ffd0398fd30:  0000000000000000  0000000000000000 
-    00007ffd0398fd40:  0000000000000000  0000000000000000 
-    00007ffd0398fd50:  0000000000000000  0000000000000000 
-    00007ffd0398fd60:  0000000000000000  0000000000000000 
-    00007ffd0398fd70:  fffffffe7fffffff  ffffffffffffffff 
-    00007ffd0398fd80:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fd90:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fda0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fdb0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fdc0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fdd0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd0398fde0:  ffffffffffffffff  ffffffffffffffff 
-    
-    goroutine 1 [running, locked to thread]:
-    runtime.asmcgocall(0x50e6e0, 0xc00003c708)
-    	/usr/lib/go-1.13/src/runtime/asm_amd64.s:640 +0x42 fp=0xc00003c6f0 sp=0xc00003c6e8 pc=0x458372
-    runtime.newm1(0xc000040e00)
-    	/usr/lib/go-1.13/src/runtime/proc.go:1848 +0xa4 fp=0xc00003c730 sp=0xc00003c6f0 pc=0x4344b4
-    runtime.newm(0x57a500, 0x0)
-    	/usr/lib/go-1.13/src/runtime/proc.go:1832 +0x8f fp=0xc00003c760 sp=0xc00003c730 pc=0x43435f
-    runtime.startTemplateThread(...)
-    	/usr/lib/go-1.13/src/runtime/proc.go:1868
-    runtime.main()
-    	/usr/lib/go-1.13/src/runtime/proc.go:186 +0x2c3 fp=0xc00003c7e0 sp=0xc00003c760 pc=0x430633
-    runtime.goexit()
-    	/usr/lib/go-1.13/src/runtime/asm_amd64.s:1357 +0x1 fp=0xc00003c7e8 sp=0xc00003c7e0 pc=0x458c21
-    
-    rax    0x0
-    rbx    0x7f8d5f9bf840
-    rcx    0x7f8d5f611f47
-    rdx    0x0
-    rdi    0x2
-    rsi    0x7ffd0398fcf0
-    rbp    0x59f2ca
-    rsp    0x7ffd0398fcf0
-    r8     0x0
-    r9     0x7ffd0398fcf0
-    r10    0x8
-    r11    0x246
-    r12    0x25d6690
-    r13    0x0
-    r14    0x593e90
-    r15    0x0
-    rip    0x7f8d5f611f47
-    rflags 0x246
-    cs     0x33
-    fs     0x0
-    gs     0x0
-    -----
