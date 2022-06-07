@@ -19,13 +19,13 @@ spec:
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000500400)
+    runtime.newosproc(0xc000108800)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000500400)
+    runtime.newm1(0xc000108800)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
     runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
+    runtime.startm(0x0, 0xc000611f01)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
@@ -33,48 +33,36 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc0004d0180)
+    runtime.park_m(0xc000502180)
     	/usr/local/go/src/runtime/proc.go:2845 +0x9d
     runtime.mcall(0x0)
     	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
     
-    goroutine 1 [runnable, locked to thread]:
-    bytes.makeSlice.func1()
-    	/usr/local/go/src/bytes/buffer.go:224 +0x6b
-    bytes.makeSlice(0xc5, 0xc000138000, 0xc5, 0xc5)
-    	/usr/local/go/src/bytes/buffer.go:229 +0x96
-    bytes.(*Buffer).grow(0xc000600090, 0x45, 0x1)
-    	/usr/local/go/src/bytes/buffer.go:142 +0x156
-    bytes.(*Buffer).WriteString(0xc000600090, 0xc0006101e0, 0x45, 0x1, 0x0, 0x0)
-    	/usr/local/go/src/bytes/buffer.go:184 +0xd0
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.(*ASCIIRenderer).NormalText(0xc000200200, 0xc000600090, 0xc000136000, 0x45, 0x310)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/markdown.go:52 +0x116
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).inline(0xc000130000, 0xc000600090, 0xc000136000, 0x45, 0x310)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/inline.go:46 +0xda
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).renderParagraph.func1(0xc000600090)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:1332 +0x79
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.(*ASCIIRenderer).Paragraph(0xc000200200, 0xc000600090, 0xc000338080)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/markdown.go:86 +0x4f
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).renderParagraph(0xc000130000, 0xc000600090, 0xc000136000, 0x46, 0x310)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:1335 +0x118
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).paragraph(0xc000130000, 0xc000600090, 0xc000136000, 0x200, 0x310, 0x40e298)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:1360 +0x9cf
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).block(0xc000130000, 0xc000600090, 0xc000136000, 0x200, 0x310)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:186 +0x3d4
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.secondPass(0xc000130000, 0xc000136000, 0x200, 0x310, 0xc000136000, 0x200, 0x310)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:459 +0x87
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.MarkdownOptions(0xc00012e200, 0x1ff, 0x200, 0x1d4e100, 0xc000200200, 0x1, 0x0, 0xa, 0xa, 0x1b843cf)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:389 +0x1e5
-    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.Markdown(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:343
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.normalizer.markdown(0xc00012e000, 0x1ff, 0xc00012e000, 0x1ff)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:73 +0xcf
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.LongDesc(0x1b843cf, 0x20e, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:34 +0x6f
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/wait.init()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/wait/wait.go:49 +0x65
+    goroutine 1 [runnable]:
+    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).AddFlag(0xc000406e00, 0xc00055d180)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/flag.go:841 +0x82b
+    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).VarPF(0xc000406e00, 0x1d188c0, 0xc0003d03ed, 0x1ac3a36, 0x3, 0x0, 0x0, 0x1b30613, 0x45, 0x2a50a00)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/flag.go:831 +0x10b
+    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).BoolVarP(0xc000406e00, 0xc0003d03ed, 0x1ac3a36, 0x3, 0x0, 0x0, 0xc000508800, 0x1b30613, 0x45)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/bool.go:55 +0x97
+    k8s.io/kubernetes/vendor/github.com/spf13/pflag.(*FlagSet).BoolVar(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/pflag/bool.go:50
+    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions.(*ResourceBuilderFlags).AddFlags(0xc000668900, 0xc000406e00)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions/builder_flags.go:119 +0x11f
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/set.NewCmdSelector(0x1d441c0, 0xc000436120, 0x1ced9e0, 0xc00000e010, 0x1ceda00, 0xc00000e018, 0x1ceda00, 0xc00000e020, 0xc000675b80)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/set/set_selector.go:114 +0x22e
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/set.NewCmdSet(0x1d441c0, 0xc000436120, 0x1ced9e0, 0xc00000e010, 0x1ceda00, 0xc00000e018, 0x1ceda00, 0xc00000e020, 0xc000675340)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/set/set.go:47 +0x251
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewKubectlCommand(0x1ced9e0, 0xc00000e010, 0x1ceda00, 0xc00000e018, 0x1ceda00, 0xc00000e020, 0x46b3fb)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:514 +0x6e7
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewDefaultKubectlCommandWithArgs(0x1cf8100, 0xc0004afc40, 0xc00003a080, 0x8, 0x8, 0x1ced9e0, 0xc00000e010, 0x1ceda00, 0xc00000e018, 0x1ceda00, ...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:307 +0x85
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd.NewDefaultKubectlCommand(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/cmd.go:302
+    main.main()
+    	_output/dockerized/go/src/k8s.io/kubernetes/cmd/kubectl/kubectl.go:38 +0x1ae
     
-    goroutine 18 [chan receive]:
+    goroutine 6 [chan receive]:
     k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
     created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
