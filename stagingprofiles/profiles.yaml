@@ -12,4 +12,62 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    The connection to the server 10.100.0.139:6443 was refused - did you specify the right host or port?
+    runtime: failed to create new OS thread (have 10 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000580400)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000580400)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0xc00058df01)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc000350c00)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    
+    goroutine 1 [runnable, locked to thread]:
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.(*ASCIIRenderer).NormalText(0xc00033f600, 0xc0003e35f0, 0xc0008c6091, 0x66, 0x192)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/markdown.go:45 +0x48
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).inline(0xc0008b3600, 0xc0003e35f0, 0xc0008c6032, 0xc5, 0x1f1)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/inline.go:46 +0xda
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).renderParagraph.func1(0xc0003e35f0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:1332 +0x79
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.(*ASCIIRenderer).Paragraph(0xc00033f600, 0xc0003e35f0, 0xc00079df40)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/markdown.go:86 +0x4f
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).renderParagraph(0xc0008b3600, 0xc0003e35f0, 0xc0008c6032, 0xc6, 0x1f1)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:1335 +0x118
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).paragraph(0xc0008b3600, 0xc0003e35f0, 0xc0008c6032, 0x182, 0x1f1, 0x32)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:1360 +0x9cf
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.(*parser).block(0xc0008b3600, 0xc0003e35f0, 0xc0008c6000, 0x1b4, 0x223)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/block.go:186 +0x3d4
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.secondPass(0xc0008b3600, 0xc0008c6000, 0x1b4, 0x223, 0xc0008c6000, 0x1b4, 0x223)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:459 +0x87
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.MarkdownOptions(0xc0008a2fc0, 0x1b3, 0x1c0, 0x1d4e100, 0xc00033f600, 0x1, 0x0, 0x7, 0x7, 0x1b7e556)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:389 +0x1e5
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.Markdown(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:343
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.normalizer.markdown(0xc0008a2e00, 0x1b3, 0xc0008a2e00, 0x1b3)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:73 +0xcf
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.LongDesc(0x1b7e556, 0x1be, 0x0, 0x0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:34 +0x6f
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/plugin.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/plugin/plugin.go:37 +0x65
+    
+    goroutine 6 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
