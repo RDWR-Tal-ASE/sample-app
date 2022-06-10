@@ -8,8 +8,263 @@ metadata:
 spec:
   policies:
   - classifiers:
-    /bin/sh: 0: Cannot fork
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7fe4d852bf47 m=0 sigcode=18446744073709551610
+    
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7fe4d852bf47
+    stack: frame={sp:0x7ffd835ed230, fp:0x0} stack=[0x7ffd82dee730,0x7ffd835ed760)
+    00007ffd835ed130:  0000000000000001  0000000000000000 
+    00007ffd835ed140:  0000000000000000  000000c420081fe0 
+    00007ffd835ed150:  0000000000000000  0000000000000000 
+    00007ffd835ed160:  0000000000000000  0000000000000000 
+    00007ffd835ed170:  00007fe4d88d9560  00007fe4d88dcbc0 
+    00007ffd835ed180:  000000c42006ffd0  000055c64bca43e0 <runtime.main+208> 
+    00007ffd835ed190:  000055c64c998970  0000000000000000 
+    00007ffd835ed1a0:  0000000000000000  0000000000000000 
+    00007ffd835ed1b0:  0000000000000000  0000000000000000 
+    00007ffd835ed1c0:  0000000000000000  0000000000000000 
+    00007ffd835ed1d0:  000000c420000180  0000000000000000 
+    00007ffd835ed1e0:  000055c64bca43e0 <runtime.main+208>  000055c64c998970 
+    00007ffd835ed1f0:  0000000000000000  0000000000000000 
+    00007ffd835ed200:  0000000000000000  0000000000000000 
+    00007ffd835ed210:  0000000000000000  0000000000000000 
+    00007ffd835ed220:  0000000000000000  000000c420000180 
+    00007ffd835ed230: <0000000000000000  000055c64bccff31 <runtime.goexit+1> 
+    00007ffd835ed240:  0000000000000000  0000000000000000 
+    00007ffd835ed250:  0000000000000000  0000000000000000 
+    00007ffd835ed260:  000000000030da24  000000000030da24 
+    00007ffd835ed270:  0000029300000002  00000050d88e5ec5 
+    00007ffd835ed280:  000000000030da24  00007ffd835ed338 
+    00007ffd835ed290:  000055c64bcbf936 <runtime.pcvalue+342>  000055c64ca32828 
+    00007ffd835ed2a0:  00000000002f742e  00000000002f742e 
+    00007ffd835ed2b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffd835ed2c0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed2d0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed2e0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed2f0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed300:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed310:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed320:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7fe4d852bf47
+    stack: frame={sp:0x7ffd835ed230, fp:0x0} stack=[0x7ffd82dee730,0x7ffd835ed760)
+    00007ffd835ed130:  0000000000000001  0000000000000000 
+    00007ffd835ed140:  0000000000000000  000000c420081fe0 
+    00007ffd835ed150:  0000000000000000  0000000000000000 
+    00007ffd835ed160:  0000000000000000  0000000000000000 
+    00007ffd835ed170:  00007fe4d88d9560  00007fe4d88dcbc0 
+    00007ffd835ed180:  000000c42006ffd0  000055c64bca43e0 <runtime.main+208> 
+    00007ffd835ed190:  000055c64c998970  0000000000000000 
+    00007ffd835ed1a0:  0000000000000000  0000000000000000 
+    00007ffd835ed1b0:  0000000000000000  0000000000000000 
+    00007ffd835ed1c0:  0000000000000000  0000000000000000 
+    00007ffd835ed1d0:  000000c420000180  0000000000000000 
+    00007ffd835ed1e0:  000055c64bca43e0 <runtime.main+208>  000055c64c998970 
+    00007ffd835ed1f0:  0000000000000000  0000000000000000 
+    00007ffd835ed200:  0000000000000000  0000000000000000 
+    00007ffd835ed210:  0000000000000000  0000000000000000 
+    00007ffd835ed220:  0000000000000000  000000c420000180 
+    00007ffd835ed230: <0000000000000000  000055c64bccff31 <runtime.goexit+1> 
+    00007ffd835ed240:  0000000000000000  0000000000000000 
+    00007ffd835ed250:  0000000000000000  0000000000000000 
+    00007ffd835ed260:  000000000030da24  000000000030da24 
+    00007ffd835ed270:  0000029300000002  00000050d88e5ec5 
+    00007ffd835ed280:  000000000030da24  00007ffd835ed338 
+    00007ffd835ed290:  000055c64bcbf936 <runtime.pcvalue+342>  000055c64ca32828 
+    00007ffd835ed2a0:  00000000002f742e  00000000002f742e 
+    00007ffd835ed2b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffd835ed2c0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed2d0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed2e0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed2f0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed300:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed310:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd835ed320:  ffffffffffffffff  ffffffffffffffff 
+    
+    goroutine 1 [running, locked to thread]:
+    runtime.asmcgocall(0x55c64c36ca30, 0xc420081f10)
+    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:673 +0x3f fp=0xc420081ee8 sp=0xc420081ee0 pc=0x55c64bccebcf
+    runtime.newm1(0xc420061000)
+    	/usr/lib/go-1.10/src/runtime/proc.go:1874 +0xd1 fp=0xc420081f38 sp=0xc420081ee8 pc=0x55c64bca86b1
+    runtime.newm(0x55c64c998b08, 0x0)
+    	/usr/lib/go-1.10/src/runtime/proc.go:1858 +0x9f fp=0xc420081f68 sp=0xc420081f38 pc=0x55c64bca852f
+    runtime.startTemplateThread()
+    	/usr/lib/go-1.10/src/runtime/proc.go:1891 +0x51 fp=0xc420081f88 sp=0xc420081f68 pc=0x55c64bca8791
+    runtime.main()
+    	/usr/lib/go-1.10/src/runtime/proc.go:181 +0x1a9 fp=0xc420081fe0 sp=0xc420081f88 pc=0x55c64bca44b9
+    runtime.goexit()
+    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:2361 +0x1 fp=0xc420081fe8 sp=0xc420081fe0 pc=0x55c64bccff31
+    
+    rax    0x0
+    rbx    0x7fe4d88d9840
+    rcx    0x7fe4d852bf47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7ffd835ed230
+    rbp    0x55c64c49e32a
+    rsp    0x7ffd835ed230
+    r8     0x0
+    r9     0x7ffd835ed230
+    r10    0x8
+    r11    0x246
+    r12    0x55c64d078690
+    r13    0xf1
+    r14    0x11
+    r15    0x0
+    rip    0x7fe4d852bf47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    /bin/sh: 0: Cannot fork
+    runtime: failed to create new OS thread (have 5 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000088000)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000088000)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc00004b000, 0x4)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0xc000073f01)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.mstart1()
+    	/usr/local/go/src/runtime/proc.go:1179 +0x93
+    runtime.mstart()
+    	/usr/local/go/src/runtime/proc.go:1137 +0x6e
+    
+    goroutine 1 [runnable, locked to thread]:
+    runtime.gopark(0x1bb7a80, 0xc0000420c8, 0x170e, 0x2)
+    	/usr/local/go/src/runtime/proc.go:306 +0xe5
+    runtime.chanrecv(0xc000042070, 0x0, 0xc000000101, 0x41a55e)
+    	/usr/local/go/src/runtime/chan.go:577 +0x36f
+    runtime.chanrecv1(0xc000042070, 0x0)
+    	/usr/local/go/src/runtime/chan.go:439 +0x2b
+    runtime.gcenable()
+    	/usr/local/go/src/runtime/mgc.go:219 +0x95
+    runtime.main()
+    	/usr/local/go/src/runtime/proc.go:167 +0x11e
+    runtime.goexit()
+    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7fbc168e8f47 m=0 sigcode=18446744073709551610
+    
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7fbc168e8f47
+    stack: frame={sp:0x7ffc06059780, fp:0x0} stack=[0x7ffc0585ac80,0x7ffc06059cb0)
+    00007ffc06059680:  0000000000000001  0000000000000000 
+    00007ffc06059690:  0000000000000000  000000c420081fe0 
+    00007ffc060596a0:  0000000000000000  0000000000000000 
+    00007ffc060596b0:  0000000000000000  0000000000000000 
+    00007ffc060596c0:  0000000000000003  000000c420081fd8 
+    00007ffc060596d0:  0000000000000000  0000000000000120 
+    00007ffc060596e0:  0000001300000000  0000000000000007 
+    00007ffc060596f0:  0000000000000130  000055a6621f3098 
+    00007ffc06059700:  0000000000000150  ffffffffffffffa8 
+    00007ffc06059710:  0000000000000004  0000003400000013 
+    00007ffc06059720:  0000000000000000  0000000000000000 
+    00007ffc06059730:  0000000000000000  000000770000007c 
+    00007ffc06059740:  0000005b0000006e  0000000000000000 
+    00007ffc06059750:  0000000000000000  0000000000020ab0 
+    00007ffc06059760:  0000000000000120  00007fbc16ecd307 
+    00007ffc06059770:  000055a6621f3550  0000000000000001 
+    00007ffc06059780: <0000000000000000  000055a6621f3570 
+    00007ffc06059790:  00007fbc170da0d0  00007ffc060597d8 
+    00007ffc060597a0:  000055a65f575582 <runtime.step+290>  000055a6602d1232 
+    00007ffc060597b0:  000000000030da24  000000000030da24 
+    00007ffc060597c0:  0000029300000002  0000005016ca2ec5 
+    00007ffc060597d0:  000000000030da24  00007ffc06059888 
+    00007ffc060597e0:  000055a65f574936 <runtime.pcvalue+342>  000055a6602e7828 
+    00007ffc060597f0:  00000000002f742e  00000000002f742e 
+    00007ffc06059800:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffc06059810:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059820:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059830:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059840:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059850:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059860:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059870:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7fbc168e8f47
+    stack: frame={sp:0x7ffc06059780, fp:0x0} stack=[0x7ffc0585ac80,0x7ffc06059cb0)
+    00007ffc06059680:  0000000000000001  0000000000000000 
+    00007ffc06059690:  0000000000000000  000000c420081fe0 
+    00007ffc060596a0:  0000000000000000  0000000000000000 
+    00007ffc060596b0:  0000000000000000  0000000000000000 
+    00007ffc060596c0:  0000000000000003  000000c420081fd8 
+    00007ffc060596d0:  0000000000000000  0000000000000120 
+    00007ffc060596e0:  0000001300000000  0000000000000007 
+    00007ffc060596f0:  0000000000000130  000055a6621f3098 
+    00007ffc06059700:  0000000000000150  ffffffffffffffa8 
+    00007ffc06059710:  0000000000000004  0000003400000013 
+    00007ffc06059720:  0000000000000000  0000000000000000 
+    00007ffc06059730:  0000000000000000  000000770000007c 
+    00007ffc06059740:  0000005b0000006e  0000000000000000 
+    00007ffc06059750:  0000000000000000  0000000000020ab0 
+    00007ffc06059760:  0000000000000120  00007fbc16ecd307 
+    00007ffc06059770:  000055a6621f3550  0000000000000001 
+    00007ffc06059780: <0000000000000000  000055a6621f3570 
+    00007ffc06059790:  00007fbc170da0d0  00007ffc060597d8 
+    00007ffc060597a0:  000055a65f575582 <runtime.step+290>  000055a6602d1232 
+    00007ffc060597b0:  000000000030da24  000000000030da24 
+    00007ffc060597c0:  0000029300000002  0000005016ca2ec5 
+    00007ffc060597d0:  000000000030da24  00007ffc06059888 
+    00007ffc060597e0:  000055a65f574936 <runtime.pcvalue+342>  000055a6602e7828 
+    00007ffc060597f0:  00000000002f742e  00000000002f742e 
+    00007ffc06059800:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffc06059810:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059820:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059830:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059840:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059850:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059860:  ffffffffffffffff  ffffffffffffffff 
+    00007ffc06059870:  ffffffffffffffff  ffffffffffffffff 
+    
+    goroutine 1 [running, locked to thread]:
+    runtime.asmcgocall(0x55a65fc21a30, 0xc420081f10)
+    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:673 +0x3f fp=0xc420081ee8 sp=0xc420081ee0 pc=0x55a65f583bcf
+    runtime.newm1(0xc420061000)
+    	/usr/lib/go-1.10/src/runtime/proc.go:1874 +0xd1 fp=0xc420081f38 sp=0xc420081ee8 pc=0x55a65f55d6b1
+    runtime.newm(0x55a66024db08, 0x0)
+    	/usr/lib/go-1.10/src/runtime/proc.go:1858 +0x9f fp=0xc420081f68 sp=0xc420081f38 pc=0x55a65f55d52f
+    runtime.startTemplateThread()
+    	/usr/lib/go-1.10/src/runtime/proc.go:1891 +0x51 fp=0xc420081f88 sp=0xc420081f68 pc=0x55a65f55d791
+    runtime.main()
+    	/usr/lib/go-1.10/src/runtime/proc.go:181 +0x1a9 fp=0xc420081fe0 sp=0xc420081f88 pc=0x55a65f5594b9
+    runtime.goexit()
+    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:2361 +0x1 fp=0xc420081fe8 sp=0xc420081fe0 pc=0x55a65f584f31
+    
+    rax    0x0
+    rbx    0x7fbc16c96840
+    rcx    0x7fbc168e8f47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7ffc06059780
+    rbp    0x55a65fd5332a
+    rsp    0x7ffc06059780
+    r8     0x0
+    r9     0x7ffc06059780
+    r10    0x8
+    r11    0x246
+    r12    0x55a6621f3690
+    r13    0xf1
+    r14    0x11
+    r15    0x0
+    rip    0x7fbc168e8f47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
