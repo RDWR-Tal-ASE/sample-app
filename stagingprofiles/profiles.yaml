@@ -12,30 +12,50 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 2 already; errno=11)
+    runtime: failed to create new OS thread (have 10 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000062000)
+    runtime.newosproc(0xc000063000)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000062000)
+    runtime.newm1(0xc000063000)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7d48, 0x0, 0xffffffffffffffff)
+    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.main.func1()
-    	/usr/local/go/src/runtime/proc.go:135 +0x3f
-    runtime.systemstack(0x46c2f4)
-    	/usr/local/go/src/runtime/asm_amd64.s:370 +0x66
-    runtime.mstart()
-    	/usr/local/go/src/runtime/proc.go:1116
+    runtime.startm(0x0, 0xc000073f01)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc000323c80)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
     
-    goroutine 1 [running]:
-    runtime.systemstack_switch()
-    	/usr/local/go/src/runtime/asm_amd64.s:330 fp=0xc00005e788 sp=0xc00005e780 pc=0x46c420
-    runtime.main()
-    	/usr/local/go/src/runtime/proc.go:134 +0x70 fp=0xc00005e7e0 sp=0xc00005e788 pc=0x439ab0
-    runtime.goexit()
-    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1 fp=0xc00005e7e8 sp=0xc00005e7e0 pc=0x46e061
+    goroutine 1 [runnable, locked to thread]:
+    regexp/syntax.(*parser).concat(0xc0003bcde0, 0x10)
+    	/usr/local/go/src/regexp/syntax/parse.go:291 +0x1a5
+    regexp/syntax.Parse(0xc000654640, 0x37, 0xc0006500d4, 0x37, 0xc000654640, 0x37)
+    	/usr/local/go/src/regexp/syntax/parse.go:885 +0x1090
+    regexp.compile(0xc000654640, 0x37, 0xc0000000d4, 0xc000654676, 0xc0006dfe20, 0xc000654600)
+    	/usr/local/go/src/regexp/regexp.go:170 +0x5a
+    regexp.Compile(...)
+    	/usr/local/go/src/regexp/regexp.go:133
+    regexp.MustCompile(0xc000654640, 0x37, 0x36)
+    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.optional(0xc00000e120, 0x1, 0x1, 0xc00050cc80)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:121 +0xd9
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:63 +0xab4
+    
+    goroutine 34 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
