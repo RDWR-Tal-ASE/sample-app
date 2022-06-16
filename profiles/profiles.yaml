@@ -12,20 +12,73 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 10 already; errno=11)
+    runtime: failed to create new OS thread (have 7 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    runtime: failed to create new OS thread (have 8 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000516800)
+    runtime.newosproc(0xc000182400)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000516800)
+    runtime.newm1(0xc000182400)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
+    runtime.newm(0x0, 0xc00004d800, 0x6)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
+    runtime.startm(0xc00004d800, 0x2a6cc00)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.handoffp(0xc00004d800)
+    	/usr/local/go/src/runtime/proc.go:2001 +0x52
+    runtime.stoplockedm()
+    	/usr/local/go/src/runtime/proc.go:2075 +0xf7
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2611 +0x48c
+    runtime.goschedImpl(0xc000000180)
+    	/usr/local/go/src/runtime/proc.go:2860 +0xda
+    runtime.gopreempt_m(0xc000000180)
+    	/usr/local/go/src/runtime/proc.go:2888 +0x34
+    runtime.newstack()
+    	/usr/local/go/src/runtime/stack.go:1047 +0x1bc
+    runtime.morestack()
+    	/usr/local/go/src/runtime/asm_amd64.s:449 +0x8f
+    
+    goroutine 1 [runnable, locked to thread]:
+    regexp/syntax.simplify1(...)
+    	/usr/local/go/src/regexp/syntax/simplify.go:148
+    regexp/syntax.(*Regexp).Simplify(0xc0001d08c0, 0xc0001d07e0)
+    	/usr/local/go/src/regexp/syntax/simplify.go:100 +0xb6c
+    regexp/syntax.(*Regexp).Simplify(0xc0001d09a0, 0xc00046b3c0)
+    	/usr/local/go/src/regexp/syntax/simplify.go:23 +0xcb
+    regexp.compile(0xc000453fe0, 0x13, 0xc0000000d4, 0xc000453ff2, 0xc0006efe28, 0xc0006efdf0)
+    	/usr/local/go/src/regexp/regexp.go:177 +0xc9
+    regexp.Compile(...)
+    	/usr/local/go/src/regexp/regexp.go:133
+    regexp.MustCompile(0xc000453fe0, 0x13, 0x1)
+    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.anchored(0xc00000e948, 0x1, 0x1, 0xc0001934a0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:142 +0xbb
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:41 +0x665
+    
+    goroutine 18 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000088800)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000088800)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc000050000, 0x7)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0xc000073e01)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
@@ -33,69 +86,9 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc000502000)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.goschedImpl(0xc000000a80)
+    	/usr/local/go/src/runtime/proc.go:2860 +0xda
+    runtime.gosched_m(0xc000000a80)
+    	/usr/local/go/src/runtime/proc.go:2868 +0x34
     runtime.mcall(0x0)
     	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
-    
-    goroutine 1 [runnable]:
-    k8s.io/kubernetes/vendor/github.com/imdario/mergo.deepMerge(0x18bb980, 0xc0005e3098, 0x195, 0x18bb980, 0xc0005e2dc8, 0x195, 0xc000558b18, 0x1, 0xc0004b21a0, 0x0, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/imdario/mergo/merge.go:57 +0x228
-    k8s.io/kubernetes/vendor/github.com/imdario/mergo.deepMerge(0x1a5ba40, 0xc0005e2ff0, 0x199, 0x1a5ba40, 0xc0005e2d20, 0x199, 0xc000558b18, 0x0, 0xc0004b21a0, 0x199, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/imdario/mergo/merge.go:71 +0x1e4e
-    k8s.io/kubernetes/vendor/github.com/imdario/mergo.merge(0x18dcbe0, 0xc0005e2ff0, 0x18dcbe0, 0xc0005e2d20, 0xc000404ba8, 0x1, 0x1, 0x1, 0x4)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/imdario/mergo/merge.go:244 +0x2a5
-    k8s.io/kubernetes/vendor/github.com/imdario/mergo.MergeWithOverwrite(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/imdario/mergo/merge.go:206
-    k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd.(*DirectClientConfig).getAuthInfo(0xc0005eb440, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd/client_config.go:484 +0x3e5
-    k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd.(*DirectClientConfig).ConfirmUsable(0xc0005eb440, 0xc00059ec20, 0x1a)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd/client_config.go:411 +0xc5
-    k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd.(*DirectClientConfig).ClientConfig(0xc0005eb440, 0x1d2a040, 0xc0005eb440, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd/client_config.go:154 +0x13a
-    k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd.(*DeferredLoadingClientConfig).ClientConfig(0xc0005e9270, 0x1bb7e20, 0xc00089f600, 0x13c05d4)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/client-go/tools/clientcmd/merged_client_builder.go:104 +0x73
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions.(*clientConfig).ClientConfig(0xc00045a130, 0x1d29f00, 0xc00045a130, 0x190000000044f0ac)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions/client_config.go:52 +0x37
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions.(*ConfigFlags).ToRESTConfig(0xc0001c4a50, 0x44f2e5, 0xc000417780, 0x2a9d9d0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions/config_flags.go:115 +0x3f
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions.(*ConfigFlags).ToDiscoveryClient(0xc0001c4a50, 0x0, 0x0, 0xc000417790, 0x7f4e909b2ab8)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/genericclioptions/config_flags.go:219 +0x45
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/util.(*MatchVersionFlags).ToDiscoveryClient(0xc00068c720, 0xc0004177a0, 0x7f4e909b2ab8, 0x2a6cce0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/util/kubectl_match_version.go:91 +0x70
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource.NewBuilder.func1(0x10, 0x1858200, 0x1, 0xc0004177a0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource/builder.go:202 +0x33
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource.(*cachingCategoryExpanderFunc).ToCategoryExpander(0xc0001029e0, 0x0, 0x0, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource/builder.go:1198 +0x91
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource.(*Builder).ReplaceAliases(0xc0005afb80, 0x7ffd8ef76ef6, 0x8, 0xc00080fe00, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource/builder.go:596 +0x151
-    k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource.(*Builder).ResourceTypeOrNameArgs(0xc0005afb80, 0x1, 0xc00080fec0, 0x2, 0x6, 0x1ac337e)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/cli-runtime/pkg/resource/builder.go:566 +0xc56
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get.(*GetOptions).Run(0xc0005e2a50, 0x1d441c0, 0xc00068c780, 0xc0004ac2c0, 0xc00080fec0, 0x2, 0x6, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get/get.go:474 +0x1fc
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get.NewCmdGet.func1(0xc0004ac2c0, 0xc00080fec0, 0x2, 0x6)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/get/get.go:167 +0x135
-    k8s.io/kubernetes/vendor/github.com/spf13/cobra.(*Command).execute(0xc0004ac2c0, 0xc00080fe60, 0x6, 0x6, 0xc0004ac2c0, 0xc00080fe60)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/cobra/command.go:854 +0x2c2
-    k8s.io/kubernetes/vendor/github.com/spf13/cobra.(*Command).ExecuteC(0xc00093e840, 0xc00003c240, 0xc00003a080, 0x8)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/cobra/command.go:958 +0x375
-    k8s.io/kubernetes/vendor/github.com/spf13/cobra.(*Command).Execute(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/spf13/cobra/command.go:895
-    main.main()
-    	_output/dockerized/go/src/k8s.io/kubernetes/cmd/kubectl/kubectl.go:49 +0x21d
-    
-    goroutine 6 [chan receive]:
-    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
-    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
-    
-    goroutine 10 [select]:
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait.BackoffUntil(0x1bb7018, 0x1cec100, 0xc00011e000, 0x1, 0xc000088b40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait/wait.go:167 +0x149
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait.JitterUntil(0x1bb7018, 0x12a05f200, 0x0, 0x1, 0xc000088b40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait/wait.go:133 +0x98
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait.Until(0x1bb7018, 0x12a05f200, 0xc000088b40)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/util/wait/wait.go:90 +0x4d
-    created by k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/logs.InitLogs
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/logs/logs.go:51 +0x96
