@@ -8,7 +8,155 @@ metadata:
 spec:
   policies:
   - classifiers:
-    /bin/sh: 0: Cannot fork
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7f05c8624f47 m=7 sigcode=18446744073709551610
+    
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7f05c8624f47
+    stack: frame={sp:0x7f05b77fd830, fp:0x0} stack=[0x7f05b6ffe288,0x7f05b77fde88)
+    00007f05b77fd730:  00007f05b77fdaf0  00007f05c8c0d75a 
+    00007f05b77fd740:  000000000000000b  0000000000000000 
+    00007f05b77fd750:  00007f05b6ffd700  0000559b82857148 
+    00007f05b77fd760:  00007f05b77fdc40  00007f05b8000c50 
+    00007f05b77fd770:  0000000000000000  0000559b81d33d10 
+    00007f05b77fd780:  0000000000000000  00007f05c8c05f13 
+    00007f05b77fd790:  0000000000000005  0000000000000000 
+    00007f05b77fd7a0:  2525252525252525  2525252525252525 
+    00007f05b77fd7b0:  00000000000000ff  0000000000000000 
+    00007f05b77fd7c0:  00000000000000ff  0000000000000000 
+    00007f05b77fd7d0:  0000000000000002  0000000000000013 
+    00007f05b77fd7e0:  000000000000000e  000000000000000e 
+    00007f05b77fd7f0:  0000000000000000  0000000000000000 
+    00007f05b77fd800:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd810:  0000000400000004  0000000400000004 
+    00007f05b77fd820:  20636f6c6c616d00  203a64656c696166 
+    00007f05b77fd830: <0000000000000000  0000000000000000 
+    00007f05b77fd840:  0000000000000000  0000000000000000 
+    00007f05b77fd850:  0000000000000000  0000000000000000 
+    00007f05b77fd860:  0000000000000000  0000000000000000 
+    00007f05b77fd870:  0000000000000000  0000000000000000 
+    00007f05b77fd880:  0000000000000000  0000000000000000 
+    00007f05b77fd890:  0000000000000000  0000000000000000 
+    00007f05b77fd8a0:  0000000000000000  0000000000000000 
+    00007f05b77fd8b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007f05b77fd8c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd900:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd910:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd920:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f05c8624f47
+    stack: frame={sp:0x7f05b77fd830, fp:0x0} stack=[0x7f05b6ffe288,0x7f05b77fde88)
+    00007f05b77fd730:  00007f05b77fdaf0  00007f05c8c0d75a 
+    00007f05b77fd740:  000000000000000b  0000000000000000 
+    00007f05b77fd750:  00007f05b6ffd700  0000559b82857148 
+    00007f05b77fd760:  00007f05b77fdc40  00007f05b8000c50 
+    00007f05b77fd770:  0000000000000000  0000559b81d33d10 
+    00007f05b77fd780:  0000000000000000  00007f05c8c05f13 
+    00007f05b77fd790:  0000000000000005  0000000000000000 
+    00007f05b77fd7a0:  2525252525252525  2525252525252525 
+    00007f05b77fd7b0:  00000000000000ff  0000000000000000 
+    00007f05b77fd7c0:  00000000000000ff  0000000000000000 
+    00007f05b77fd7d0:  0000000000000002  0000000000000013 
+    00007f05b77fd7e0:  000000000000000e  000000000000000e 
+    00007f05b77fd7f0:  0000000000000000  0000000000000000 
+    00007f05b77fd800:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd810:  0000000400000004  0000000400000004 
+    00007f05b77fd820:  20636f6c6c616d00  203a64656c696166 
+    00007f05b77fd830: <0000000000000000  0000000000000000 
+    00007f05b77fd840:  0000000000000000  0000000000000000 
+    00007f05b77fd850:  0000000000000000  0000000000000000 
+    00007f05b77fd860:  0000000000000000  0000000000000000 
+    00007f05b77fd870:  0000000000000000  0000000000000000 
+    00007f05b77fd880:  0000000000000000  0000000000000000 
+    00007f05b77fd890:  0000000000000000  0000000000000000 
+    00007f05b77fd8a0:  0000000000000000  0000000000000000 
+    00007f05b77fd8b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007f05b77fd8c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd900:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd910:  ffffffffffffffff  ffffffffffffffff 
+    00007f05b77fd920:  ffffffffffffffff  ffffffffffffffff 
+    
+    goroutine 1 [chan receive, locked to thread]:
+    text/template/parse.(*lexer).nextItem(...)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:195
+    text/template/parse.(*Tree).next(...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:64
+    text/template/parse.(*Tree).nextNonSpace(0xc00012c500, 0x0, 0x0, 0x0, 0x0, 0x0)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:102 +0x14e
+    text/template/parse.(*Tree).expect(0xc00012c500, 0xf, 0x559b81b88067, 0x3, 0x0, 0x0, 0x0, 0x0, 0x0)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:168 +0x61
+    text/template/parse.(*Tree).endControl(...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:516
+    text/template/parse.(*Tree).action(0xc00012c500, 0xa, 0x162)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:364 +0x38a
+    text/template/parse.(*Tree).textOrAction(0xc00012c500, 0xa, 0x162)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:345 +0x295
+    text/template/parse.(*Tree).itemList(0xc00012c500, 0x559b81b889eb, 0x4, 0xc000034240)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:327 +0xfb
+    text/template/parse.(*Tree).parseControl(0xc00012c500, 0x559b828b2000, 0x559b81b889eb, 0x4, 0x0, 0x0, 0xc000034240, 0x0, 0x0)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:459 +0x102
+    text/template/parse.(*Tree).withControl(0xc00012c500, 0x1f, 0x13f)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:509 +0x4e
+    text/template/parse.(*Tree).action(0xc00012c500, 0xa, 0x13b)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:372 +0x55f
+    text/template/parse.(*Tree).textOrAction(0xc00012c500, 0x1f, 0x13f)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:345 +0x295
+    text/template/parse.(*Tree).parse(0xc00012c500)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:291 +0x383
+    text/template/parse.(*Tree).Parse(0xc00012c500, 0x559b81be3440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc0001d66f0, 0xc000152340, 0x2, ...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:230 +0x249
+    text/template/parse.Parse(0x559b81b889b7, 0x4, 0x559b81be3440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc000152340, 0x2, ...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:55 +0x124
+    text/template.(*Template).Parse(0xc0000cd780, 0x559b81be3440, 0x16c, 0x4, 0xc000119708, 0x559b82872760)
+    	/usr/lib/go-1.13/src/text/template/template.go:200 +0x113
+    github.com/snapcore/snapd/systemd.init()
+    	/build/snapd/parts/snapd-deb/build/systemd/systemd.go:1281 +0x3ad
+    
+    goroutine 19 [syscall]:
+    os/signal.signal_recv(0x0)
+    	/usr/lib/go-1.13/src/runtime/sigqueue.go:147 +0x9e
+    os/signal.loop()
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:23 +0x24
+    created by os/signal.init.0
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:29 +0x43
+    
+    goroutine 20 [runnable]:
+    text/template/parse.(*lexer).emit(...)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:157
+    text/template/parse.lexIdentifier(0xc00015a630, 0x559b82302878)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:462 +0x534
+    text/template/parse.(*lexer).run(0xc00015a630)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:230 +0x39
+    created by text/template/parse.lex
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:223 +0x192
+    
+    rax    0x0
+    rbx    0x7f05c89d2840
+    rcx    0x7f05c8624f47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7f05b77fd830
+    rbp    0x559b81d4de7c
+    rsp    0x7f05b77fd830
+    r8     0x0
+    r9     0x7f05b77fd830
+    r10    0x8
+    r11    0x246
+    r12    0x7f05b8000c50
+    r13    0x0
+    r14    0x559b81d33d10
+    r15    0x0
+    rip    0x7f05c8624f47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
