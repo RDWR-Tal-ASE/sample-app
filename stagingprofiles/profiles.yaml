@@ -8,8 +8,52 @@ metadata:
 spec:
   policies:
   - classifiers:
-    /bin/sh: 0: Cannot fork
+    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    /bin/sh: 0: Cannot fork
+    runtime: failed to create new OS thread (have 9 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000062c00)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000062c00)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc000057800, 0x8)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0x426301)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc000001200)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    
+    goroutine 1 [runnable, locked to thread]:
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.firstPass(0xc0007f0000, 0xc0007ee240, 0x22b, 0x240, 0x20, 0x19772c0, 0x201)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:398 +0x46b
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.MarkdownOptions(0xc0007ee240, 0x22b, 0x240, 0x1d4e100, 0xc00058ea60, 0x1, 0x0, 0xa, 0xa, 0x1b86efb)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:388 +0x1b4
+    k8s.io/kubernetes/vendor/github.com/russross/blackfriday.Markdown(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/russross/blackfriday/markdown.go:343
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.normalizer.markdown(0xc0007ee000, 0x22b, 0xc0007ee000, 0x22b)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:73 +0xcf
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.LongDesc(0x1b86efb, 0x23c, 0x0, 0x0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:34 +0x6f
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/annotate.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/annotate/annotate.go:81 +0x65
+    
+    goroutine 18 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
