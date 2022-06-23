@@ -12,4 +12,54 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    The connection to the server 10.100.0.139:6443 was refused - did you specify the right host or port?
+    runtime: failed to create new OS thread (have 10 already; errno=11)
+    runtime: may need to increase max user processes (ulimit -u)
+    fatal error: newosproc
+    
+    runtime stack:
+    runtime.throw(0x1acaa5a, 0x9)
+    	/usr/local/go/src/runtime/panic.go:1116 +0x72
+    runtime.newosproc(0xc000195c00)
+    	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
+    runtime.newm1(0xc000195c00)
+    	/usr/local/go/src/runtime/proc.go:1837 +0xdd
+    runtime.newm(0x1bb7c48, 0xc000055000, 0x9)
+    	/usr/local/go/src/runtime/proc.go:1816 +0x9b
+    runtime.startm(0x0, 0x426301)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc00018a180)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    
+    goroutine 1 [runnable, locked to thread]:
+    regexp/syntax.(*parser).parseUnicodeClass(0xc00003c0c0, 0x1b32415, 0x46, 0xc000556040, 0x0, 0x2, 0xc000146501, 0x1000000203000, 0x7fa81d5065d0, 0x48, ...)
+    	/usr/local/go/src/regexp/syntax/parse.go:1453 +0x918
+    regexp/syntax.(*parser).parseClass(0xc00003c0c0, 0x1b32414, 0x47, 0x418765, 0x7fa7f67ef968, 0x0, 0x30)
+    	/usr/local/go/src/regexp/syntax/parse.go:1568 +0x265
+    regexp/syntax.Parse(0x1b32414, 0x47, 0x7fa7f67e00d4, 0x60, 0xc00078fd28, 0x418765)
+    	/usr/local/go/src/regexp/syntax/parse.go:768 +0xceb
+    regexp.compile(0x1b32414, 0x47, 0x20000d4, 0x7fa7f686e3a0, 0xc00078fd80, 0x1b32414)
+    	/usr/local/go/src/regexp/regexp.go:170 +0x5a
+    regexp.Compile(...)
+    	/usr/local/go/src/regexp/regexp.go:133
+    regexp.MustCompile(0x1b32414, 0x47, 0x0)
+    	/usr/local/go/src/regexp/regexp.go:309 +0x4b
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.expression(0xc000136098, 0x1, 0x1, 0x1ad58a2)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:115 +0x93
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.anchored(0xc000136098, 0x1, 0x1, 0xc00021b860)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:142 +0x45
+    k8s.io/kubernetes/vendor/github.com/docker/distribution/reference.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/docker/distribution/reference/regexp.go:48 +0x705
+    
+    goroutine 18 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
