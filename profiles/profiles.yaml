@@ -12,18 +12,18 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 9 already; errno=11)
+    runtime: failed to create new OS thread (have 10 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000088400)
+    runtime.newosproc(0xc000580400)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000088400)
+    runtime.newm1(0xc000580400)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000052800, 0x8)
+    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
     runtime.startm(0x0, 0x426301)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
@@ -33,36 +33,20 @@ spec:
     	/usr/local/go/src/runtime/proc.go:2533 +0x59
     runtime.schedule()
     	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc000001080)
+    runtime.park_m(0xc000352900)
     	/usr/local/go/src/runtime/proc.go:2845 +0x9d
     runtime.mcall(0x0)
     	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
     
     goroutine 1 [runnable, locked to thread]:
-    reflect.haveIdenticalUnderlyingType(0xc000312000, 0xc0002a5b60, 0xc000651401, 0x1819ac0)
-    	/usr/local/go/src/reflect/type.go:1595 +0xa4b
-    reflect.FuncOf(0xc0000b6020, 0x2, 0x2, 0x2a9d9d0, 0x0, 0x0, 0x2a6cc00, 0x0, 0x0)
-    	/usr/local/go/src/reflect/type.go:2005 +0x531
-    reflect.(*rtype).Method(0x1aafcc0, 0x4, 0x179638b, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
-    	/usr/local/go/src/reflect/type.go:824 +0x50b
-    reflect.(*rtype).MethodByName(0x1aafcc0, 0x1acde06, 0xc, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
-    	/usr/local/go/src/reflect/type.go:846 +0x1d8
-    reflect.Value.MethodByName(0x1aafcc0, 0xc000694600, 0x16, 0x1acde06, 0xc, 0xc000420a50, 0x0, 0x1)
-    	/usr/local/go/src/reflect/value.go:1359 +0x7e
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*Scheme).AddKnownTypeWithName(0xc0005cdb90, 0x1ac683f, 0x6, 0x1ac8533, 0x7, 0x17c508b, 0x11, 0x1cf5b40, 0xc000694600)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme.go:212 +0x6b1
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*Scheme).AddKnownTypes(0xc0005cdb90, 0x1ac683f, 0x6, 0x1ac8533, 0x7, 0xc00071fb80, 0x5, 0x5)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme.go:176 +0x25a
-    k8s.io/kubernetes/vendor/k8s.io/api/policy/v1beta1.addKnownTypes(0xc0005cdb90, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/api/policy/v1beta1/register.go:46 +0x1ab
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*SchemeBuilder).AddToScheme(0x2a63cb0, 0xc0005cdb90, 0x0, 0x0)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme_builder.go:29 +0x6d
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime.(*SchemeBuilder).AddToScheme(0x2a4b870, 0xc0005cdb90, 0x17cd9d9, 0x19)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/scheme_builder.go:29 +0x6d
-    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/scheme.init.0()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/scheme/install.go:64 +0x32c
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.normalizer.markdown(0xc0002cfe00, 0x171, 0xc0002cfe00, 0x171)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:73 +0x73
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates.LongDesc(0x1b763a3, 0x178, 0x0, 0x0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/util/templates/normalizers.go:34 +0x6f
+    k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/autoscale.init()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/kubectl/pkg/cmd/autoscale/autoscale.go:42 +0x65
     
-    goroutine 18 [chan receive]:
+    goroutine 6 [chan receive]:
     k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
     	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
     created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
