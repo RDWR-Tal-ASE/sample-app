@@ -8,238 +8,267 @@ metadata:
 spec:
   policies:
   - classifiers:
-    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7f1708f41f47 m=3 sigcode=18446744073709551610
+    
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7f1708f41f47
+    stack: frame={sp:0x7f1703ffe810, fp:0x0} stack=[0x7f17037ff290,0x7f1703ffee90)
+    00007f1703ffe710:  0000000000000000  0000000000000000 
+    00007f1703ffe720:  0000000000000000  0000000000000000 
+    00007f1703ffe730:  0000000000000000  0000000000000000 
+    00007f1703ffe740:  0000007e0000007d  000000800000007f 
+    00007f1703ffe750:  00007f16fc000010  00007f16fc000010 
+    00007f1703ffe760:  000000000000000e  000000000000000e 
+    00007f1703ffe770:  0000000000000000  0000000000000000 
+    00007f1703ffe780:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe790:  0000000400000004  0000000400000004 
+    00007f1703ffe7a0:  00007f16fc000800  00007f16fc000800 
+    00007f1703ffe7b0:  0000000000000000  0000000000000000 
+    00007f1703ffe7c0:  0000000000000000  0000000000000000 
+    00007f1703ffe7d0:  0000000000000000  0000000000000000 
+    00007f1703ffe7e0:  0000000000000000  000000c420000180 
+    00007f1703ffe7f0:  0000000000000000  0000564dc398af31 <runtime.goexit+1> 
+    00007f1703ffe800:  0000000000000000  0000000000000000 
+    00007f1703ffe810: <0000000000000000  0000000000000000 
+    00007f1703ffe820:  0000000000000000  0000000000000000 
+    00007f1703ffe830:  0000000000000000  0000000000000000 
+    00007f1703ffe840:  0000000000000000  0000000000000000 
+    00007f1703ffe850:  0000000000000000  0000000000000000 
+    00007f1703ffe860:  0000000000000000  0000000000000000 
+    00007f1703ffe870:  0000000000000000  0000000000000000 
+    00007f1703ffe880:  0000000000000002  0000000000000000 
+    00007f1703ffe890:  fffffffe7fffffff  ffffffffffffffff 
+    00007f1703ffe8a0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8b0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe900:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f1708f41f47
+    stack: frame={sp:0x7f1703ffe810, fp:0x0} stack=[0x7f17037ff290,0x7f1703ffee90)
+    00007f1703ffe710:  0000000000000000  0000000000000000 
+    00007f1703ffe720:  0000000000000000  0000000000000000 
+    00007f1703ffe730:  0000000000000000  0000000000000000 
+    00007f1703ffe740:  0000007e0000007d  000000800000007f 
+    00007f1703ffe750:  00007f16fc000010  00007f16fc000010 
+    00007f1703ffe760:  000000000000000e  000000000000000e 
+    00007f1703ffe770:  0000000000000000  0000000000000000 
+    00007f1703ffe780:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe790:  0000000400000004  0000000400000004 
+    00007f1703ffe7a0:  00007f16fc000800  00007f16fc000800 
+    00007f1703ffe7b0:  0000000000000000  0000000000000000 
+    00007f1703ffe7c0:  0000000000000000  0000000000000000 
+    00007f1703ffe7d0:  0000000000000000  0000000000000000 
+    00007f1703ffe7e0:  0000000000000000  000000c420000180 
+    00007f1703ffe7f0:  0000000000000000  0000564dc398af31 <runtime.goexit+1> 
+    00007f1703ffe800:  0000000000000000  0000000000000000 
+    00007f1703ffe810: <0000000000000000  0000000000000000 
+    00007f1703ffe820:  0000000000000000  0000000000000000 
+    00007f1703ffe830:  0000000000000000  0000000000000000 
+    00007f1703ffe840:  0000000000000000  0000000000000000 
+    00007f1703ffe850:  0000000000000000  0000000000000000 
+    00007f1703ffe860:  0000000000000000  0000000000000000 
+    00007f1703ffe870:  0000000000000000  0000000000000000 
+    00007f1703ffe880:  0000000000000002  0000000000000000 
+    00007f1703ffe890:  fffffffe7fffffff  ffffffffffffffff 
+    00007f1703ffe8a0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8b0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f1703ffe900:  ffffffffffffffff  ffffffffffffffff 
+    
+    goroutine 1 [chan receive, locked to thread]:
+    runtime.gopark(0x564dc4653a60, 0xc4200380c8, 0x564dc4031704, 0xc, 0xc42003ce17, 0x3)
+    	/usr/lib/go-1.10/src/runtime/proc.go:291 +0x120
+    runtime.goparkunlock(0xc4200380c8, 0x564dc4031704, 0xc, 0x17, 0x3)
+    	/usr/lib/go-1.10/src/runtime/proc.go:297 +0x60
+    runtime.chanrecv(0xc420038070, 0x0, 0x1, 0x564dc394a8aa)
+    	/usr/lib/go-1.10/src/runtime/chan.go:518 +0x2f6
+    runtime.chanrecv1(0xc420038070, 0x0)
+    	/usr/lib/go-1.10/src/runtime/chan.go:400 +0x2b
+    runtime.gcenable()
+    	/usr/lib/go-1.10/src/runtime/mgc.go:217 +0x71
+    runtime.main()
+    	/usr/lib/go-1.10/src/runtime/proc.go:161 +0x126
+    runtime.goexit()
+    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:2361 +0x1
+    
+    rax    0x0
+    rbx    0x7f17092ef840
+    rcx    0x7f1708f41f47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7f1703ffe810
+    rbp    0x564dc415932a
+    rsp    0x7f1703ffe810
+    r8     0x0
+    r9     0x7f1703ffe810
+    r10    0x8
+    r11    0x246
+    r12    0x564dc4cc23f0
+    r13    0xf1
+    r14    0x11
+    r15    0x0
+    rip    0x7f1708f41f47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
-    runtime: failed to create new OS thread (have 9 already; errno=11)
+    runtime: failed to create new OS thread (have 3 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000182000)
+    runtime.newosproc(0xc000062400)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000182000)
+    runtime.newm1(0xc000062400)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000052800, 0x8)
+    runtime.newm(0x1bb7c48, 0xc000048800, 0x2)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
+    runtime.startm(0x0, 0xc000046001)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
-    runtime.resetspinning()
-    	/usr/local/go/src/runtime/proc.go:2533 +0x59
-    runtime.schedule()
-    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc00031b980)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
-    runtime.mcall(0x0)
-    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    runtime.newproc.func1()
+    	/usr/local/go/src/runtime/proc.go:3555 +0x97
+    runtime.systemstack(0x46c2f4)
+    	/usr/local/go/src/runtime/asm_amd64.s:370 +0x66
+    runtime.mstart()
+    	/usr/local/go/src/runtime/proc.go:1116
     
-    goroutine 1 [runnable, locked to thread]:
-    regexp/syntax.(*compiler).inst(...)
-    	/usr/local/go/src/regexp/syntax/compile.go:163
-    regexp/syntax.(*compiler).rune(0xc00085fc20, 0xc00036cdc0, 0xa, 0x10, 0xc0008400d4, 0x8a1551, 0xa6000000a6)
-    	/usr/local/go/src/regexp/syntax/compile.go:257 +0x291
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004ae5b0, 0xb2, 0x16300000053)
-    	/usr/local/go/src/regexp/syntax/compile.go:109 +0x36b
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7a40, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:144 +0xbbb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7ab0, 0x10a00000085, 0x1650000010a)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7b20, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7b90, 0x10800000084, 0x16700000108)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7c00, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7c70, 0x10600000083, 0x16900000106)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7ce0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7d50, 0x10400000082, 0x16b00000104)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7dc0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7e30, 0x10200000081, 0x16d00000102)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7ea0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7f10, 0x10000000080, 0x16f00000100)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0004b7f80, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500000, 0xfe0000007f, 0x171000000fe)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500070, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005000e0, 0xfc0000007e, 0x173000000fc)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500150, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005001c0, 0xfa0000007d, 0x175000000fa)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500230, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005002a0, 0xf80000007c, 0x177000000f8)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500310, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500380, 0xf60000007b, 0x179000000f6)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005003f0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500460, 0xf40000007a, 0x17b000000f4)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005004d0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500540, 0xf200000079, 0x17d000000f2)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005005b0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500620, 0xf000000078, 0x17f000000f0)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500690, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500700, 0xee00000077, 0x181000000ee)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500770, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005007e0, 0xec00000076, 0x183000000ec)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500850, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005008c0, 0xea00000075, 0x185000000ea)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500930, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005009a0, 0xe800000074, 0x187000000e8)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500a10, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500a80, 0xe600000073, 0x189000000e6)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500af0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500b60, 0xe400000072, 0x18b000000e4)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500bd0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500c40, 0xe200000071, 0x18d000000e2)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500cb0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500d20, 0xe000000070, 0x18f000000e0)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500d90, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500e00, 0xde0000006f, 0x191000000de)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500e70, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500ee0, 0xdc0000006e, 0x193000000dc)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500f50, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000500fc0, 0xda0000006d, 0x195000000da)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501030, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005010a0, 0xd80000006c, 0x197000000d8)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501110, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501180, 0xd60000006b, 0x199000000d6)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005011f0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501260, 0xd40000006a, 0x19b000000d4)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005012d0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501340, 0xd200000069, 0x19d000000d2)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005013b0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501420, 0xd000000068, 0x19f000000d0)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501490, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501500, 0xce00000067, 0x1a1000000ce)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501570, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005015e0, 0xcc00000066, 0x1a3000000cc)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501650, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005016c0, 0xca00000065, 0x1a5000000ca)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501730, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005017a0, 0xc800000064, 0x1a7000000c8)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501810, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501880, 0xc600000063, 0x1a9000000c6)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005018f0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501960, 0xc400000062, 0x1ab000000c4)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005019d0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501a40, 0xc200000061, 0x1ad000000c2)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501ab0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501b20, 0xc000000060, 0x1af000000c0)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501b90, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501c00, 0xbe0000005f, 0x1b1000000be)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501c70, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501ce0, 0xbc0000005e, 0x1b3000000bc)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501d50, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501dc0, 0xba0000005d, 0x1b5000000ba)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501e30, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501ea0, 0xb80000005c, 0x1b7000000b8)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501f10, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000501f80, 0xb60000005b, 0x1b9000000b6)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000502000, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000502070, 0xb40000005a, 0x1bb000000b4)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005020e0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000502150, 0xb200000059, 0x1bd000000b2)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005021c0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000502230, 0xb000000058, 0x1bf000000b0)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc0005022a0, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000502310, 0xae00000057, 0x1c1000000ae)
-    	/usr/local/go/src/regexp/syntax/compile.go:136 +0xee6
-    regexp/syntax.(*compiler).compile(0xc00085fc20, 0xc000502380, 0xa, 0x10)
-    	/usr/local/go/src/regexp/syntax/compile.go:146 +0xbeb
+    goroutine 1 [running, locked to thread]:
+    runtime.systemstack_switch()
+    	/usr/local/go/src/runtime/asm_amd64.s:330 fp=0xc00005e6f0 sp=0xc00005e6e8 pc=0x46c420
+    runtime.newproc(0x0, 0x1bb7b08)
+    	/usr/local/go/src/runtime/proc.go:3548 +0x6e fp=0xc00005e738 sp=0xc00005e6f0 pc=0x44210e
+    runtime.init.6()
+    	/usr/local/go/src/runtime/proc.go:243 +0x35 fp=0xc00005e758 sp=0xc00005e738 pc=0x439df5
+    runtime.doInit(0x2881120)
+    	/usr/local/go/src/runtime/proc.go:5646 +0x8a fp=0xc00005e788 sp=0xc00005e758 pc=0x446f8a
+    runtime.main()
+    	/usr/local/go/src/runtime/proc.go:151 +0xd9 fp=0xc00005e7e0 sp=0xc00005e788 pc=0x439b19
+    runtime.goexit()
+    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1 fp=0xc00005e7e8 sp=0xc00005e7e0 pc=0x46e061
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7fd0cc64ff47 m=0 sigcode=18446744073709551610
     
-    goroutine 18 [chan receive]:
-    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
-    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
-    internal error, please report: running "yq" failed: timeout waiting for snap system profiles to get updated
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7fd0cc64ff47
+    stack: frame={sp:0x7ffe7c16b840, fp:0x0} stack=[0x7ffe7b96cee0,0x7ffe7c16bf10)
+    00007ffe7c16b740:  0000564558f4d683 <runtime.main+883>  000000000030da24 
+    00007ffe7c16b750:  0000029300000002  0000005000000000 
+    00007ffe7c16b760:  000000000030da24  00007ffe7c16b818 
+    00007ffe7c16b770:  0000564558f68936 <runtime.pcvalue+342>  0000564559cdb828 
+    00007ffe7c16b780:  00000000002f742e  00000000002f742e 
+    00007ffe7c16b790:  00007ffe7c16b7d0  00007ffe7c16b7cc 
+    00007ffe7c16b7a0:  0000564559fef301  0000564559cdb82a 
+    00007ffe7c16b7b0:  00000000002f742c  00000000002f742c 
+    00007ffe7c16b7c0:  0000000000000001  0000000040000000 
+    00007ffe7c16b7d0:  00007ffe7c16b888  0000564558f6375f <runtime.adjustframe+175> 
+    00007ffe7c16b7e0:  0000564559cdb7f0  0000564559fef3c0 
+    00007ffe7c16b7f0:  00007ffe00000000  0000564558f78f30 <runtime.goexit+0> 
+    00007ffe7c16b800:  00007ffe7c16bc40  00000000ffffffff 
+    00007ffe7c16b810:  000000007c16b7a0  0000564558f78f30 <runtime.goexit+0> 
+    00007ffe7c16b820:  0000564558f691c1 <runtime.funcspdelta+97>  0000564559cdb7f0 
+    00007ffe7c16b830:  0000564559fef3c0  00007ffe0006f548 
+    00007ffe7c16b840: <0000000000000000  00007ffe7c16b9a0 
+    00007ffe7c16b850:  00005645596d5201  0000564559cdb7f0 
+    00007ffe7c16b860:  0000564559fef3c0  0000000000000000 
+    00007ffe7c16b870:  0000000000000000  0000564558f78f31 <runtime.goexit+1> 
+    00007ffe7c16b880:  0000564559fef3c0  00007ffe7c16bb90 
+    00007ffe7c16b890:  0000564558f6d962 <runtime.gentraceback+4850>  00007ffe7c16bb38 
+    00007ffe7c16b8a0:  00007ffe7c16bc28  0000564559fef301 
+    00007ffe7c16b8b0:  00007ffe7c16b901  0000000000000000 
+    00007ffe7c16b8c0:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffe7c16b8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b900:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b910:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b920:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b930:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7fd0cc64ff47
+    stack: frame={sp:0x7ffe7c16b840, fp:0x0} stack=[0x7ffe7b96cee0,0x7ffe7c16bf10)
+    00007ffe7c16b740:  0000564558f4d683 <runtime.main+883>  000000000030da24 
+    00007ffe7c16b750:  0000029300000002  0000005000000000 
+    00007ffe7c16b760:  000000000030da24  00007ffe7c16b818 
+    00007ffe7c16b770:  0000564558f68936 <runtime.pcvalue+342>  0000564559cdb828 
+    00007ffe7c16b780:  00000000002f742e  00000000002f742e 
+    00007ffe7c16b790:  00007ffe7c16b7d0  00007ffe7c16b7cc 
+    00007ffe7c16b7a0:  0000564559fef301  0000564559cdb82a 
+    00007ffe7c16b7b0:  00000000002f742c  00000000002f742c 
+    00007ffe7c16b7c0:  0000000000000001  0000000040000000 
+    00007ffe7c16b7d0:  00007ffe7c16b888  0000564558f6375f <runtime.adjustframe+175> 
+    00007ffe7c16b7e0:  0000564559cdb7f0  0000564559fef3c0 
+    00007ffe7c16b7f0:  00007ffe00000000  0000564558f78f30 <runtime.goexit+0> 
+    00007ffe7c16b800:  00007ffe7c16bc40  00000000ffffffff 
+    00007ffe7c16b810:  000000007c16b7a0  0000564558f78f30 <runtime.goexit+0> 
+    00007ffe7c16b820:  0000564558f691c1 <runtime.funcspdelta+97>  0000564559cdb7f0 
+    00007ffe7c16b830:  0000564559fef3c0  00007ffe0006f548 
+    00007ffe7c16b840: <0000000000000000  00007ffe7c16b9a0 
+    00007ffe7c16b850:  00005645596d5201  0000564559cdb7f0 
+    00007ffe7c16b860:  0000564559fef3c0  0000000000000000 
+    00007ffe7c16b870:  0000000000000000  0000564558f78f31 <runtime.goexit+1> 
+    00007ffe7c16b880:  0000564559fef3c0  00007ffe7c16bb90 
+    00007ffe7c16b890:  0000564558f6d962 <runtime.gentraceback+4850>  00007ffe7c16bb38 
+    00007ffe7c16b8a0:  00007ffe7c16bc28  0000564559fef301 
+    00007ffe7c16b8b0:  00007ffe7c16b901  0000000000000000 
+    00007ffe7c16b8c0:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffe7c16b8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b900:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b910:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b920:  ffffffffffffffff  ffffffffffffffff 
+    00007ffe7c16b930:  ffffffffffffffff  ffffffffffffffff 
+    
+    goroutine 1 [chan receive, locked to thread]:
+    runtime.gopark(0x564559c41a60, 0xc4200380c8, 0x56455961f704, 0xc, 0xc42003ce17, 0x3)
+    	/usr/lib/go-1.10/src/runtime/proc.go:291 +0x120
+    runtime.goparkunlock(0xc4200380c8, 0x56455961f704, 0xc, 0x17, 0x3)
+    	/usr/lib/go-1.10/src/runtime/proc.go:297 +0x60
+    runtime.chanrecv(0xc420038070, 0x0, 0x1, 0x564558f388aa)
+    	/usr/lib/go-1.10/src/runtime/chan.go:518 +0x2f6
+    runtime.chanrecv1(0xc420038070, 0x0)
+    	/usr/lib/go-1.10/src/runtime/chan.go:400 +0x2b
+    runtime.gcenable()
+    	/usr/lib/go-1.10/src/runtime/mgc.go:217 +0x71
+    runtime.main()
+    	/usr/lib/go-1.10/src/runtime/proc.go:161 +0x126
+    runtime.goexit()
+    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:2361 +0x1
+    
+    rax    0x0
+    rbx    0x7fd0cc9fd840
+    rcx    0x7fd0cc64ff47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7ffe7c16b840
+    rbp    0x56455974732a
+    rsp    0x7ffe7c16b840
+    r8     0x0
+    r9     0x7ffe7c16b840
+    r10    0x8
+    r11    0x246
+    r12    0x56455babc540
+    r13    0xf1
+    r14    0x11
+    r15    0x0
+    rip    0x7fd0cc64ff47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
