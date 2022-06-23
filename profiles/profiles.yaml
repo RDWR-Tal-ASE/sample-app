@@ -8,106 +8,120 @@ metadata:
 spec:
   policies:
   - classifiers:
-    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
     runtime/cgo: pthread_create failed: Resource temporarily unavailable
     SIGABRT: abort
-    PC=0x7facfefb2f47 m=0 sigcode=18446744073709551610
+    PC=0x7f995f082f47 m=0 sigcode=18446744073709551610
     
     goroutine 0 [idle]:
-    runtime: unknown pc 0x7facfefb2f47
-    stack: frame={sp:0x7ffd1cd3fcd0, fp:0x0} stack=[0x7ffd1c541510,0x7ffd1cd40540)
-    00007ffd1cd3fbd0:  00007ffd1cd3fc00  00007ffd1cd3fc10 
-    00007ffd1cd3fbe0:  00007facff7a3358  0000000000000000 
-    00007ffd1cd3fbf0:  00007facff7a3a48  0000000000000000 
-    00007ffd1cd3fc00:  00000000ffffffff  00007facff7a34f0 
-    00007ffd1cd3fc10:  00007facff584690  00007facff7ac9f0 
-    00007ffd1cd3fc20:  00007facff7a3358  00007ffd1cd3fd68 
-    00007ffd1cd3fc30:  00007facff7a3ca8  00007facff7a3000 
-    00007ffd1cd3fc40:  0000000000000000  00007facff58f23f 
-    00007ffd1cd3fc50:  0000000000000002  00007facff57f278 
-    00007ffd1cd3fc60:  00007ffd1cd40130  0000000000001000 
-    00007ffd1cd3fc70:  00007ffd1cd401c0  0000564b080123f0 
-    00007ffd1cd3fc80:  00007ffd1cd401c0  00007facff593f13 
-    00007ffd1cd3fc90:  0000000000000005  0000000000000000 
-    00007ffd1cd3fca0:  00007facff7a3358  00007facff584690 
-    00007ffd1cd3fcb0:  00007ffd1cd40050  00007facff59b75a 
-    00007ffd1cd3fcc0:  0000564b08012420  0000564b08012500 
-    00007ffd1cd3fcd0: <0000000000000000  0000000000000000 
-    00007ffd1cd3fce0:  00007facfe772700  0000000000000000 
-    00007ffd1cd3fcf0:  0000000000001000  ffffffff00000000 
-    00007ffd1cd3fd00:  000000000030d984  00007ffd1cd3fdb8 
-    00007ffd1cd3fd10:  0000564b05f13936 <runtime.pcvalue+342>  0000ffff00001fa0 
-    00007ffd1cd3fd20:  000000000030d984  000000000030d985 
-    00007ffd1cd3fd30:  00007ffd1cd3fd70  00007ffd1cd3fd6c 
-    00007ffd1cd3fd40:  00007ffd1cd40200  0000564b06c702d4 
-    00007ffd1cd3fd50:  fffffffe7fffffff  ffffffffffffffff 
-    00007ffd1cd3fd60:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fd70:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fd80:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fd90:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fda0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fdb0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fdc0:  ffffffffffffffff  ffffffffffffffff 
-    runtime: unknown pc 0x7facfefb2f47
-    stack: frame={sp:0x7ffd1cd3fcd0, fp:0x0} stack=[0x7ffd1c541510,0x7ffd1cd40540)
-    00007ffd1cd3fbd0:  00007ffd1cd3fc00  00007ffd1cd3fc10 
-    00007ffd1cd3fbe0:  00007facff7a3358  0000000000000000 
-    00007ffd1cd3fbf0:  00007facff7a3a48  0000000000000000 
-    00007ffd1cd3fc00:  00000000ffffffff  00007facff7a34f0 
-    00007ffd1cd3fc10:  00007facff584690  00007facff7ac9f0 
-    00007ffd1cd3fc20:  00007facff7a3358  00007ffd1cd3fd68 
-    00007ffd1cd3fc30:  00007facff7a3ca8  00007facff7a3000 
-    00007ffd1cd3fc40:  0000000000000000  00007facff58f23f 
-    00007ffd1cd3fc50:  0000000000000002  00007facff57f278 
-    00007ffd1cd3fc60:  00007ffd1cd40130  0000000000001000 
-    00007ffd1cd3fc70:  00007ffd1cd401c0  0000564b080123f0 
-    00007ffd1cd3fc80:  00007ffd1cd401c0  00007facff593f13 
-    00007ffd1cd3fc90:  0000000000000005  0000000000000000 
-    00007ffd1cd3fca0:  00007facff7a3358  00007facff584690 
-    00007ffd1cd3fcb0:  00007ffd1cd40050  00007facff59b75a 
-    00007ffd1cd3fcc0:  0000564b08012420  0000564b08012500 
-    00007ffd1cd3fcd0: <0000000000000000  0000000000000000 
-    00007ffd1cd3fce0:  00007facfe772700  0000000000000000 
-    00007ffd1cd3fcf0:  0000000000001000  ffffffff00000000 
-    00007ffd1cd3fd00:  000000000030d984  00007ffd1cd3fdb8 
-    00007ffd1cd3fd10:  0000564b05f13936 <runtime.pcvalue+342>  0000ffff00001fa0 
-    00007ffd1cd3fd20:  000000000030d984  000000000030d985 
-    00007ffd1cd3fd30:  00007ffd1cd3fd70  00007ffd1cd3fd6c 
-    00007ffd1cd3fd40:  00007ffd1cd40200  0000564b06c702d4 
-    00007ffd1cd3fd50:  fffffffe7fffffff  ffffffffffffffff 
-    00007ffd1cd3fd60:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fd70:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fd80:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fd90:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fda0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fdb0:  ffffffffffffffff  ffffffffffffffff 
-    00007ffd1cd3fdc0:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f995f082f47
+    stack: frame={sp:0x7ffd46cfc7d0, fp:0x0} stack=[0x7ffd464fde10,0x7ffd46cfce50)
+    00007ffd46cfc6d0:  0000000000000005  0000ffff00001fa0 
+    00007ffd46cfc6e0:  00007ffd46cfcbe0  0000558df1f5dfc0 
+    00007ffd46cfc6f0:  0000000000000000  0000558def8c1d10 
+    00007ffd46cfc700:  0000000000000000  00007f995f663f13 
+    00007ffd46cfc710:  0000000000000005  0000000000000000 
+    00007ffd46cfc720:  0000000000000000  00007f995f054ce0 
+    00007ffd46cfc730:  00007ffd46cfcaf0  00007f995f66b75a 
+    00007ffd46cfc740:  0000000000000000  0000000000000000 
+    00007ffd46cfc750:  0000000000000000  00007ffd46cfcbe0 
+    00007ffd46cfc760:  2525252525252525  2525252525252525 
+    00007ffd46cfc770:  00000000000000ff  0000000000000000 
+    00007ffd46cfc780:  00000000000000ff  0000000000000000 
+    00007ffd46cfc790:  000000000000ff00  0000000000000000 
+    00007ffd46cfc7a0:  0000558def1a849a <net.unixSocket+314>  0000558defec0300 
+    00007ffd46cfc7b0:  0000000000000000  0000000000000000 
+    00007ffd46cfc7c0:  0000000000000000  0000000000000000 
+    00007ffd46cfc7d0: <0000000000000000  0000000000000000 
+    00007ffd46cfc7e0:  20636f6c6c616d00  203a64656c696166 
+    00007ffd46cfc7f0:  0000000000000000  0000000000000000 
+    00007ffd46cfc800:  000000c000334280  000000c00038e000 
+    00007ffd46cfc810:  0000000000000000  0000000000000000 
+    00007ffd46cfc820:  0000000000000000  0000000000000000 
+    00007ffd46cfc830:  732d70616e732f64  203a706d6f636365 
+    00007ffd46cfc840:  656372756f736572  61726f706d657420 
+    00007ffd46cfc850:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffd46cfc860:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc870:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc880:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc890:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc8a0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc8b0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc8c0:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f995f082f47
+    stack: frame={sp:0x7ffd46cfc7d0, fp:0x0} stack=[0x7ffd464fde10,0x7ffd46cfce50)
+    00007ffd46cfc6d0:  0000000000000005  0000ffff00001fa0 
+    00007ffd46cfc6e0:  00007ffd46cfcbe0  0000558df1f5dfc0 
+    00007ffd46cfc6f0:  0000000000000000  0000558def8c1d10 
+    00007ffd46cfc700:  0000000000000000  00007f995f663f13 
+    00007ffd46cfc710:  0000000000000005  0000000000000000 
+    00007ffd46cfc720:  0000000000000000  00007f995f054ce0 
+    00007ffd46cfc730:  00007ffd46cfcaf0  00007f995f66b75a 
+    00007ffd46cfc740:  0000000000000000  0000000000000000 
+    00007ffd46cfc750:  0000000000000000  00007ffd46cfcbe0 
+    00007ffd46cfc760:  2525252525252525  2525252525252525 
+    00007ffd46cfc770:  00000000000000ff  0000000000000000 
+    00007ffd46cfc780:  00000000000000ff  0000000000000000 
+    00007ffd46cfc790:  000000000000ff00  0000000000000000 
+    00007ffd46cfc7a0:  0000558def1a849a <net.unixSocket+314>  0000558defec0300 
+    00007ffd46cfc7b0:  0000000000000000  0000000000000000 
+    00007ffd46cfc7c0:  0000000000000000  0000000000000000 
+    00007ffd46cfc7d0: <0000000000000000  0000000000000000 
+    00007ffd46cfc7e0:  20636f6c6c616d00  203a64656c696166 
+    00007ffd46cfc7f0:  0000000000000000  0000000000000000 
+    00007ffd46cfc800:  000000c000334280  000000c00038e000 
+    00007ffd46cfc810:  0000000000000000  0000000000000000 
+    00007ffd46cfc820:  0000000000000000  0000000000000000 
+    00007ffd46cfc830:  732d70616e732f64  203a706d6f636365 
+    00007ffd46cfc840:  656372756f736572  61726f706d657420 
+    00007ffd46cfc850:  fffffffe7fffffff  ffffffffffffffff 
+    00007ffd46cfc860:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc870:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc880:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc890:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc8a0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc8b0:  ffffffffffffffff  ffffffffffffffff 
+    00007ffd46cfc8c0:  ffffffffffffffff  ffffffffffffffff 
     
-    goroutine 1 [runnable, locked to thread]:
-    runtime.gcenable()
-    	/usr/lib/go-1.10/src/runtime/mgc.go:214 +0x87
-    runtime.main()
-    	/usr/lib/go-1.10/src/runtime/proc.go:161 +0x126
-    runtime.goexit()
-    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:2361 +0x1
+    goroutine 1 [runnable]:
+    github.com/snapcore/snapd/client.(*Client).do(0xc00010ea80, 0x558def715ee7, 0x3, 0x558def71fd78, 0xf, 0x0, 0x0, 0x0, 0x0, 0x558defd6ff40, ...)
+    	/build/snapd/parts/snapd-deb/build/client/client.go:394 +0x2f9
+    github.com/snapcore/snapd/client.(*Client).doSyncWithOpts(0xc00010ea80, 0x558def715ee7, 0x3, 0x558def71fd78, 0xf, 0x0, 0x0, 0x0, 0x0, 0x558defd0b9a0, ...)
+    	/build/snapd/parts/snapd-deb/build/client/client.go:492 +0xf6
+    github.com/snapcore/snapd/client.(*Client).SysInfo(0xc00010ea80, 0x46, 0x0, 0x0)
+    	/build/snapd/parts/snapd-deb/build/client/client.go:727 +0xd4
+    main.maybeWaitForSecurityProfileRegeneration(0xc00010ea80, 0xc000334280, 0xd)
+    	/build/snapd/parts/snapd-deb/build/cmd/snap/cmd_run.go:200 +0x1aa
+    main.(*cmdRun).Execute(0xc00023feb8, 0xc000032190, 0x2, 0x3, 0x0, 0x0)
+    	/build/snapd/parts/snapd-deb/build/cmd/snap/cmd_run.go:240 +0x172
+    main.main()
+    	/build/snapd/parts/snapd-deb/build/cmd/snap/main.go:482 +0x581
+    
+    goroutine 6 [syscall]:
+    os/signal.signal_recv(0x0)
+    	/usr/lib/go-1.13/src/runtime/sigqueue.go:147 +0x9e
+    os/signal.loop()
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:23 +0x24
+    created by os/signal.init.0
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:29 +0x43
     
     rax    0x0
-    rbx    0x7facff360840
-    rcx    0x7facfefb2f47
+    rbx    0x7f995f430840
+    rcx    0x7f995f082f47
     rdx    0x0
     rdi    0x2
-    rsi    0x7ffd1cd3fcd0
-    rbp    0x564b066f232a
-    rsp    0x7ffd1cd3fcd0
+    rsi    0x7ffd46cfc7d0
+    rbp    0x558def8dbe7c
+    rsp    0x7ffd46cfc7d0
     r8     0x0
-    r9     0x7ffd1cd3fcd0
+    r9     0x7ffd46cfc7d0
     r10    0x8
     r11    0x246
-    r12    0x564b08012540
-    r13    0xf1
-    r14    0x11
+    r12    0x558df1f5dfc0
+    r13    0x0
+    r14    0x558def8c1d10
     r15    0x0
-    rip    0x7facfefb2f47
+    rip    0x7f995f082f47
     rflags 0x246
     cs     0x33
     fs     0x0
@@ -115,151 +129,209 @@ spec:
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    runtime: failed to create new OS thread (have 3 already; errno=11)
+    runtime: failed to create new OS thread (have 6 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000062400)
+    runtime.newosproc(0xc0002e6800)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000062400)
+    runtime.newm1(0xc0002e6800)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000048800, 0x2)
+    runtime.newm(0x1bb7c48, 0xc000048800, 0x5)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0xc000046001)
+    runtime.startm(0x0, 0xc000099f01)
     	/usr/local/go/src/runtime/proc.go:1973 +0xc9
     runtime.wakep()
     	/usr/local/go/src/runtime/proc.go:2061 +0x66
-    runtime.newproc.func1()
-    	/usr/local/go/src/runtime/proc.go:3555 +0x97
-    runtime.systemstack(0x46c2f4)
-    	/usr/local/go/src/runtime/asm_amd64.s:370 +0x66
-    runtime.mstart()
-    	/usr/local/go/src/runtime/proc.go:1116
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.park_m(0xc000001080)
+    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
+    runtime.mcall(0x0)
+    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
     
-    goroutine 1 [running, locked to thread]:
-    runtime.systemstack_switch()
-    	/usr/local/go/src/runtime/asm_amd64.s:330 fp=0xc00005e6f0 sp=0xc00005e6e8 pc=0x46c420
-    runtime.newproc(0x0, 0x1bb7b08)
-    	/usr/local/go/src/runtime/proc.go:3548 +0x6e fp=0xc00005e738 sp=0xc00005e6f0 pc=0x44210e
-    runtime.init.6()
-    	/usr/local/go/src/runtime/proc.go:243 +0x35 fp=0xc00005e758 sp=0xc00005e738 pc=0x439df5
-    runtime.doInit(0x2881120)
-    	/usr/local/go/src/runtime/proc.go:5646 +0x8a fp=0xc00005e788 sp=0xc00005e758 pc=0x446f8a
-    runtime.main()
-    	/usr/local/go/src/runtime/proc.go:151 +0xd9 fp=0xc00005e7e0 sp=0xc00005e788 pc=0x439b19
-    runtime.goexit()
-    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1 fp=0xc00005e7e8 sp=0xc00005e7e0 pc=0x46e061
-    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    goroutine 1 [syscall, locked to thread]:
+    encoding/json.Unmarshal(0xc0003c0e40, 0x3e, 0xafc0, 0x1811e60, 0xc0003fc4e0, 0x0, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:100 +0x31
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc0004a38c0, 0xc0003c0e40, 0x3e, 0xafc0, 0x7fc61c811b00, 0xc0004a38c0)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:565 +0x18b
+    encoding/json.(*decodeState).object(0xc00049a8f0, 0x19ce1a0, 0xc0004a38c0, 0x199, 0xc00049a918, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
+    encoding/json.(*decodeState).value(0xc00049a8f0, 0x19ce1a0, 0xc0004a38c0, 0x199, 0xc0004b0480, 0x99)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc00049a8f0, 0x18bc100, 0xc0004a3160, 0x195, 0xc00049a918, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc00049a8f0, 0x18bc100, 0xc0004a3160, 0x195, 0x18bc100, 0xc0004a3160)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc00049a8f0, 0x1815520, 0xc0004a2fc0, 0x16, 0xc00049a918, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc00049a8f0, 0x1815520, 0xc0004a2fc0, 0x16, 0xc000422888, 0x6fa8ab)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc00049a8f0, 0x1815520, 0xc0004a2fc0, 0xc00049a918, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc0003c07b5, 0x9e1, 0xb64b, 0x1815520, 0xc0004a2fc0, 0x26, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc0003f3200, 0xc0003c07b5, 0x9e1, 0xb64b, 0x7fc61c811b00, 0xc0003f3200)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
+    encoding/json.(*decodeState).object(0xc0001369a0, 0x19ce1a0, 0xc0003f3200, 0x199, 0xc0001369c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
+    encoding/json.(*decodeState).value(0xc0001369a0, 0x19ce1a0, 0xc0003f3200, 0x199, 0xc0004a2d80, 0x99)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc0001369a0, 0x18e59a0, 0xc000385188, 0x195, 0xc0001369c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc0001369a0, 0x18e59a0, 0xc000385188, 0x195, 0x18e59a0, 0xc000385188)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).object(0xc0001369a0, 0x1815520, 0xc000384fc0, 0x16, 0xc0001369c8, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:765 +0x12fe
+    encoding/json.(*decodeState).value(0xc0001369a0, 0x1815520, 0xc000384fc0, 0x16, 0xc000173548, 0x6fa8ab)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc0001369a0, 0x1815520, 0xc000384fc0, 0xc0001369c8, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc0003bc000, 0x9d38, 0xfe00, 0x1815520, 0xc000384fc0, 0x7fc61c872810, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.(*Schema).UnmarshalJSON(0xc000384d80, 0xc0003bc000, 0x9d38, 0xfe00, 0x7fc61c811b00, 0xc000384d80)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/schema.go:555 +0x8b
+    encoding/json.(*decodeState).object(0xc0001368f0, 0x1a89300, 0xc000384d80, 0x16, 0xc000136918, 0x7b)
+    	/usr/local/go/src/encoding/json/decode.go:609 +0x207c
+    encoding/json.(*decodeState).value(0xc0001368f0, 0x1a89300, 0xc000384d80, 0x16, 0xc000173c18, 0x6fa8ab)
+    	/usr/local/go/src/encoding/json/decode.go:370 +0x6d
+    encoding/json.(*decodeState).unmarshal(0xc0001368f0, 0x1a89300, 0xc000384d80, 0xc000136918, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:180 +0x1ea
+    encoding/json.Unmarshal(0xc0003bc000, 0x9d39, 0xfe00, 0x1a89300, 0xc000384d80, 0x0, 0x0)
+    	/usr/local/go/src/encoding/json/decode.go:107 +0x112
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.Swagger20Schema(0xc000371b30, 0xc000173d68, 0x12e538a)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/spec.go:82 +0xb8
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.MustLoadSwagger20Schema(...)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/spec.go:66
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.initResolutionCache(0xc000371a70, 0xc000371a40)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/cache.go:57 +0x35
+    k8s.io/kubernetes/vendor/github.com/go-openapi/spec.init.0()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/go-openapi/spec/cache.go:51 +0x25
+    
+    goroutine 6 [chan receive]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
+    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
     runtime/cgo: pthread_create failed: Resource temporarily unavailable
     SIGABRT: abort
-    PC=0x7ff8959fef47 m=3 sigcode=18446744073709551610
+    PC=0x7fb9a1258f47 m=4 sigcode=18446744073709551610
     
     goroutine 0 [idle]:
-    runtime: unknown pc 0x7ff8959fef47
-    stack: frame={sp:0x7ff8951bd810, fp:0x0} stack=[0x7ff8949be290,0x7ff8951bde90)
-    00007ff8951bd710:  0000000000000000  0000000000000000 
-    00007ff8951bd720:  0000000000000000  0000000000000000 
-    00007ff8951bd730:  0000000000000000  0000000000000000 
-    00007ff8951bd740:  0000000000000000  0000000000000000 
-    00007ff8951bd750:  0000000000000000  0000000000000000 
-    00007ff8951bd760:  0000000000000000  0000000000000000 
-    00007ff8951bd770:  0000000000000000  0000000000000000 
-    00007ff8951bd780:  0000000000000000  0000000000000000 
-    00007ff8951bd790:  0000000000000000  0000000000000000 
-    00007ff8951bd7a0:  0000000000000000  0000000000000000 
-    00007ff8951bd7b0:  0000000000000000  0000000000000000 
-    00007ff8951bd7c0:  0000000000000000  0000000000000000 
-    00007ff8951bd7d0:  0000000000000000  0000000000000000 
-    00007ff8951bd7e0:  0000000000000000  0000000000000000 
-    00007ff8951bd7f0:  0000000000000000  0000000000000000 
-    00007ff8951bd800:  0000000000000000  0000000000000000 
-    00007ff8951bd810: <0000000000000000  0000000000000000 
-    00007ff8951bd820:  0000000000000000  0000000000000000 
-    00007ff8951bd830:  0000000000000000  0000000000000000 
-    00007ff8951bd840:  0000000000000000  0000000000000000 
-    00007ff8951bd850:  0000000000000000  0000000000000000 
-    00007ff8951bd860:  0000000000000000  0000000000000000 
-    00007ff8951bd870:  0000000000000000  0000000000000000 
-    00007ff8951bd880:  0000000000000000  0000000000000000 
-    00007ff8951bd890:  fffffffe7fffffff  ffffffffffffffff 
-    00007ff8951bd8a0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8b0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8c0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8d0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8e0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8f0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd900:  ffffffffffffffff  ffffffffffffffff 
-    runtime: unknown pc 0x7ff8959fef47
-    stack: frame={sp:0x7ff8951bd810, fp:0x0} stack=[0x7ff8949be290,0x7ff8951bde90)
-    00007ff8951bd710:  0000000000000000  0000000000000000 
-    00007ff8951bd720:  0000000000000000  0000000000000000 
-    00007ff8951bd730:  0000000000000000  0000000000000000 
-    00007ff8951bd740:  0000000000000000  0000000000000000 
-    00007ff8951bd750:  0000000000000000  0000000000000000 
-    00007ff8951bd760:  0000000000000000  0000000000000000 
-    00007ff8951bd770:  0000000000000000  0000000000000000 
-    00007ff8951bd780:  0000000000000000  0000000000000000 
-    00007ff8951bd790:  0000000000000000  0000000000000000 
-    00007ff8951bd7a0:  0000000000000000  0000000000000000 
-    00007ff8951bd7b0:  0000000000000000  0000000000000000 
-    00007ff8951bd7c0:  0000000000000000  0000000000000000 
-    00007ff8951bd7d0:  0000000000000000  0000000000000000 
-    00007ff8951bd7e0:  0000000000000000  0000000000000000 
-    00007ff8951bd7f0:  0000000000000000  0000000000000000 
-    00007ff8951bd800:  0000000000000000  0000000000000000 
-    00007ff8951bd810: <0000000000000000  0000000000000000 
-    00007ff8951bd820:  0000000000000000  0000000000000000 
-    00007ff8951bd830:  0000000000000000  0000000000000000 
-    00007ff8951bd840:  0000000000000000  0000000000000000 
-    00007ff8951bd850:  0000000000000000  0000000000000000 
-    00007ff8951bd860:  0000000000000000  0000000000000000 
-    00007ff8951bd870:  0000000000000000  0000000000000000 
-    00007ff8951bd880:  0000000000000000  0000000000000000 
-    00007ff8951bd890:  fffffffe7fffffff  ffffffffffffffff 
-    00007ff8951bd8a0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8b0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8c0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8d0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8e0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd8f0:  ffffffffffffffff  ffffffffffffffff 
-    00007ff8951bd900:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7fb9a1258f47
+    stack: frame={sp:0x7fb99e005830, fp:0x0} stack=[0x7fb99d806288,0x7fb99e005e88)
+    00007fb99e005730:  00007fb99e005af0  00007fb9a184175a 
+    00007fb99e005740:  000000000000000b  0000000000000000 
+    00007fb99e005750:  00007fb98765d700  000056514ca03148 
+    00007fb99e005760:  00007fb99e005c40  00007fb994000c50 
+    00007fb99e005770:  0000000000000000  000056514bedfd10 
+    00007fb99e005780:  0000000000000000  00007fb9a1839f13 
+    00007fb99e005790:  0000000000000005  0000000000000000 
+    00007fb99e0057a0:  2525252525252525  2525252525252525 
+    00007fb99e0057b0:  00000000000000ff  0000000000000000 
+    00007fb99e0057c0:  00000000000000ff  0000000000000000 
+    00007fb99e0057d0:  0000000000000002  0000000000000004 
+    00007fb99e0057e0:  000000000000000e  000000000000000e 
+    00007fb99e0057f0:  0000000000000000  0000000000000000 
+    00007fb99e005800:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005810:  0000000400000004  0000000400000004 
+    00007fb99e005820:  20636f6c6c616d00  203a64656c696166 
+    00007fb99e005830: <0000000000000000  0000000000000000 
+    00007fb99e005840:  0000000000000000  0000000000000000 
+    00007fb99e005850:  0000000000000000  0000000000000000 
+    00007fb99e005860:  0000000000000000  0000000000000000 
+    00007fb99e005870:  0000000000000000  0000000000000000 
+    00007fb99e005880:  0000000000000000  0000000000000000 
+    00007fb99e005890:  0000000000000000  0000000000000000 
+    00007fb99e0058a0:  0000000000000000  0000000000000000 
+    00007fb99e0058b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007fb99e0058c0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e0058d0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e0058e0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e0058f0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005900:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005910:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005920:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7fb9a1258f47
+    stack: frame={sp:0x7fb99e005830, fp:0x0} stack=[0x7fb99d806288,0x7fb99e005e88)
+    00007fb99e005730:  00007fb99e005af0  00007fb9a184175a 
+    00007fb99e005740:  000000000000000b  0000000000000000 
+    00007fb99e005750:  00007fb98765d700  000056514ca03148 
+    00007fb99e005760:  00007fb99e005c40  00007fb994000c50 
+    00007fb99e005770:  0000000000000000  000056514bedfd10 
+    00007fb99e005780:  0000000000000000  00007fb9a1839f13 
+    00007fb99e005790:  0000000000000005  0000000000000000 
+    00007fb99e0057a0:  2525252525252525  2525252525252525 
+    00007fb99e0057b0:  00000000000000ff  0000000000000000 
+    00007fb99e0057c0:  00000000000000ff  0000000000000000 
+    00007fb99e0057d0:  0000000000000002  0000000000000004 
+    00007fb99e0057e0:  000000000000000e  000000000000000e 
+    00007fb99e0057f0:  0000000000000000  0000000000000000 
+    00007fb99e005800:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005810:  0000000400000004  0000000400000004 
+    00007fb99e005820:  20636f6c6c616d00  203a64656c696166 
+    00007fb99e005830: <0000000000000000  0000000000000000 
+    00007fb99e005840:  0000000000000000  0000000000000000 
+    00007fb99e005850:  0000000000000000  0000000000000000 
+    00007fb99e005860:  0000000000000000  0000000000000000 
+    00007fb99e005870:  0000000000000000  0000000000000000 
+    00007fb99e005880:  0000000000000000  0000000000000000 
+    00007fb99e005890:  0000000000000000  0000000000000000 
+    00007fb99e0058a0:  0000000000000000  0000000000000000 
+    00007fb99e0058b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007fb99e0058c0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e0058d0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e0058e0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e0058f0:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005900:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005910:  ffffffffffffffff  ffffffffffffffff 
+    00007fb99e005920:  ffffffffffffffff  ffffffffffffffff 
     
-    goroutine 1 [chan receive, locked to thread]:
-    runtime.gopark(0x556e92544a60, 0xc4200380c8, 0x556e91f22704, 0xc, 0xc42003ce17, 0x3)
-    	/usr/lib/go-1.10/src/runtime/proc.go:291 +0x120
-    runtime.goparkunlock(0xc4200380c8, 0x556e91f22704, 0xc, 0x17, 0x3)
-    	/usr/lib/go-1.10/src/runtime/proc.go:297 +0x60
-    runtime.chanrecv(0xc420038070, 0x0, 0x1, 0x556e9183b8aa)
-    	/usr/lib/go-1.10/src/runtime/chan.go:518 +0x2f6
-    runtime.chanrecv1(0xc420038070, 0x0)
-    	/usr/lib/go-1.10/src/runtime/chan.go:400 +0x2b
-    runtime.gcenable()
-    	/usr/lib/go-1.10/src/runtime/mgc.go:217 +0x71
-    runtime.main()
-    	/usr/lib/go-1.10/src/runtime/proc.go:161 +0x126
-    runtime.goexit()
-    	/usr/lib/go-1.10/src/runtime/asm_amd64.s:2361 +0x1
+    goroutine 1 [runnable]:
+    github.com/snapcore/snapd/client.(*Client).do(0xc00036a1c0, 0x56514bd33ee7, 0x3, 0x56514bd3dd78, 0xf, 0x0, 0x0, 0x0, 0x0, 0x56514c38df40, ...)
+    	/build/snapd/parts/snapd-deb/build/client/client.go:394 +0x2f9
+    github.com/snapcore/snapd/client.(*Client).doSyncWithOpts(0xc00036a1c0, 0x56514bd33ee7, 0x3, 0x56514bd3dd78, 0xf, 0x0, 0x0, 0x0, 0x0, 0x56514c3299a0, ...)
+    	/build/snapd/parts/snapd-deb/build/client/client.go:492 +0xf6
+    github.com/snapcore/snapd/client.(*Client).SysInfo(0xc00036a1c0, 0x46, 0x0, 0x0)
+    	/build/snapd/parts/snapd-deb/build/client/client.go:727 +0xd4
+    main.maybeWaitForSecurityProfileRegeneration(0xc00036a1c0, 0xc0003a77c0, 0xd)
+    	/build/snapd/parts/snapd-deb/build/cmd/snap/cmd_run.go:200 +0x1aa
+    main.(*cmdRun).Execute(0xc00023feb8, 0xc000032190, 0x2, 0x3, 0x0, 0x0)
+    	/build/snapd/parts/snapd-deb/build/cmd/snap/cmd_run.go:240 +0x172
+    main.main()
+    	/build/snapd/parts/snapd-deb/build/cmd/snap/main.go:482 +0x581
+    
+    goroutine 6 [syscall]:
+    os/signal.signal_recv(0x0)
+    	/usr/lib/go-1.13/src/runtime/sigqueue.go:147 +0x9e
+    os/signal.loop()
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:23 +0x24
+    created by os/signal.init.0
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:29 +0x43
     
     rax    0x0
-    rbx    0x7ff895dac840
-    rcx    0x7ff8959fef47
+    rbx    0x7fb9a1606840
+    rcx    0x7fb9a1258f47
     rdx    0x0
     rdi    0x2
-    rsi    0x7ff8951bd810
-    rbp    0x556e9204a32a
-    rsp    0x7ff8951bd810
+    rsi    0x7fb99e005830
+    rbp    0x56514bef9e7c
+    rsp    0x7fb99e005830
     r8     0x0
-    r9     0x7ff8951bd810
+    r9     0x7fb99e005830
     r10    0x8
     r11    0x246
-    r12    0x556e939db3f0
-    r13    0xf1
-    r14    0x11
+    r12    0x7fb994000c50
+    r13    0x0
+    r14    0x56514bedfd10
     r15    0x0
-    rip    0x7ff8959fef47
+    rip    0x7fb9a1258f47
     rflags 0x246
     cs     0x33
     fs     0x0
