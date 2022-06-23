@@ -8,62 +8,35 @@ metadata:
 spec:
   policies:
   - classifiers:
-    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
+    /bin/sh: 0: Cannot fork
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    system_key.go:147: cannot determine seccomp compiler version in generateSystemKey: fork/exec /snap/snapd/15534/usr/lib/snapd/snap-seccomp: resource temporarily unavailable
-    runtime: failed to create new OS thread (have 10 already; errno=11)
+    /bin/sh: 0: Cannot fork
+    runtime: failed to create new OS thread (have 2 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc0003e8000)
+    runtime.newosproc(0xc000062000)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc0003e8000)
+    runtime.newm1(0xc000062000)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7c48, 0xc000057800, 0x9)
+    runtime.newm(0x1bb7d48, 0x0, 0xffffffffffffffff)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.startm(0x0, 0x426301)
-    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
-    runtime.wakep()
-    	/usr/local/go/src/runtime/proc.go:2061 +0x66
-    runtime.resetspinning()
-    	/usr/local/go/src/runtime/proc.go:2533 +0x59
-    runtime.schedule()
-    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
-    runtime.park_m(0xc000452c00)
-    	/usr/local/go/src/runtime/proc.go:2845 +0x9d
-    runtime.mcall(0x0)
-    	/usr/local/go/src/runtime/asm_amd64.s:318 +0x5b
+    runtime.main.func1()
+    	/usr/local/go/src/runtime/proc.go:135 +0x3f
+    runtime.systemstack(0x46c2f4)
+    	/usr/local/go/src/runtime/asm_amd64.s:370 +0x66
+    runtime.mstart()
+    	/usr/local/go/src/runtime/proc.go:1116
     
-    goroutine 1 [runnable, locked to thread]:
-    encoding/json.(*reflectWithString).resolve(0xc0007a8780, 0x3, 0x3)
-    	/usr/local/go/src/encoding/json/encode.go:975 +0x317
-    encoding/json.mapEncoder.encode(0x1bb48c8, 0xc0007a8700, 0x18bd060, 0xc000572d80, 0x15, 0x18b0100)
-    	/usr/local/go/src/encoding/json/encode.go:789 +0x445
-    encoding/json.(*encodeState).reflectValue(0xc0007a8700, 0x18bd060, 0xc000572d80, 0x15, 0x460100)
-    	/usr/local/go/src/encoding/json/encode.go:358 +0x82
-    encoding/json.(*encodeState).marshal(0xc0007a8700, 0x18bd060, 0xc000572d80, 0xc4350100, 0x0, 0x0)
-    	/usr/local/go/src/encoding/json/encode.go:330 +0xf4
-    encoding/json.Marshal(0x18bd060, 0xc000572d80, 0x1ac6863, 0x6, 0xc000337a88, 0x20300000000000, 0x7f6cfca64fff)
-    	/usr/local/go/src/encoding/json/encode.go:161 +0x52
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json.identifier(0x0, 0x8, 0x2000)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json/json.go:72 +0x1b1
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json.NewSerializerWithOptions(...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/json/json.go:61
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer.newSerializersForScheme(0xc0007da230, 0x1cee520, 0x2a9d9d0, 0x100, 0xc00079fda8, 0x912a3d, 0xc0007da230)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/codec_factory.go:52 +0x49
-    k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer.NewCodecFactory(0xc0007da230, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, ...)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/apimachinery/pkg/runtime/serializer/codec_factory.go:167 +0xd5
-    k8s.io/kubernetes/vendor/k8s.io/metrics/pkg/client/clientset/versioned/scheme.init()
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/metrics/pkg/client/clientset/versioned/scheme/register.go:32 +0x65
-    
-    goroutine 6 [chan receive]:
-    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1169 +0x8b
-    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
-    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
-    internal error, please report: running "yq" failed: timeout waiting for snap system profiles to get updated
+    goroutine 1 [running]:
+    runtime.systemstack_switch()
+    	/usr/local/go/src/runtime/asm_amd64.s:330 fp=0xc00005e788 sp=0xc00005e780 pc=0x46c420
+    runtime.main()
+    	/usr/local/go/src/runtime/proc.go:134 +0x70 fp=0xc00005e7e0 sp=0xc00005e788 pc=0x439ab0
+    runtime.goexit()
+    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1 fp=0xc00005e7e8 sp=0xc00005e7e0 pc=0x46e061
