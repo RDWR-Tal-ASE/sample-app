@@ -8,35 +8,152 @@ metadata:
 spec:
   policies:
   - classifiers:
-    /bin/sh: 0: Cannot fork
+    Error: bad file '-': yaml: line 11: mapping values are not allowed in this context
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
-    /bin/sh: 0: Cannot fork
-    runtime: failed to create new OS thread (have 2 already; errno=11)
+    runtime: failed to create new OS thread (have 5 already; errno=11)
     runtime: may need to increase max user processes (ulimit -u)
     fatal error: newosproc
     
     runtime stack:
     runtime.throw(0x1acaa5a, 0x9)
     	/usr/local/go/src/runtime/panic.go:1116 +0x72
-    runtime.newosproc(0xc000062000)
+    runtime.newosproc(0xc000088000)
     	/usr/local/go/src/runtime/os_linux.go:161 +0x1c5
-    runtime.newm1(0xc000062000)
+    runtime.newm1(0xc000088000)
     	/usr/local/go/src/runtime/proc.go:1837 +0xdd
-    runtime.newm(0x1bb7d48, 0x0, 0xffffffffffffffff)
+    runtime.newm(0x1bb7c48, 0xc00004b000, 0x4)
     	/usr/local/go/src/runtime/proc.go:1816 +0x9b
-    runtime.main.func1()
-    	/usr/local/go/src/runtime/proc.go:135 +0x3f
-    runtime.systemstack(0x46c2f4)
-    	/usr/local/go/src/runtime/asm_amd64.s:370 +0x66
+    runtime.startm(0x0, 0xc000073f01)
+    	/usr/local/go/src/runtime/proc.go:1973 +0xc9
+    runtime.wakep()
+    	/usr/local/go/src/runtime/proc.go:2061 +0x66
+    runtime.resetspinning()
+    	/usr/local/go/src/runtime/proc.go:2533 +0x59
+    runtime.schedule()
+    	/usr/local/go/src/runtime/proc.go:2684 +0x2b9
+    runtime.mstart1()
+    	/usr/local/go/src/runtime/proc.go:1179 +0x93
     runtime.mstart()
-    	/usr/local/go/src/runtime/proc.go:1116
+    	/usr/local/go/src/runtime/proc.go:1137 +0x6e
+    
+    goroutine 1 [runnable, locked to thread]:
+    k8s.io/kubernetes/vendor/google.golang.org/protobuf/internal/impl.legacyLoadMessageInfo(0x1d4e220, 0x1a76d20, 0x1af5904, 0x25, 0xc0001a4850)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/google.golang.org/protobuf/internal/impl/legacy_message.go:65 +0x23d
+    k8s.io/kubernetes/vendor/google.golang.org/protobuf/internal/impl.Export.LegacyMessageTypeOf(0x1d17b80, 0x0, 0x1af5904, 0x25, 0x1a474e0, 0xc0001ab680)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/google.golang.org/protobuf/internal/impl/legacy_export.go:33 +0xa5
+    k8s.io/kubernetes/vendor/github.com/golang/protobuf/proto.RegisterType(0x1d17b80, 0x0, 0x1af5904, 0x25)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/golang/protobuf/proto/registry.go:186 +0x4d
+    k8s.io/kubernetes/vendor/github.com/googleapis/gnostic/openapiv2.init.0()
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/github.com/googleapis/gnostic/openapiv2/OpenAPIv2.pb.go:4976 +0x285
+    
+    goroutine 6 [runnable]:
+    k8s.io/kubernetes/vendor/k8s.io/klog/v2.(*loggingT).flushDaemon(0x2a6c040)
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:1168
+    created by k8s.io/kubernetes/vendor/k8s.io/klog/v2.init.0
+    	/workspace/src/k8s.io/kubernetes/_output/dockerized/go/src/k8s.io/kubernetes/vendor/k8s.io/klog/v2/klog.go:417 +0xdf
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7f7638fc1f47 m=3 sigcode=18446744073709551610
+    
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7f7638fc1f47
+    stack: frame={sp:0x7f7638780810, fp:0x0} stack=[0x7f7637f81290,0x7f7638780e90)
+    00007f7638780710:  0000000000000000  0000000000000000 
+    00007f7638780720:  0000000000000000  0000000000000000 
+    00007f7638780730:  0000000000000000  0000000000000000 
+    00007f7638780740:  0000000000000000  0000000000000000 
+    00007f7638780750:  0000000000000000  0000000000000000 
+    00007f7638780760:  0000000000000000  0000000000000000 
+    00007f7638780770:  0000000000000000  0000000000000000 
+    00007f7638780780:  0000000000000000  0000000000000000 
+    00007f7638780790:  0000000000000000  0000000000000000 
+    00007f76387807a0:  0000000000000000  0000000000000000 
+    00007f76387807b0:  0000000000000000  0000000000000000 
+    00007f76387807c0:  0000000000000000  0000000000000000 
+    00007f76387807d0:  0000000000000000  0000000000000000 
+    00007f76387807e0:  0000000000000000  0000000000000000 
+    00007f76387807f0:  0000000000000000  0000000000000000 
+    00007f7638780800:  0000000000000000  0000000000000000 
+    00007f7638780810: <0000000000000000  0000000000000000 
+    00007f7638780820:  0000000000000000  0000000000000000 
+    00007f7638780830:  0000000000000000  0000000000000000 
+    00007f7638780840:  0000000000000000  0000000000000000 
+    00007f7638780850:  0000000000000000  0000000000000000 
+    00007f7638780860:  0000000000000000  0000000000000000 
+    00007f7638780870:  0000000000000000  0000000000000000 
+    00007f7638780880:  0000000000000000  0000000000000000 
+    00007f7638780890:  fffffffe7fffffff  ffffffffffffffff 
+    00007f76387808a0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808b0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f7638780900:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7f7638fc1f47
+    stack: frame={sp:0x7f7638780810, fp:0x0} stack=[0x7f7637f81290,0x7f7638780e90)
+    00007f7638780710:  0000000000000000  0000000000000000 
+    00007f7638780720:  0000000000000000  0000000000000000 
+    00007f7638780730:  0000000000000000  0000000000000000 
+    00007f7638780740:  0000000000000000  0000000000000000 
+    00007f7638780750:  0000000000000000  0000000000000000 
+    00007f7638780760:  0000000000000000  0000000000000000 
+    00007f7638780770:  0000000000000000  0000000000000000 
+    00007f7638780780:  0000000000000000  0000000000000000 
+    00007f7638780790:  0000000000000000  0000000000000000 
+    00007f76387807a0:  0000000000000000  0000000000000000 
+    00007f76387807b0:  0000000000000000  0000000000000000 
+    00007f76387807c0:  0000000000000000  0000000000000000 
+    00007f76387807d0:  0000000000000000  0000000000000000 
+    00007f76387807e0:  0000000000000000  0000000000000000 
+    00007f76387807f0:  0000000000000000  0000000000000000 
+    00007f7638780800:  0000000000000000  0000000000000000 
+    00007f7638780810: <0000000000000000  0000000000000000 
+    00007f7638780820:  0000000000000000  0000000000000000 
+    00007f7638780830:  0000000000000000  0000000000000000 
+    00007f7638780840:  0000000000000000  0000000000000000 
+    00007f7638780850:  0000000000000000  0000000000000000 
+    00007f7638780860:  0000000000000000  0000000000000000 
+    00007f7638780870:  0000000000000000  0000000000000000 
+    00007f7638780880:  0000000000000000  0000000000000000 
+    00007f7638780890:  fffffffe7fffffff  ffffffffffffffff 
+    00007f76387808a0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808b0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808c0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808d0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808e0:  ffffffffffffffff  ffffffffffffffff 
+    00007f76387808f0:  ffffffffffffffff  ffffffffffffffff 
+    00007f7638780900:  ffffffffffffffff  ffffffffffffffff 
     
     goroutine 1 [running]:
-    runtime.systemstack_switch()
-    	/usr/local/go/src/runtime/asm_amd64.s:330 fp=0xc00005e788 sp=0xc00005e780 pc=0x46c420
-    runtime.main()
-    	/usr/local/go/src/runtime/proc.go:134 +0x70 fp=0xc00005e7e0 sp=0xc00005e788 pc=0x439ab0
-    runtime.goexit()
-    	/usr/local/go/src/runtime/asm_amd64.s:1374 +0x1 fp=0xc00005e7e8 sp=0xc00005e7e0 pc=0x46e061
+    	goroutine running on other thread; stack unavailable
+    
+    goroutine 35 [runnable]:
+    os/signal.loop()
+    	/usr/lib/go-1.10/src/os/signal/signal_unix.go:20
+    created by os/signal.init.0
+    	/usr/lib/go-1.10/src/os/signal/signal_unix.go:28 +0x43
+    
+    rax    0x0
+    rbx    0x7f763936f840
+    rcx    0x7f7638fc1f47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7f7638780810
+    rbp    0x5631224e432a
+    rsp    0x7f7638780810
+    r8     0x0
+    r9     0x7f7638780810
+    r10    0x8
+    r11    0x246
+    r12    0x7f7628000c50
+    r13    0xf1
+    r14    0x11
+    r15    0x0
+    rip    0x7f7638fc1f47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
