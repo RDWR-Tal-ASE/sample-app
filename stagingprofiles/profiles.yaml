@@ -8,7 +8,131 @@ metadata:
 spec:
   policies:
   - classifiers:
-    /bin/sh: 0: Cannot fork
+    runtime/cgo: pthread_create failed: Resource temporarily unavailable
+    SIGABRT: abort
+    PC=0x7fe6af912f47 m=5 sigcode=18446744073709551610
+    
+    goroutine 0 [idle]:
+    runtime: unknown pc 0x7fe6af912f47
+    stack: frame={sp:0x7fe6a77fd830, fp:0x0} stack=[0x7fe6a6ffe288,0x7fe6a77fde88)
+    00007fe6a77fd730:  00007fe6a77fdaf0  00007fe6afefb75a 
+    00007fe6a77fd740:  000000000000000b  0000000000000000 
+    00007fe6a77fd750:  00007fe6a67fc700  0000563640ed4148 
+    00007fe6a77fd760:  00007fe6a77fdc40  00005636419a73f0 
+    00007fe6a77fd770:  0000000000000000  00005636403b0d10 
+    00007fe6a77fd780:  0000000000000000  00007fe6afef3f13 
+    00007fe6a77fd790:  0000000000000005  0000000000000000 
+    00007fe6a77fd7a0:  2525252525252525  2525252525252525 
+    00007fe6a77fd7b0:  00000000000000ff  0000000000000000 
+    00007fe6a77fd7c0:  00000000000000ff  0000000000000000 
+    00007fe6a77fd7d0:  00007fe698000010  00007fe698000010 
+    00007fe6a77fd7e0:  000000000000000e  000000000000000e 
+    00007fe6a77fd7f0:  0000000000000000  0000000000000000 
+    00007fe6a77fd800:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd810:  0000000400000004  0000000400000004 
+    00007fe6a77fd820:  20636f6c6c616d00  203a64656c696166 
+    00007fe6a77fd830: <0000000000000000  0000000000000000 
+    00007fe6a77fd840:  0000000000000000  0000000000000000 
+    00007fe6a77fd850:  0000000000000000  0000000000000000 
+    00007fe6a77fd860:  0000000000000000  0000000000000000 
+    00007fe6a77fd870:  0000000000000000  0000000000000000 
+    00007fe6a77fd880:  0000000000000000  0000000000000000 
+    00007fe6a77fd890:  0000000000000000  0000000000000000 
+    00007fe6a77fd8a0:  0000000000000000  0000000000000000 
+    00007fe6a77fd8b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007fe6a77fd8c0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd900:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd910:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd920:  ffffffffffffffff  ffffffffffffffff 
+    runtime: unknown pc 0x7fe6af912f47
+    stack: frame={sp:0x7fe6a77fd830, fp:0x0} stack=[0x7fe6a6ffe288,0x7fe6a77fde88)
+    00007fe6a77fd730:  00007fe6a77fdaf0  00007fe6afefb75a 
+    00007fe6a77fd740:  000000000000000b  0000000000000000 
+    00007fe6a77fd750:  00007fe6a67fc700  0000563640ed4148 
+    00007fe6a77fd760:  00007fe6a77fdc40  00005636419a73f0 
+    00007fe6a77fd770:  0000000000000000  00005636403b0d10 
+    00007fe6a77fd780:  0000000000000000  00007fe6afef3f13 
+    00007fe6a77fd790:  0000000000000005  0000000000000000 
+    00007fe6a77fd7a0:  2525252525252525  2525252525252525 
+    00007fe6a77fd7b0:  00000000000000ff  0000000000000000 
+    00007fe6a77fd7c0:  00000000000000ff  0000000000000000 
+    00007fe6a77fd7d0:  00007fe698000010  00007fe698000010 
+    00007fe6a77fd7e0:  000000000000000e  000000000000000e 
+    00007fe6a77fd7f0:  0000000000000000  0000000000000000 
+    00007fe6a77fd800:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd810:  0000000400000004  0000000400000004 
+    00007fe6a77fd820:  20636f6c6c616d00  203a64656c696166 
+    00007fe6a77fd830: <0000000000000000  0000000000000000 
+    00007fe6a77fd840:  0000000000000000  0000000000000000 
+    00007fe6a77fd850:  0000000000000000  0000000000000000 
+    00007fe6a77fd860:  0000000000000000  0000000000000000 
+    00007fe6a77fd870:  0000000000000000  0000000000000000 
+    00007fe6a77fd880:  0000000000000000  0000000000000000 
+    00007fe6a77fd890:  0000000000000000  0000000000000000 
+    00007fe6a77fd8a0:  0000000000000000  0000000000000000 
+    00007fe6a77fd8b0:  fffffffe7fffffff  ffffffffffffffff 
+    00007fe6a77fd8c0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd8d0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd8e0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd8f0:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd900:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd910:  ffffffffffffffff  ffffffffffffffff 
+    00007fe6a77fd920:  ffffffffffffffff  ffffffffffffffff 
+    
+    goroutine 1 [chan receive, locked to thread]:
+    text/template/parse.(*lexer).nextItem(...)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:195
+    text/template/parse.(*Tree).peek(...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:95
+    text/template/parse.(*Tree).parse(0xc000132500)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:277 +0xbc6
+    text/template/parse.(*Tree).Parse(0xc000132500, 0x563640260440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc0001dc6f0, 0xc000158340, 0x2, ...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:230 +0x249
+    text/template/parse.Parse(0x5636402059b7, 0x4, 0x563640260440, 0x16c, 0x0, 0x0, 0x0, 0x0, 0xc000158340, 0x2, ...)
+    	/usr/lib/go-1.13/src/text/template/parse/parse.go:55 +0x124
+    text/template.(*Template).Parse(0xc00009d7c0, 0x563640260440, 0x16c, 0x4, 0xc00011f5e8, 0x563640eef760)
+    	/usr/lib/go-1.13/src/text/template/template.go:200 +0x113
+    github.com/snapcore/snapd/systemd.init()
+    	/build/snapd/parts/snapd-deb/build/systemd/systemd.go:1281 +0x3ad
+    
+    goroutine 19 [syscall]:
+    os/signal.signal_recv(0x0)
+    	/usr/lib/go-1.13/src/runtime/sigqueue.go:147 +0x9e
+    os/signal.loop()
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:23 +0x24
+    created by os/signal.init.0
+    	/usr/lib/go-1.13/src/os/signal/signal_unix.go:29 +0x43
+    
+    goroutine 20 [runnable]:
+    text/template/parse.(*lexer).run(0xc000160630)
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:228
+    created by text/template/parse.lex
+    	/usr/lib/go-1.13/src/text/template/parse/lex.go:223 +0x192
+    
+    rax    0x0
+    rbx    0x7fe6afcc0840
+    rcx    0x7fe6af912f47
+    rdx    0x0
+    rdi    0x2
+    rsi    0x7fe6a77fd830
+    rbp    0x5636403cae7c
+    rsp    0x7fe6a77fd830
+    r8     0x0
+    r9     0x7fe6a77fd830
+    r10    0x8
+    r11    0x246
+    r12    0x5636419a73f0
+    r13    0x0
+    r14    0x5636403b0d10
+    r15    0x0
+    rip    0x7fe6af912f47
+    rflags 0x246
+    cs     0x33
+    fs     0x0
+    gs     0x0
     name: apiPolicy
     operatorEmail: support@radware.com
     protections:
